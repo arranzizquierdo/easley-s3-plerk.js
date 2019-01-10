@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Header from './Components/Header';
 
 class App extends Component {
   render() {
@@ -7,11 +8,8 @@ class App extends Component {
       
       <div className="App">
 
-<header className="@@header">
-  <a className="@@link-to-index" href="index.html">
-    <img className="@@logo__awesome" src="assets/images/logo-awesome-profile-cards.svg" alt="Logo Awesome Profile Cards" />
-  </a>
-</header>
+      <Header />
+
 
         <section className="container__cardview">
         <div className="container__buttom">
