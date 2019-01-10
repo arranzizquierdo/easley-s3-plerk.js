@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import LogoAwesome from '../Images/logo-awesome.svg';
 
-
 class Header extends Component {
     render () {
         return (
