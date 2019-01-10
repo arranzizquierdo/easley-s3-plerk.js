@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import './App.css';
 import Collapsible from './Components/collapsible';
 
 class App extends Component {

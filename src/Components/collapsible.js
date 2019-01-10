@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../scss/pages/_custom.scss';
 
 class Collapsible extends Component {
     render() {
