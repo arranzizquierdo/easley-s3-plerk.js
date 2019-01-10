@@ -62,7 +62,9 @@ class App extends Component {
     </div>
   </section>
 
-  <Collapsible />
+  <Collapsible title="DISEÑA"/>
+  <Collapsible title="RELLENA"/>
+  <Collapsible title="COMPARTE"/>
 
 <footer className="footer">
   <div className="footer-container">
