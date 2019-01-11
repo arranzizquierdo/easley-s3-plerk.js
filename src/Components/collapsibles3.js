@@ -6,16 +6,17 @@ class CollapsiblesThree extends Component {
             super(props);
             this.icon='';
             }
-        }
+
   render() {
     return (
         <div>
-            <Collapsible title="DISEÑA" icon="far fa-ungroup"/>
-            <Collapsible title="RELLENA" icon="far fa-keyboard"/>
-            <Collapsible title="COMPARTE" icon="far fa-share-alt"/>
+            <Collapsible title="DISEÑA" icon="fa fa-object-ungroup"/>
+            <Collapsible title="RELLENA" icon="fa fa-keyboard"/>
+            <Collapsible title="COMPARTE" icon="fa fa-share-alt"/>
         </div>
         )
 }
 
+}
 
 export default CollapsiblesThree;

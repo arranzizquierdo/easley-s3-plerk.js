@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Collapsible from './Components/collapsible';
+import CollapsiblesThree from './Components/collapsibles3';
 
 class App extends Component {
   render() {
@@ -62,9 +62,7 @@ class App extends Component {
     </div>
   </section>
 
-  <Collapsible title="DISEÑA" />
-  <Collapsible title="RELLENA" />
-  <Collapsible title="COMPARTE" />
+  <CollapsiblesThree />
 
 <footer className="footer">
   <div className="footer-container">
