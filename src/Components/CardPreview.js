@@ -1,6 +1,26 @@
 import React, { Component } from 'react';
 import ImageDefault from '../Images/default.jpeg';
-import SocialLink from './SocialLink';
+import SocialLinkList from './SocialLinkList';
+
+
+const items = [
+  {
+    id: "mobile",
+    itemIcon: "fas fa-mobile-alt"
+  },
+  {
+    id: "email",
+    itemIcon: "far fa-envelope"
+  },
+  {
+    id: "linkedin",
+    itemIcon: "fab fa-linkedin-in"
+  },
+  {
+    id: "gitHub",
+    itemIcon: "fab fa-github-alt"
+  }
+]
 
 class CardPreview extends Component {
   render() {
@@ -20,29 +40,8 @@ class CardPreview extends Component {
 
           <img className="photo__user" src={ImageDefault} alt="User photo" />
 
-          <ul className="social__media-list">
-          <li className="social__media-buttom">
-              <SocialLink 
-                itemIcon="fas fa-mobile-alt"
-              />
-            </li>
-            <li className="social__media-buttom">
-              <SocialLink 
-                itemIcon="far fa-envelope"
-              />
-            </li>
-            <li className="social__media-buttom">
-              <SocialLink 
-                itemIcon="fab fa-linkedin-in"
-              />
-            </li>
-            <li className="social__media-buttom">
-              <SocialLink 
-                itemIcon="fab fa-github-alt"
-              />
-            </li>
-          </ul>
-
+          <SocialLinkList itemsArr= {items} />
+          
           <div className="rectangle__decoration-large"></div>
           <ul className="skill__tags">
             <li className="first_tag tag">HTML</li>
