@@ -35,8 +35,7 @@ class Collapsible extends Component {
           <i className={`fas ${this.state.arrowIcon} icon_design`}></i>
         </div>
       </div>
- 
- <DesignContent />
+      {this.props.children}
     </fieldset>
   </form>
 </section>
