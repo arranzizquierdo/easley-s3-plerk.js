@@ -7,19 +7,18 @@ class App extends Component {
   constructor (props){
     super (props);
     this.state = {
-      skills: [
-        "HTML",
-        "CSS",
-        "Sass",
-        "git",
-        "Gulp",
-        "JavaScript",
-        "AJAX",
-        "React"
-      ]
-
+      skills: []
     }
   }
+
+  backEndCall (){
+    fetch ('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
+      .then (response => response.json())
+      .then (data => this.setState({skills:data.skills}));
+  }
+
+
+
   render() {
     const {skills} = this.state;
 
@@ -140,7 +139,7 @@ class App extends Component {
             return(
               <div>
               <input className={`checkbox__input checkbox_input--${skill}`} id={skill} type="checkbox" name="skill_option" value={skill} />
-              <label className={`checkbox__label checkbox__label--${skill}`} for={skill}>{skill}</label>
+              <label className={`checkbox__label checkbox__label--${skill}`} htmlFor={skill}>{skill}</label>
               </div>
             );
 
