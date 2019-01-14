@@ -16,7 +16,7 @@ class CollapsiblesThree extends Component {
                 </Collapsible>
                 <Collapsible title="RELLENA" icon="far fa-keyboard" arrowIcon="fa-angle-down">
 
-                    <div className="form_fill_content">
+                    <div>
                         <label className="fill_subtitle" htmlFor="firstName">Nombre completo</label>
                         <input className="input_box full__name" id="firstName" placeholder="Ej: Sally Jill" type="text" name="firstName" />
                         <label className="fill_subtitle" htmlFor="position">Puesto</label>
@@ -42,18 +42,18 @@ class CollapsiblesThree extends Component {
                     </div>
                 </Collapsible>
                 <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down">
-                <div>
-                <div className="form_share_content ">
-        <button className="button_deco" type="submit"><i className="far fa-address-card"></i>Crear tarjeta</button>
-      </div>
-      <div className="hidden twitter_mother">
-        <div className="twitter_container">
-          <h2 className="title_createcard_twitter">La tarjeta ha sido creada:</h2>
-          <a className="twitter_link" href=""></a>
-          <a className="button_twitter twitter-share-button" href=""><i className="fab fa-twitter"></i>Compartir en Twitter</a>
-        </div>
-      </div>
-                </div>
+                    <div>
+                        <div>
+                            <button className="button_deco" type="submit"><i className="far fa-address-card"></i>Crear tarjeta</button>
+                        </div>
+                        <div className="hidden twitter_mother">
+                            <div className="twitter_container">
+                                <h2 className="title_createcard_twitter">La tarjeta ha sido creada:</h2>
+                                <a className="twitter_link" href=""></a>
+                                <a className="button_twitter twitter-share-button" href=""><i className="fab fa-twitter"></i>Compartir en Twitter</a>
+                            </div>
+                        </div>
+                    </div>
                 </Collapsible>
             </div>
         )
