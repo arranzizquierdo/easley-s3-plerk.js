@@ -4,7 +4,25 @@ import Footer from './Components/Footer';
 import CardPreview from './Components/CardPreview';
 
 class App extends Component {
+  constructor (props){
+    super (props);
+    this.state = {
+      skills: [
+        "HTML",
+        "CSS",
+        "Sass",
+        "git",
+        "Gulp",
+        "JavaScript",
+        "AJAX",
+        "React"
+      ]
+
+    }
+  }
   render() {
+    const {skills} = this.state;
+
     return (
        
       <div className="App">
@@ -117,7 +135,19 @@ class App extends Component {
         <label className="fill_subtitle" htmlFor="github">Github</label>
         <input className="input_box github__input" id="github" placeholder="Ej: sally-hill" type="text" name="github" />
         <h3 className="fill_subtitle fill_subtitle--skills">Habilidades (máximo 3)</h3>
-        <div className="container_skills"></div>
+        <div className="container_skills">
+          {skills.map (skill => {
+            return(
+              <div>
+              <input className={`checkbox__input checkbox_input--${skill}`} id={skill} type="checkbox" name="skill_option" value={skill} />
+              <label className={`checkbox__label checkbox__label--${skill}`} for={skill}>{skill}</label>
+              </div>
+            );
+
+          })
+          }
+        
+        </div>
       </div>
     </fieldset>
   </form>
