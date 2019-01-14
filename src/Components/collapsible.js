@@ -4,8 +4,6 @@ class Collapsible extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: props.title,
-      icon: props.icon,
       arrowIcon: props.arrowIcon,
       collapsiblehidden: props.collapsiblehidden
     };
@@ -13,19 +11,22 @@ class Collapsible extends Component {
   }
 
   toggleCollapsible(event) {
+
     if (this.state.arrowIcon.includes("fa-angle-up")) {
       this.setState({
         arrowIcon: "fa-angle-down",
-        collapsiblehidden: "hidden"
+        collapsiblehidden: false
       });
     } else {
       this.setState({ 
         arrowIcon: "fa-angle-up", 
-        collapsiblehidden: ""});
+        collapsiblehidden: true
+      });
     }
   }
 
   render() {
+
     return (
       <section className="custom-section">
         <form className="custom-form" action="" method="GET">
@@ -35,16 +36,16 @@ class Collapsible extends Component {
               className="container_fieldset-title collapseform-design"
             >
               <div className="container_fieldset-icon">
-                <i className={this.state.icon} />
+                <i className={this.props.icon} />
               </div>
               <legend className="fieldset_title fieldset_title--design">
-                {this.state.title}
+                {this.props.title}
               </legend>
               <div className="container_arrow-icon">
                 <i className={`fas ${this.state.arrowIcon} icon_design`} />
               </div>
             </div>
-            <div className={`container ${this.state.collapsiblehidden}`}>
+            <div className={`container ${(this.state.collapsiblehidden ===true) ? "" : "hidden" }`}>
             {this.props.children}
             </div>
           </fieldset>
