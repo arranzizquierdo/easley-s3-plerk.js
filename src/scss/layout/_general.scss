@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  min-height: 100vh;
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+}
+
+.body__index {
+  min-height: 560px;
+  background-color: $color-white-bone;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.body__card-creator {
+  display: flex;
+  flex-direction: column;
+}
