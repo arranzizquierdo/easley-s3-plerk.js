@@ -21,7 +21,8 @@ class App extends Component {
         "photo": "",
         "skills": ["HTML", "CSS", "GULP"]
       }
-    }
+    };
+    this.backEndCall();
   }
 
   backEndCall (){
@@ -34,6 +35,7 @@ class App extends Component {
 
   render() {
     const {skills} = this.state;
+    console.log('skills', skills);
 
     return (
        
