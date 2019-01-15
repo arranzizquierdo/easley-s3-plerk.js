@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CollapsiblesThree from './Components/collapsibles3';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import CardPreview from './Components/CardPreview';
@@ -31,6 +32,7 @@ class App extends Component {
       <CardPreview />
 
 
+<<<<<<< HEAD
   <section className="custom-section">
   <form className="custom-form" action="" method="GET">
     <fieldset className="deco_fieldset">
@@ -174,6 +176,9 @@ class App extends Component {
     </fieldset>
   </form>
 </section>
+=======
+  <CollapsiblesThree />
+>>>>>>> a4776375dd78b63cda837207a4c0fb467c32bf20
 
  <Footer />
 
