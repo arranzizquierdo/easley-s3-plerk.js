@@ -7,14 +7,16 @@ class CollapsiblesThree extends Component {
         super(props);
         this.icon = '';
     }
+    
 
     render() {
+        
         return (
             <div>
-                <Collapsible title="DISEÑA" icon="far fa-object-ungroup" arrowIcon="fa-angle-up">
+                <Collapsible title="DISEÑA" icon="far fa-object-ungroup" arrowIcon="fa-angle-up" collapsiblehidden={false} >
                     <DesignContent />
                 </Collapsible>
-                <Collapsible title="RELLENA" icon="far fa-keyboard" arrowIcon="fa-angle-down">
+                <Collapsible title="RELLENA" icon="far fa-keyboard" arrowIcon="fa-angle-down" collapsiblehidden={true}>
 
                     <div>
                         <label className="fill_subtitle" htmlFor="firstName">Nombre completo</label>
@@ -41,7 +43,7 @@ class CollapsiblesThree extends Component {
                         <div className="container_skills"></div>
                     </div>
                 </Collapsible>
-                <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down">
+                <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down" collapsiblehidden={true}>
                     <div>
                         <div>
                             <button className="button_deco" type="submit"><i className="far fa-address-card"></i>Crear tarjeta</button>

@@ -4,29 +4,28 @@ class Collapsible extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      arrowIcon: props.arrowIcon,
+      arrowIcon: props.arrowIcon, //aqui siempre le paso el mismo no cambia el estado inicial
       collapsiblehidden: props.collapsiblehidden
     };
     this.toggleCollapsible = this.toggleCollapsible.bind(this);
   }
 
   toggleCollapsible(event) {
-
+    console.log('event target',event.target);
     if (this.state.arrowIcon.includes("fa-angle-up")) {
       this.setState({
         arrowIcon: "fa-angle-down",
-        collapsiblehidden: false
+        collapsiblehidden: true
       });
     } else {
       this.setState({ 
         arrowIcon: "fa-angle-up", 
-        collapsiblehidden: true
+        collapsiblehidden: false
       });
     }
   }
 
   render() {
-
     return (
       <section className="custom-section">
         <form className="custom-form" action="" method="GET">
@@ -45,7 +44,7 @@ class Collapsible extends Component {
                 <i className={`fas ${this.state.arrowIcon} icon_design`} />
               </div>
             </div>
-            <div className={`container ${(this.state.collapsiblehidden ===true) ? "" : "hidden" }`}>
+            <div className={`container ${(this.state.collapsiblehidden ===true) ? "hidden" : "" }`}>
             {this.props.children}
             </div>
           </fieldset>
