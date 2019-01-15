@@ -8,7 +8,19 @@ class App extends Component {
   constructor (props){
     super (props);
     this.state = {
-      skills: []
+      skills: [],
+      userInfo: {
+        "palette": 1,
+        "typography": 2,
+        "name": "",
+        "job": "",
+        "phone": "",
+        "email": "",
+        "linkedin": "",
+        "github": "",
+        "photo": "",
+        "skills": ["HTML", "CSS", "GULP"]
+      }
     }
   }
 
