@@ -82,7 +82,9 @@ class App extends Component {
   }
 
   handleSkillsSelect (event) {
-    console.log('funcion skills', event);
+    console.log('funcion skills', event.target.value);
+
+
     // const skillsTypes = {
     //   0: "HTML",
     //   1: "CSS",
@@ -93,11 +95,11 @@ class App extends Component {
     //   6: "AJAX",
     //   7: "React"
     // }
-    // console.log('handleSkillsSelect', skillsTypes[value]);
+    // console.log('handleSkillsSelect', skillsTypes[event.target.value]);
     // this.setState({
     //   userInfo: {
     //     ...this.state.userInfo,
-    //     skills: skillsTypes[value]
+    //     skills: skillsTypes[event.target.value]
     //   }
     // });
     // this.forceUpdate();
@@ -114,7 +116,7 @@ class App extends Component {
 
       <Header />
 
-      <CardPreview colorClass={userInfo.palette} typographyClass={userInfo.typography}/>
+      <CardPreview colorClass={userInfo.palette} typographyClass={userInfo.typography} skillsClass={userInfo.skills}/>
 
 
   <CollapsiblesThree changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skillsSelect={this.handleSkillsSelect}  skills= {skills} />

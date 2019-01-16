@@ -16,7 +16,7 @@ class InputSkill extends Component {
                 type="checkbox" 
                 name="skill_option" 
                 value={skill}
-                onClick={this.props.skillSelect}
+                onClick={this.props.skillsSelect}
                 />
             <label 
                 className={`checkbox__label checkbox__label--${skill}`} 
