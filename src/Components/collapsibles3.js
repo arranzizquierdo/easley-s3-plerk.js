@@ -7,6 +7,7 @@ class CollapsiblesThree extends Component {
     constructor(props) {
         super(props);
         this.icon = '';
+        console.log(props);
     }
     
 
@@ -15,7 +16,7 @@ class CollapsiblesThree extends Component {
         return (
             <div>
                 <Collapsible title="DISEÑA" icon="far fa-object-ungroup" arrowIcon="fa-angle-up" collapsiblehidden={false} >
-                    <DesignContent />
+                    <DesignContent {...this.props} />
                 </Collapsible>
                 <Collapsible title="RELLENA" icon="far fa-keyboard" arrowIcon="fa-angle-down" collapsiblehidden={true} skills= {skills}>
 
