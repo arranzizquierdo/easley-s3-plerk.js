@@ -10,8 +10,8 @@ class App extends Component {
     this.state = {
       skills: [],
       userInfo: {
-        "palette": 1,
-        "typography": 2,
+        palette: "",
+        typography: "",
         "name": "",
         "job": "",
         "phone": "",
@@ -23,6 +23,8 @@ class App extends Component {
       }
     };
     this.backEndCall();
+    this.handleColorChange= this.handleColorChange.bind(this);
+    this.handleTypographyChange= this.handleTypographyChange.bind(this);
   }
 
   backEndCall (){
@@ -31,11 +33,58 @@ class App extends Component {
       .then (data => this.setState({skills:data.skills}));
   }
 
+  handleColorChange (value) {
+    const paletteNumbers = {
+      // 1: 'add__color__medium-green',
+      // 2: 'add__color__light-red',
+      // 3: 'add__color__medium-blue'
+      1: {
+        dark: 'add__color__dark-green',
+        medium: 'add__color__medium-green',
+        light: 'add__border__light-green'
+      },
+      2: {
+        dark: 'add__color__dark-red',
+        medium: 'add__color__medium-red',
+        light: 'add__border__light-red'
+      },
+      3: {
+        dark: 'add__color__dark-blue',
+        medium: 'add__color__medium-blue',
+        light: 'add__border__light-blue' 
+      },
+    };
 
+    console.log('handleColorChange', paletteNumbers[value]);
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        palette: paletteNumbers[value]
+      }
+    });
+    this.forceUpdate();
+  }
+
+  handleTypographyChange (value) {
+    const typographyTypes = {
+      1: 'add__font__ubuntu',
+      2: 'add__font__comicsans',
+      3: 'add__font__monserrat'
+    };
+
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        typography: typographyTypes[value]
+      }
+    });
+    this.forceUpdate();
+  }
 
   render() {
-    // const {skills} = this.state;
-    const userInfo= this.state.userInfo;
+    const {skills, userInfo} = this.state;
+    console.log('skills', skills);
+    console.log('userInfo', userInfo);
 
     return (
        
@@ -49,11 +98,11 @@ class App extends Component {
       email = {userInfo.email}
       linkedin = {userInfo.linkedin}
       github = {userInfo.github}
-
+      colorClass={userInfo.palette} 
+      typographyClass={userInfo.typography}
       />
 
-
-  <CollapsiblesThree />
+  <CollapsiblesThree changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills= {skills} />
 
  <Footer />
 

@@ -23,6 +23,11 @@ const items = [
 ]
 
 class CardPreview extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
+
   render() {
 
     const linkedin = this.props.linkedin
@@ -41,10 +46,10 @@ class CardPreview extends Component {
         </div>
 
         <div className="preview__card">
-          <div className="rectangle__decoration" />
+          <div className={`rectangle__decoration ${this.props.colorClass.medium }`} />
           <div className="name__container">
-            <p className="name">Nombre Apellido</p>
-            <p className="profession">Front-end developer</p>
+            <p className={`name ${this.props.typographyClass} ${this.props.colorClass.dark }`}>Nombre Apellido</p>
+            <p className={`profession ${this.props.typographyClass}`}>Front-end developer</p>
           </div>
 
           <img className="photo__user" src={ImageDefault} alt="User photo" />
@@ -55,13 +60,14 @@ class CardPreview extends Component {
           github= {github}
           phone= {phone}
           email= {email}
+          colorClass={this.props.colorClass}
           />
           
           <div className="rectangle__decoration-large"></div>
           <ul className="skill__tags">
-            <li className="first_tag tag">HTML</li>
-            <li className="second_tag tag">CSS</li>
-            <li className="third_tag tag">GULP</li>
+            <li className={`first_tag tag ${this.props.colorClass.medium }`}>HTML</li>
+            <li className={`second_tag tag ${this.props.colorClass.medium }`}>CSS</li>
+            <li className={`third_tag tag ${this.props.colorClass.medium }`}>GULP</li>
           </ul>
         </div>
       </section>
