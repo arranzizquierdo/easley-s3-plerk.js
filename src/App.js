@@ -15,9 +15,9 @@ class App extends Component {
         "name": "",
         "job": "",
         "phone": "",
-        "email": "",
-        "linkedin": "",
-        "github": "",
+        "email": "katia.rojas.sandoval@gmail.com",
+        "linkedin": "katia",
+        "github": "holi holi",
         "photo": "",
         "skills": ["HTML", "CSS", "GULP"]
       }
@@ -34,8 +34,8 @@ class App extends Component {
 
 
   render() {
-    const {skills} = this.state;
-    console.log('skills', skills);
+    // const {skills} = this.state;
+    const userInfo= this.state.userInfo;
 
     return (
        
@@ -43,7 +43,14 @@ class App extends Component {
 
       <Header />
 
-      <CardPreview />
+      <CardPreview 
+      
+      phone = {userInfo.phone}
+      email = {userInfo.email}
+      linkedin = {userInfo.linkedin}
+      github = {userInfo.github}
+
+      />
 
 
   <CollapsiblesThree />

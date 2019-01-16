@@ -5,7 +5,7 @@ import SocialLinkList from './SocialLinkList';
 
 const items = [
   {
-    id: "mobile",
+    id: "phone",
     itemIcon: "fas fa-mobile-alt"
   },
   {
@@ -17,13 +17,20 @@ const items = [
     itemIcon: "fab fa-linkedin-in"
   },
   {
-    id: "gitHub",
+    id: "github",
     itemIcon: "fab fa-github-alt"
   }
 ]
 
 class CardPreview extends Component {
   render() {
+
+    const linkedin = this.props.linkedin
+    const github = this.props.github
+    const phone = this.props.phone
+    const email = this.props.email
+
+    console.log ('cardpreview', linkedin)
     return (
       <section className="container__cardview">
         <div className="container__buttom">
@@ -42,7 +49,13 @@ class CardPreview extends Component {
 
           <img className="photo__user" src={ImageDefault} alt="User photo" />
 
-          <SocialLinkList itemsArr= {items} />
+          <SocialLinkList 
+          itemsArr= {items}
+          linkedin= {linkedin}
+          github= {github}
+          phone= {phone}
+          email= {email}
+          />
           
           <div className="rectangle__decoration-large"></div>
           <ul className="skill__tags">
