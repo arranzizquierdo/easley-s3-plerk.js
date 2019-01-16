@@ -39,7 +39,7 @@ class CardPreview extends Component {
         </div>
 
         <div className="preview__card">
-          <div className={`rectangle__decoration ${this.props.colorClass.light }`} />
+          <div className={`rectangle__decoration ${this.props.colorClass.medium }`} />
           <div className="name__container">
             <p className={`name ${this.props.typographyClass} ${this.props.colorClass.dark }`}>Nombre Apellido</p>
             <p className={`profession ${this.props.typographyClass}`}>Front-end developer</p>
@@ -47,7 +47,7 @@ class CardPreview extends Component {
 
           <img className="photo__user" src={ImageDefault} alt="User photo" />
 
-          <SocialLinkList itemsArr= {items} />
+          <SocialLinkList itemsArr={items} colorClass={this.props.colorClass} />
           
           <div className="rectangle__decoration-large"></div>
           <ul className="skill__tags">

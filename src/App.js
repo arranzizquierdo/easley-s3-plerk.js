@@ -41,12 +41,12 @@ class App extends Component {
       1: {
         dark: 'add__color__dark-green',
         medium: 'add__color__medium-green',
-        light: 'add__color__light-green'
+        light: 'add__border__light-green'
       },
       2: {
         dark: 'add__color__dark-red',
         medium: 'add__color__medium-red',
-        light: 'add__color__light-red'
+        light: 'add__border__light-red'
       },
       3: {
         dark: 'add__color__dark-blue',
