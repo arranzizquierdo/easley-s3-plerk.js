@@ -4,6 +4,7 @@ class InputSkill extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
+        console.log('input', props)
     }
     render() { 
         const { skill } = this.props;
@@ -14,7 +15,9 @@ class InputSkill extends Component {
                 id={skill} 
                 type="checkbox" 
                 name="skill_option" 
-                value={skill}/>
+                value={skill}
+                onClick={this.props.skillSelect}
+                />
             <label 
                 className={`checkbox__label checkbox__label--${skill}`} 
                 htmlFor={skill}>

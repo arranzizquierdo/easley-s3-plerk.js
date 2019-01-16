@@ -55,7 +55,7 @@ class App extends Component {
       },
     };
 
-    console.log('handleColorChange', paletteNumbers[value]);
+    // console.log('handleColorChange', paletteNumbers[value]);
     this.setState({
       userInfo: {
         ...this.state.userInfo,
@@ -81,10 +81,32 @@ class App extends Component {
     this.forceUpdate();
   }
 
+  handleSkillsSelect (event) {
+    console.log('funcion skills', event);
+    // const skillsTypes = {
+    //   0: "HTML",
+    //   1: "CSS",
+    //   2: "Sass",
+    //   3: "git",
+    //   4: "Gulp",
+    //   5: "JavaScript",
+    //   6: "AJAX",
+    //   7: "React"
+    // }
+    // console.log('handleSkillsSelect', skillsTypes[value]);
+    // this.setState({
+    //   userInfo: {
+    //     ...this.state.userInfo,
+    //     skills: skillsTypes[value]
+    //   }
+    // });
+    // this.forceUpdate();
+  }
+
   render() {
     const {skills, userInfo} = this.state;
-    console.log('skills', skills);
-    console.log('userInfo', userInfo);
+    // console.log('skills', skills);
+    // console.log('userInfo', userInfo);
 
     return (
        
@@ -95,7 +117,7 @@ class App extends Component {
       <CardPreview colorClass={userInfo.palette} typographyClass={userInfo.typography}/>
 
 
-  <CollapsiblesThree changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills= {skills} />
+  <CollapsiblesThree changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skillsSelect={this.handleSkillsSelect}  skills= {skills} />
 
  <Footer />
 
