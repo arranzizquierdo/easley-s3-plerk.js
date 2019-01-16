@@ -35,7 +35,6 @@ class App extends Component {
 
   render() {
     const {skills} = this.state;
-    console.log('skills', skills);
 
     return (
        
@@ -46,7 +45,9 @@ class App extends Component {
       <CardPreview />
 
 
-  <CollapsiblesThree />
+  <CollapsiblesThree 
+    skills= {skills}
+  />
 
  <Footer />
 

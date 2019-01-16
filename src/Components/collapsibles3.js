@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Collapsible from './collapsible';
 import DesignContent from './DesignContent';
+import InputSkill from './InputSkill';
 
 class CollapsiblesThree extends Component {
     constructor(props) {
@@ -10,13 +11,13 @@ class CollapsiblesThree extends Component {
     
 
     render() {
-        
+        const { skills } = this.props;
         return (
             <div>
                 <Collapsible title="DISEÑA" icon="far fa-object-ungroup" arrowIcon="fa-angle-up" collapsiblehidden={false} >
                     <DesignContent />
                 </Collapsible>
-                <Collapsible title="RELLENA" icon="far fa-keyboard" arrowIcon="fa-angle-down" collapsiblehidden={true}>
+                <Collapsible title="RELLENA" icon="far fa-keyboard" arrowIcon="fa-angle-down" collapsiblehidden={true} skills= {skills}>
 
                     <div>
                         <label className="fill_subtitle" htmlFor="firstName">Nombre completo</label>
@@ -40,7 +41,12 @@ class CollapsiblesThree extends Component {
                         <label className="fill_subtitle" htmlFor="github">Github</label>
                         <input className="input_box github__input" id="github" placeholder="Ej: sally-hill" type="text" name="github" />
                         <h3 className="fill_subtitle fill_subtitle--skills">Habilidades (máximo 3)</h3>
-                        <div className="container_skills"></div>
+                        <div className="container_skills" skills= {skills}>
+                            {skills.map ((skill, i) => {
+                                return <InputSkill key={i} skill={skill}/>
+                            })}
+                            
+                        </div>
                     </div>
                 </Collapsible>
                 <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down" collapsiblehidden={true}>
