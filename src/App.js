@@ -10,9 +10,9 @@ class App extends Component {
     this.state = {
       skills: [],
       userInfo: {
-        "palette": 1,
+        "palette": 3,
         "typography": 2,
-        "name": "Raquel",
+        "name": "",
         "job": "",
         "phone": "",
         "email": "",
@@ -23,7 +23,7 @@ class App extends Component {
       }
     };
     this.backEndCall();
-    this.handleInputChange=this.handleInputChange.bind(this);
+    //this.handleInputChange=this.handleInputChange.bind(this);
   }
 
   backEndCall (){
@@ -32,10 +32,10 @@ class App extends Component {
       .then (data => this.setState({skills:data.skills}));
   }
 
-  handleInputChange(event) {
-    console.log(event.target.name);
+  // handleInputChange(event) {
+  //   console.log(event.target.name);
 
-  }
+  // }
 
 
 
@@ -52,10 +52,8 @@ class App extends Component {
       <Header />
 
       <CardPreview 
-      nameCard={userInfo.name.value}
+      nameCard={userInfo.name}
       jobCard={userInfo.job}
-      emailCard={userInfo.email}
-      
       />
 
 

@@ -9,6 +9,7 @@ class SocialLinkList extends Component {
                     return <li key={i} className="social__media-buttom">
                         <SocialLink
                         id={item.id}
+                        
                         itemIcon={item.itemIcon}
                         />
                     </li>

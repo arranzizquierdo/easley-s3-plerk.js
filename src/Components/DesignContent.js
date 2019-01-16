@@ -16,7 +16,7 @@ class DesignContent extends Component {
              <div className="box_greenhospital"></div>
            </div>
          </label>
-         <input id="setcolors_green" type="radio" name="setcolors_option" defaultChecked={true} />
+         <input id="setcolors_green" type="radio"  name="setcolors_option" defaultChecked={true} />
        </li>
        <li className="color_container">
          <label className="list_item" htmlFor="setcolors_red">

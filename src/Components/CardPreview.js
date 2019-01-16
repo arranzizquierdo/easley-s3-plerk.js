@@ -23,6 +23,14 @@ const items = [
 ]
 
 class CardPreview extends Component {
+  paintName(){
+    return this.props.nameCard || "Nombre y Apellidos";
+  }
+
+  paintJob(){
+    return this.props.jobCard || "Front-end developer";
+  }
+
   render() {
     return (
       <section className="container__cardview">
@@ -36,8 +44,8 @@ class CardPreview extends Component {
         <div className="preview__card">
           <div className="rectangle__decoration" />
           <div className="name__container">
-            <p className="name">{`${(this.props.nameCard !== true) ? "Nombre y apellidos" : this.props.nameCard.value}`}</p>
-            <p className="profession">{`Front-end developer ${this.props.jobCard}`}</p>
+            <p className="name">{this.paintName()}</p>
+            <p className="profession">{this.paintJob()}</p>
           </div>
 
           <img className="photo__user" src={ImageDefault} alt="User photo" />
