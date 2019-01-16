@@ -12,7 +12,7 @@ class App extends Component {
       userInfo: {
         "palette": 1,
         "typography": 2,
-        "name": "",
+        "name": "Raquel",
         "job": "",
         "phone": "",
         "email": "",
@@ -23,6 +23,7 @@ class App extends Component {
       }
     };
     this.backEndCall();
+    this.handleInputChange=this.handleInputChange.bind(this);
   }
 
   backEndCall (){
@@ -31,11 +32,18 @@ class App extends Component {
       .then (data => this.setState({skills:data.skills}));
   }
 
+  handleInputChange(event) {
+    console.log(event.target.name);
+
+  }
+
 
 
   render() {
     const {skills} = this.state;
     console.log('skills', skills);
+    const {userInfo} = this.state;
+    console.log(userInfo);
 
     return (
        
@@ -43,7 +51,12 @@ class App extends Component {
 
       <Header />
 
-      <CardPreview />
+      <CardPreview 
+      nameCard={userInfo.name.value}
+      jobCard={userInfo.job}
+      emailCard={userInfo.email}
+      
+      />
 
 
   <CollapsiblesThree />

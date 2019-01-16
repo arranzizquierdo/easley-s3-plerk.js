@@ -36,8 +36,8 @@ class CardPreview extends Component {
         <div className="preview__card">
           <div className="rectangle__decoration" />
           <div className="name__container">
-            <p className="name">Nombre Apellido</p>
-            <p className="profession">Front-end developer</p>
+            <p className="name">{`${(this.props.nameCard !== true) ? "Nombre y apellidos" : this.props.nameCard.value}`}</p>
+            <p className="profession">{`Front-end developer ${this.props.jobCard}`}</p>
           </div>
 
           <img className="photo__user" src={ImageDefault} alt="User photo" />
