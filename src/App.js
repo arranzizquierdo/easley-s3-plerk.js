@@ -35,9 +35,24 @@ class App extends Component {
 
   handleColorChange (value) {
     const paletteNumbers = {
-      1: 'add__color__medium-green',
-      2: 'add__color__light-red',
-      3: 'add__color__medium-blue'
+      // 1: 'add__color__medium-green',
+      // 2: 'add__color__light-red',
+      // 3: 'add__color__medium-blue'
+      1: {
+        dark: 'add__color__dark-green',
+        medium: 'add__color__medium-green',
+        light: 'add__color__light-green'
+      },
+      2: {
+        dark: 'add__color__dark-red',
+        medium: 'add__color__medium-red',
+        light: 'add__color__light-red'
+      },
+      3: {
+        dark: 'add__color__dark-blue',
+        medium: 'add__color__medium-blue',
+        light: 'add__border__light-blue' 
+      },
     };
 
     console.log('handleColorChange', paletteNumbers[value]);

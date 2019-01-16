@@ -39,9 +39,9 @@ class CardPreview extends Component {
         </div>
 
         <div className="preview__card">
-          <div className={`rectangle__decoration ${this.props.colorClass }`} />
+          <div className={`rectangle__decoration ${this.props.colorClass.light }`} />
           <div className="name__container">
-            <p className={`name ${this.props.typographyClass}`}>Nombre Apellido</p>
+            <p className={`name ${this.props.typographyClass} ${this.props.colorClass.dark }`}>Nombre Apellido</p>
             <p className={`profession ${this.props.typographyClass}`}>Front-end developer</p>
           </div>
 
@@ -51,9 +51,9 @@ class CardPreview extends Component {
           
           <div className="rectangle__decoration-large"></div>
           <ul className="skill__tags">
-            <li className="first_tag tag">HTML</li>
-            <li className="second_tag tag">CSS</li>
-            <li className="third_tag tag">GULP</li>
+            <li className={`first_tag tag ${this.props.colorClass.medium }`}>HTML</li>
+            <li className={`second_tag tag ${this.props.colorClass.medium }`}>CSS</li>
+            <li className={`third_tag tag ${this.props.colorClass.medium }`}>GULP</li>
           </ul>
         </div>
       </section>
