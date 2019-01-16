@@ -22,9 +22,12 @@ const items = [
   }
 ]
 
-//método con if else de cómo cambiar colores con props
-
 class CardPreview extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
+
   render() {
     return (
       <section className="container__cardview">
@@ -36,7 +39,7 @@ class CardPreview extends Component {
         </div>
 
         <div className="preview__card">
-          <div className={this.props.userInfo.palette} />
+          <div className={`rectangle__decoration ${this.props.colorClass }`} />
           <div className="name__container">
             <p className="name">Nombre Apellido</p>
             <p className="profession">Front-end developer</p>

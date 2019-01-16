@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       skills: [],
       userInfo: {
-        "palette": 1,
+        palette: "",
         "typography": 2,
         "name": "",
         "job": "",
@@ -23,6 +23,7 @@ class App extends Component {
       }
     };
     this.backEndCall();
+    this.handleColorChange= this.handleColorChange.bind(this);
   }
 
   backEndCall (){
@@ -31,11 +32,27 @@ class App extends Component {
       .then (data => this.setState({skills:data.skills}));
   }
 
+  handleColorChange (value) {
+    const paletteNumbers = {
+      1: 'fdkfjdf',
+      2: 'add__color__light-red',
+      3: 'ckass'
+    };
 
+    console.log('handleColorChange', paletteNumbers[value]);
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        palette: paletteNumbers[value]
+      }
+    });
+    this.forceUpdate();
+  }
 
   render() {
-    const {skills} = this.state;
+    const {skills, userInfo} = this.state;
     console.log('skills', skills);
+    console.log('userInfo', userInfo);
 
     return (
        
@@ -43,10 +60,10 @@ class App extends Component {
 
       <Header />
 
-      <CardPreview />
+      <CardPreview colorClass={userInfo.palette}/>
 
 
-  <CollapsiblesThree />
+  <CollapsiblesThree changeColor={this.handleColorChange}/>
 
  <Footer />
 
