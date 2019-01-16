@@ -41,8 +41,8 @@ class CardPreview extends Component {
         <div className="preview__card">
           <div className={`rectangle__decoration ${this.props.colorClass }`} />
           <div className="name__container">
-            <p className="name">Nombre Apellido</p>
-            <p className="profession">Front-end developer</p>
+            <p className={`name ${this.props.typographyClass}`}>Nombre Apellido</p>
+            <p className={`profession ${this.props.typographyClass}`}>Front-end developer</p>
           </div>
 
           <img className="photo__user" src={ImageDefault} alt="User photo" />

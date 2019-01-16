@@ -11,7 +11,7 @@ class App extends Component {
       skills: [],
       userInfo: {
         palette: "",
-        "typography": 2,
+        typography: "",
         "name": "",
         "job": "",
         "phone": "",
@@ -24,6 +24,7 @@ class App extends Component {
     };
     this.backEndCall();
     this.handleColorChange= this.handleColorChange.bind(this);
+    this.handleTypographyChange= this.handleTypographyChange.bind(this);
   }
 
   backEndCall (){
@@ -49,6 +50,22 @@ class App extends Component {
     this.forceUpdate();
   }
 
+  handleTypographyChange (value) {
+    const typographyTypes = {
+      1: 'add__font__ubuntu',
+      2: 'add__font__comicsans',
+      3: 'add__font__monserrat'
+    };
+
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        typography: typographyTypes[value]
+      }
+    });
+    this.forceUpdate();
+  }
+
   render() {
     const {skills, userInfo} = this.state;
     console.log('skills', skills);
@@ -60,10 +77,10 @@ class App extends Component {
 
       <Header />
 
-      <CardPreview colorClass={userInfo.palette}/>
+      <CardPreview colorClass={userInfo.palette} typographyClass={userInfo.typography}/>
 
 
-  <CollapsiblesThree changeColor={this.handleColorChange}/>
+  <CollapsiblesThree changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange}/>
 
  <Footer />
 

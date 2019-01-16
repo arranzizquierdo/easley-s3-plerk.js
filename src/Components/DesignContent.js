@@ -50,15 +50,15 @@ class DesignContent extends Component {
        <div className="type_fonts_container">
          <li className="fonts_position">
            <label className="list_item" htmlFor="Ubuntu">Ubuntu</label>
-           <input className="selector_position" id="Ubuntu" type="radio" name="fonts_option" />
+           <input onClick={() => this.props.changeTypography(1)} className="selector_position" id="Ubuntu" type="radio" name="fonts_option" />
          </li>
          <li className="fonts_position">
            <label className="list_item" htmlFor="ComicSans">Comic Sans</label>
-           <input className="selector_position" id="ComicSans" type="radio" name="fonts_option" defaultChecked={true} />
+           <input onClick={() => this.props.changeTypography(2)} className="selector_position" id="ComicSans" type="radio" name="fonts_option" defaultChecked={true} />
          </li>
          <li className="fonts_position">
            <label className="list_item" htmlFor="Montserrat">Montserrat</label>
-           <input className="selector_position" id="Montserrat" type="radio" value="Montserrat" name="fonts_option" />
+           <input onClick={() => this.props.changeTypography(3)} className="selector_position" id="Montserrat" type="radio" value="Montserrat" name="fonts_option" />
          </li>
        </div>
      </ul>
