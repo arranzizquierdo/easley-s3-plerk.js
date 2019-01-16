@@ -4,7 +4,7 @@ class InputSkill extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
-        console.log('input', props)
+        // console.log('input', props)
     }
     render() { 
         const { skill } = this.props;

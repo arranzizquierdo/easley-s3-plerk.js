@@ -82,7 +82,14 @@ class App extends Component {
   }
 
   handleSkillsSelect (event) {
-    console.log('funcion skills', event.target.value);
+    const skillValue = event.target.value;
+    
+    console.log('value', skillValue);
+    
+    // this.setState ({
+    //   userInfo.skill
+    // })
+
 
 
     // const skillsTypes = {
