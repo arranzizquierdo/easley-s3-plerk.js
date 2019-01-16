@@ -34,9 +34,9 @@ class App extends Component {
 
   handleColorChange (value) {
     const paletteNumbers = {
-      1: 'fdkfjdf',
+      1: 'add__color__medium-green',
       2: 'add__color__light-red',
-      3: 'ckass'
+      3: 'add__color__medium-blue'
     };
 
     console.log('handleColorChange', paletteNumbers[value]);
