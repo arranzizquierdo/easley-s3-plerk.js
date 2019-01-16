@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class DesignContent extends Component {
+  constructor(props){
+    super(props);
+    console.log(props);
+  }
     render() {
       return (
      <div className="form_design_content">
@@ -16,7 +20,7 @@ class DesignContent extends Component {
              <div className="box_greenhospital"></div>
            </div>
          </label>
-         <input id="setcolors_green" type="radio" name="setcolors_option" defaultChecked={true} />
+         <input id="setcolors_green" onClick={() => this.props.changeColor(1)} type="radio" name="setcolors_option" defaultChecked={true} />
        </li>
        <li className="color_container">
          <label className="list_item" htmlFor="setcolors_red">
@@ -26,7 +30,7 @@ class DesignContent extends Component {
              <div className="box_orangetomato"></div>
            </div>
          </label>
-         <input id="setcolors_red" type="radio" name="setcolors_option"/>
+         <input id="setcolors_red" onClick={() => this.props.changeColor(2)} type="radio" name="setcolors_option"/>
        </li>
        <li className="color_container">
          <label className="list_item" htmlFor="setcolors_blue">
@@ -36,7 +40,7 @@ class DesignContent extends Component {
              <div className="box_bluesummer"></div>
            </div>
          </label>
-         <input id="setcolors_blue" type="radio" name="setcolors_option"/>
+         <input id="setcolors_blue" onClick={() => this.props.changeColor(3)} type="radio" name="setcolors_option"/>
        </li>
      </ul>
      <ul className="set_container">
@@ -46,15 +50,15 @@ class DesignContent extends Component {
        <div className="type_fonts_container">
          <li className="fonts_position">
            <label className="list_item" htmlFor="Ubuntu">Ubuntu</label>
-           <input className="selector_position" id="Ubuntu" type="radio" name="fonts_option" />
+           <input onClick={() => this.props.changeTypography(1)} className="selector_position" id="Ubuntu" type="radio" name="fonts_option" />
          </li>
          <li className="fonts_position">
            <label className="list_item" htmlFor="ComicSans">Comic Sans</label>
-           <input className="selector_position" id="ComicSans" type="radio" name="fonts_option" defaultChecked={true} />
+           <input onClick={() => this.props.changeTypography(2)} className="selector_position" id="ComicSans" type="radio" name="fonts_option" defaultChecked={true} />
          </li>
          <li className="fonts_position">
            <label className="list_item" htmlFor="Montserrat">Montserrat</label>
-           <input className="selector_position" id="Montserrat" type="radio" value="Montserrat" name="fonts_option" />
+           <input onClick={() => this.props.changeTypography(3)} className="selector_position" id="Montserrat" type="radio" value="Montserrat" name="fonts_option" />
          </li>
        </div>
      </ul>
