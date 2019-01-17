@@ -27,10 +27,6 @@ const items = [
 ]
 
 class CardPreview extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
 
   render() {
 
@@ -39,7 +35,6 @@ class CardPreview extends Component {
     const phone = this.props.phone
     const email = this.props.email
 
-    console.log ('cardpreview', linkedin)
     return (
       <section className="container__cardview">
         <div className="container__buttom">

@@ -15,9 +15,9 @@ class App extends Component {
         "name": "",
         "job": "",
         "phone": "",
-        "email": "katia.rojas.sandoval@gmail.com",
-        "linkedin": "katiarojassandoval",
-        "github": "elisamartinb",
+        "email": "",
+        "linkedin": "",
+        "github": "",
         "photo": "",
         "skills": ["HTML", "CSS", "GULP"]
       }
@@ -84,12 +84,20 @@ class App extends Component {
 
   handleChangeInput(event) {
     const {value,name} = event.target;
-    this.setState((prevState) => {
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        [name]: value,
+      }
+    });
+    this.forceUpdate();
+   /* this.setState((prevState) => {
+      console.log('prevesta',prevState)
       return{
         ...prevState.userInfo,
       [name]: value,
       }
-    });
+    });*/
   }
 
 

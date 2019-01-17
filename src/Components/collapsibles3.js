@@ -4,11 +4,7 @@ import DesignContent from './DesignContent';
 import InputSkill from './InputSkill';
 
 class CollapsiblesThree extends Component {
-    constructor(props) {
-        super(props);
-        this.icon = '';
-        console.log(props);
-    }
+  
     
 
     render() {
