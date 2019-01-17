@@ -34,13 +34,13 @@ class CollapsiblesThree extends Component {
                             </div>
                         </div>
                         <label className="fill_subtitle" htmlFor="mail">Email</label>
-                        <input className="input_box email__input" id="mail" placeholder="Ej: Sally-hill@gmail.com" type="email" name="mail" />
+                        <input value={this.props.email} onChange={this.props.changeInput} name="email" className="input_box email__input" id="mail" placeholder="Ej: Sally-hill@gmail.com" type="email" />
                         <label className="fill_subtitle" htmlFor="phone">Teléfono</label>
-                        <input className="input_box phone__input" id="phone" placeholder="Ej: 555-55-55-55" type="tel" name="phone" />
+                        <input value={this.props.phone} onChange={this.props.changeInput} name="phone" className="input_box phone__input" id="phone" placeholder="Ej: 555-55-55-55" type="tel" />
                         <label className="fill_subtitle" htmlFor="linkedin">Linkedin</label>
-                        <input className="input_box linkedin__input" id="linkedin" placeholder="Ej: sally.hill" type="text" name="linkedin" />
+                        <input value={this.props.linkedin} onChange={this.props.changeInput} name="linkedin" className="input_box linkedin__input" id="linkedin" placeholder="Ej: sally.hill" type="text" />
                         <label className="fill_subtitle" htmlFor="github">Github</label>
-                        <input className="input_box github__input" id="github" placeholder="Ej: sally-hill" type="text" name="github" />
+                        <input value={this.props.github} onChange={this.props.changeInput} name="github" className="input_box github__input" id="github" placeholder="Ej: sally-hill" type="text" />
                         <h3 className="fill_subtitle fill_subtitle--skills">Habilidades (máximo 3)</h3>
                         <div className="container_skills" skills= {skills}>
                             {skills.map ((skill, i) => {

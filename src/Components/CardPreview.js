@@ -6,19 +6,23 @@ import SocialLinkList from './SocialLinkList';
 const items = [
   {
     id: "phone",
-    itemIcon: "fas fa-mobile-alt"
+    itemIcon: "fas fa-mobile-alt",
+    link: 'tel:'
   },
   {
     id: "email",
-    itemIcon: "far fa-envelope"
+    itemIcon: "far fa-envelope",
+    link: 'mailto:'
   },
   {
     id: "linkedin",
-    itemIcon: "fab fa-linkedin-in"
+    itemIcon: "fab fa-linkedin-in",
+    link: 'https://linkedin.com/in/'
   },
   {
     id: "github",
-    itemIcon: "fab fa-github-alt"
+    itemIcon: "fab fa-github-alt",
+    link: 'https://github.com/'
   }
 ]
 
