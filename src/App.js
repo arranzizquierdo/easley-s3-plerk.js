@@ -23,7 +23,7 @@ class App extends Component {
       }
     };
     this.backEndCall();
-    //this.handleInputChange=this.handleInputChange.bind(this);
+    this.handleInputChange=this.handleInputChange.bind(this);
   }
 
   backEndCall (){
@@ -32,10 +32,20 @@ class App extends Component {
       .then (data => this.setState({skills:data.skills}));
   }
 
-  // handleInputChange(event) {
-  //   console.log(event.target.name);
+  handleInputChange(event) {
+    console.log(event.target.name);
+    const {value, name}= event.target;
+    this.setState((prevState) => {
+      return{
+        userInfo:{
+          ...prevState = userInfo
+        }
+      }
+    }
+      
+    )
 
-  // }
+   }
 
 
 
@@ -60,6 +70,7 @@ class App extends Component {
       <CollapsiblesThree 
         nameCardInput={userInfo.name}
         jobCardInput={userInfo.job}
+        functioInputChange={this.handleInputChange}
       />
 
  <Footer />

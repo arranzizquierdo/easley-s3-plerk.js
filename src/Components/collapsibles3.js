@@ -20,9 +20,9 @@ class CollapsiblesThree extends Component {
 
                     <div>
                         <label className="fill_subtitle" htmlFor="firstName">Nombre completo</label>
-                        <input className="input_box full__name" value={this.props.nameCardInput} id="firstName" placeholder="Ej: Sally Jill" type="text" name="firstName" />
+                        <input onChange={this.props.functioInputChange} className="input_box full__name" value={this.props.nameCardInput} id="firstName" placeholder="Ej: Sally Jill" type="text" name="name" />
                         <label className="fill_subtitle" htmlFor="position">Puesto</label>
-                        <input className="input_box profession__input" id="position" placeholder="Ej: Front-end unicorn" value={this.props.jobCardInput} type="text" name="position" />
+                        <input className="input_box profession__input" id="position" placeholder="Ej: Front-end unicorn" value={this.props.jobCardInput} type="text" name="job" />
                         <label className="fill_subtitle" htmlFor="profileImage">Imagen de perfil</label>
                         <div className="container_add-image">
                             <input className="button_add-image" type="button" value="Añadir imagen" />
@@ -32,7 +32,7 @@ class CollapsiblesThree extends Component {
                             </div>
                         </div>
                         <label className="fill_subtitle" htmlFor="mail">Email</label>
-                        <input className="input_box email__input" id="mail" placeholder="Ej: Sally-hill@gmail.com" type="email" name="mail" />
+                        <input className="input_box email__input" id="mail" placeholder="Ej: Sally-hill@gmail.com" type="email" name="email" />
                         <label className="fill_subtitle" htmlFor="phone">Teléfono</label>
                         <input className="input_box phone__input" id="phone" placeholder="Ej: 555-55-55-55" type="tel" name="phone" />
                         <label className="fill_subtitle" htmlFor="linkedin">Linkedin</label>
