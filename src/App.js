@@ -126,7 +126,7 @@ class App extends Component {
       <CardPreview colorClass={userInfo.palette} typographyClass={userInfo.typography} skillsClass={userInfo.skills}/>
 
 
-  <CollapsiblesThree changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skillsSelect={this.handleSkillsSelect}  skills= {skills} />
+  <CollapsiblesThree changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skillsSelect={this.handleSkillsSelect}  skills= {skills} userInfo= {userInfo}/>
 
  <Footer />
 

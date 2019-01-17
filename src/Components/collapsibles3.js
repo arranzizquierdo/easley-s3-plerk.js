@@ -10,6 +10,11 @@ class CollapsiblesThree extends Component {
         console.log('props colap3', props);
     }
     
+handleCheckedSkills(skill){
+   return (this.props.userInfo.skills.includes(skill)) 
+    ? true 
+    : false
+}
 
     render() {
         const { skills } = this.props;
@@ -45,7 +50,7 @@ class CollapsiblesThree extends Component {
                         <h3 className="fill_subtitle fill_subtitle--skills">Habilidades (máximo 3)</h3>
                         <div className="container_skills" skills= {skills}>
                             {skills.map ((skill, i) => {
-                                return <InputSkill key={i} skill={skill} skillsSelect={skillsSelect}/>
+                                return <InputSkill key={i} skill={skill} skillsSelect={skillsSelect} checked={this.handleCheckedSkills(skill)}/>
                             })}
                             
                         </div>

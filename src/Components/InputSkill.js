@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 
 class InputSkill extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-        // console.log('input', props)
-    }
     render() { 
-        const { skill } = this.props;
+        const { skill, checked } = this.props;
         return ( 
             <React.Fragment>
             <input 
+                checked={checked}
                 className={`checkbox__input checkbox__input--${skill}`} 
                 id={skill} 
                 type="checkbox" 
