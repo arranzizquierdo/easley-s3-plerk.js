@@ -52,12 +52,15 @@ class App extends Component {
       <Header />
 
       <CardPreview 
-      nameCard={userInfo.name}
-      jobCard={userInfo.job}
+        nameCard={userInfo.name}
+        jobCard={userInfo.job}
       />
 
 
-  <CollapsiblesThree />
+      <CollapsiblesThree 
+        nameCardInput={userInfo.name}
+        jobCardInput={userInfo.job}
+      />
 
  <Footer />
 
