@@ -37,9 +37,10 @@ class App extends Component {
     const {value, name}= event.target;
     this.setState((prevState) => {
       return{
-        userInfo:{
-          ...prevState = userInfo
-        }
+        
+          ...prevState.userInfo,
+          [name]:value
+        
       }
     }
       
