@@ -9,8 +9,6 @@ class CollapsiblesThree extends Component {
     }
     
 
-    
-
     render() {
         
         return (
