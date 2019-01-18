@@ -107,8 +107,9 @@ class App extends Component {
 
         <Header />
 
-        <CardPreview
-
+      <CardPreview 
+        nameCard={userInfo.name}
+        jobCard={userInfo.job}
           phone={userInfo.phone}
           email={userInfo.email}
           linkedin={userInfo.linkedin}
@@ -122,7 +123,10 @@ class App extends Component {
           email={userInfo.email}
           linkedin={userInfo.linkedin}
           github={userInfo.github}
-          changeInput={this.handleChangeInput} changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills={skills} />
+          changeInput={this.handleChangeInput} changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills={skills}
+          nameCardInput={userInfo.name}
+          jobCardInput={userInfo.job}
+      />
 
         <Footer />
 

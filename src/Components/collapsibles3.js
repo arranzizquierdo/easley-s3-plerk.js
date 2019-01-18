@@ -18,9 +18,9 @@ class CollapsiblesThree extends Component {
 
                     <div>
                         <label className="fill_subtitle" htmlFor="firstName">Nombre completo</label>
-                        <input className="input_box full__name" id="firstName" placeholder="Ej: Sally Jill" type="text" name="firstName" />
+                        <input onChange={this.props.changeInput} className="input_box full__name" value={this.props.nameCardInput} id="firstName" placeholder="Ej: Sally Jill" type="text" name="name" />
                         <label className="fill_subtitle" htmlFor="position">Puesto</label>
-                        <input className="input_box profession__input" id="position" placeholder="Ej: Front-end unicorn" type="text" name="position" />
+                        <input onChange={this.props.changeInput} className="input_box profession__input" id="position" placeholder="Ej: Front-end unicorn" value={this.props.jobCardInput} type="text" name="job" />
                         <label className="fill_subtitle" htmlFor="profileImage">Imagen de perfil</label>
                         <div className="container_add-image">
                             <input className="button_add-image" type="button" value="Añadir imagen" />

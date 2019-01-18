@@ -12,6 +12,7 @@ class SocialLinkList extends Component {
                         id={item.id}
                         link={item.link}
                         href= {this.props[item.id]}
+                        
                         itemIcon={item.itemIcon}
                         colorClass={colorClass}
                     />

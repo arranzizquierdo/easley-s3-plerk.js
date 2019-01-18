@@ -28,6 +28,14 @@ const items = [
 
 class CardPreview extends Component {
 
+  paintName(){
+    return this.props.nameCard || "Nombre y Apellidos";
+  }
+
+  paintJob(){
+    return this.props.jobCard || "Front-end developer";
+  }
+
   render() {
 
     const linkedin = this.props.linkedin
@@ -47,8 +55,10 @@ class CardPreview extends Component {
         <div className="preview__card">
           <div className={`rectangle__decoration ${this.props.colorClass.medium }`} />
           <div className="name__container">
-            <p className={`name ${this.props.typographyClass} ${this.props.colorClass.dark }`}>Nombre Apellido</p>
-            <p className={`profession ${this.props.typographyClass}`}>Front-end developer</p>
+            <p className={`name ${this.props.typographyClass} ${this.props.colorClass.dark }`}>{this.paintName()}</p>
+            <p className={`profession ${this.props.typographyClass}`}>{this.paintJob()}</p>
+            {/* <p className="name">{this.paintName()}</p>
+            <p className="profession">{this.paintJob()}</p> */}
           </div>
 
           <img className="photo__user" src={ImageDefault} alt="User" />
