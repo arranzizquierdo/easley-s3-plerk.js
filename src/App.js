@@ -83,15 +83,17 @@ class App extends Component {
   }
 
   handleChangeInput(event) {
-    const {value,name} = event.target;
-    this.setState({
-      userInfo: {
-        ...this.state.userInfo,
-        [name]: value,
+    const { value, name } = event.target;
+    this.setState((prevState) => {
+      return {
+        userInfo: {
+          ...prevState.userInfo,
+          [name]: value,
+        }
       }
     });
-    this.forceUpdate();
   }
+
 
 
   render() {
