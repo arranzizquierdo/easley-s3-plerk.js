@@ -25,6 +25,7 @@ class App extends Component {
     this.backEndCall();
     this.handleColorChange= this.handleColorChange.bind(this);
     this.handleTypographyChange= this.handleTypographyChange.bind(this);
+    this.handleSkillsSelect = this.handleSkillsSelect.bind(this);
   }
 
   backEndCall (){
@@ -83,33 +84,9 @@ class App extends Component {
 
   handleSkillsSelect (event) {
     const skillValue = event.target.value;
-    
-    console.log('value', skillValue);
-    
-    // this.setState ({
-    //   userInfo.skill
-    // })
-
-
-
-    // const skillsTypes = {
-    //   0: "HTML",
-    //   1: "CSS",
-    //   2: "Sass",
-    //   3: "git",
-    //   4: "Gulp",
-    //   5: "JavaScript",
-    //   6: "AJAX",
-    //   7: "React"
-    // }
-    // console.log('handleSkillsSelect', skillsTypes[event.target.value]);
-    // this.setState({
-    //   userInfo: {
-    //     ...this.state.userInfo,
-    //     skills: skillsTypes[event.target.value]
-    //   }
-    // });
-    // this.forceUpdate();
+    console.log('value=>', skillValue);
+    const skillsArr = this.state.userInfo.skills;
+    console.log('arr skills', skillsArr)
   }
 
   render() {

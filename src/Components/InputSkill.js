@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class InputSkill extends Component {
+
     render() { 
         const { skill, checked } = this.props;
         return ( 
