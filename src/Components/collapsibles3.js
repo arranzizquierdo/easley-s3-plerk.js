@@ -18,6 +18,7 @@ handleCheckedSkills(skill){
 
     render() {
         const { skills } = this.props;
+        console.log('skills', skills);
         const skillsSelect = this.props.skillsSelect;
         return (
             <div>

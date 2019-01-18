@@ -19,7 +19,7 @@ class App extends Component {
         "linkedin": "",
         "github": "",
         "photo": "",
-        "skills": ["HTML", "CSS", "GULP"]
+        "skills": ["HTML", "CSS", "Gulp"]
       }
     };
     this.backEndCall();
