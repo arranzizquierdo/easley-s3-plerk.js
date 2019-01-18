@@ -51,7 +51,7 @@ class CardPreview extends Component {
             <p className={`profession ${this.props.typographyClass}`}>Front-end developer</p>
           </div>
 
-          <img className="photo__user" src={ImageDefault} alt="User photo" />
+          <img className="photo__user" src={ImageDefault} alt="User" />
 
           <SocialLinkList 
           itemsArr= {items}

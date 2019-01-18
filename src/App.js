@@ -91,13 +91,6 @@ class App extends Component {
       }
     });
     this.forceUpdate();
-   /* this.setState((prevState) => {
-      console.log('prevesta',prevState)
-      return{
-        ...prevState.userInfo,
-      [name]: value,
-      }
-    });*/
   }
 
 
