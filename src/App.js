@@ -91,7 +91,7 @@ class App extends Component {
     if (skillsArrUserInfo.includes(skillValue)) {
       skillArrNew= skillsArrUserInfo.filter(skill => skill !== skillValue)
     } else {
-      skillArrNew= skillsArrUserInfo.filter(skill => skill === skillValue)
+      skillArrNew= skillsArrUserInfo.concat(skillValue)
     }
     this.setState ({
       userInfo: {
