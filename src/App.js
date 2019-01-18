@@ -85,8 +85,20 @@ class App extends Component {
   handleSkillsSelect (event) {
     const skillValue = event.target.value;
     console.log('value=>', skillValue);
-    const skillsArr = this.state.userInfo.skills;
-    console.log('arr skills', skillsArr)
+    const skillsArrUserInfo = this.state.userInfo.skills;
+    console.log('arr skills', skillsArrUserInfo)
+    let skillArrNew;
+    if (skillsArrUserInfo.includes(skillValue)) {
+      skillArrNew= skillsArrUserInfo.filter(skill => skill !== skillValue)
+    } else {
+      skillArrNew= skillsArrUserInfo.filter(skill => skill === skillValue)
+    }
+    this.setState ({
+      userInfo: {
+        ...this.state.userInfo,
+        skills: skillArrNew
+      }
+    })
   }
 
   render() {
