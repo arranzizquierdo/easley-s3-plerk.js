@@ -63,10 +63,13 @@ class CardPreview extends Component {
           />
           
           <div className="rectangle__decoration-large"></div>
-          <ul className="skill__tags">
-            <li className={`first_tag tag ${this.props.colorClass.medium }`}>HTML</li>
+          <ul className="skill__tags" skillsClass={this.props.skillsClass}>
+            {this.props.skillsClass.map((skill, i) => {
+              return <li className={`first_tag tag ${this.props.colorClass.medium }`} key={i}>{skill}</li>
+            })}
+            {/* <li className={`first_tag tag ${this.props.colorClass.medium }`}>HTML</li>
             <li className={`second_tag tag ${this.props.colorClass.medium }`}>CSS</li>
-            <li className={`third_tag tag ${this.props.colorClass.medium }`}>GULP</li>
+            <li className={`third_tag tag ${this.props.colorClass.medium }`}>GULP</li>   */}
           </ul>
         </div>
       </section>

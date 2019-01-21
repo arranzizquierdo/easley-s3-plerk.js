@@ -4,11 +4,23 @@ import DesignContent from './DesignContent';
 import InputSkill from './InputSkill';
 
 class CollapsiblesThree extends Component {
-  
+    constructor(props) {
+        super(props);
+        this.icon = '';
+        console.log('props colap3', props);
+    }
     
+handleCheckedSkills(skill){
+    console.log(this.props)
+   return (this.props.userInfo.skills.includes(skill)) 
+    ? true 
+    : false
+}
 
     render() {
         const { skills } = this.props;
+        console.log('skills', skills);
+        const skillsSelect = this.props.skillsSelect;
         return (
             <div>
                 <Collapsible title="DISEÑA" icon="far fa-object-ungroup" arrowIcon="fa-angle-up" collapsiblehidden={false} >
@@ -40,7 +52,7 @@ class CollapsiblesThree extends Component {
                         <h3 className="fill_subtitle fill_subtitle--skills">Habilidades (máximo 3)</h3>
                         <div className="container_skills" skills= {skills}>
                             {skills.map ((skill, i) => {
-                                return <InputSkill key={i} skill={skill}/>
+                                return <InputSkill key={i} skill={skill} skillsSelect={skillsSelect} checked={this.handleCheckedSkills(skill)}/>
                             })}
                             
                         </div>
