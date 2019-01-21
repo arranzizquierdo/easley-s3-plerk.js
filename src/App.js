@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import CollapsiblesThree from './Components/collapsibles3';
-import Header from './Components/Header';
+
+
 import Footer from './Components/Footer';
-import CardPreview from './Components/CardPreview';
+
+import CardGenerator from './Components/CardGenerator';
 
 class App extends Component {
   constructor(props) {
@@ -123,30 +124,18 @@ class App extends Component {
 
       <div className="App">
 
-        <Header />
+       <CardGenerator 
+       userInfo={userInfo} 
+       skills={skills}
+       changeInput={this.handleChangeInput} 
+       changeColor={this.handleColorChange} 
+       changeTypography={this.handleTypographyChange}
+       skillsSelect={this.handleSkillsSelect}
+       /> 
 
-      <CardPreview 
-        nameCard={userInfo.name}
-        jobCard={userInfo.job}
-          skillsClass={userInfo.skills}
-          phone={userInfo.phone}
-          email={userInfo.email}
-          linkedin={userInfo.linkedin}
-          github={userInfo.github}
-          colorClass={userInfo.palette}
-          typographyClass={userInfo.typography}
-        />
 
-        <CollapsiblesThree
-          phone={userInfo.phone}
-          email={userInfo.email}
-          linkedin={userInfo.linkedin}
-          github={userInfo.github}
-          changeInput={this.handleChangeInput} changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills={skills}
-          nameCardInput={userInfo.name}
-          jobCardInput={userInfo.job}
-          skillsSelect={this.handleSkillsSelect} userInfo= {userInfo}
-      />
+
+        
 
         <Footer />
 
