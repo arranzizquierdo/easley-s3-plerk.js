@@ -5,30 +5,36 @@ import SocialLinkList from './SocialLinkList';
 
 const items = [
   {
-    id: "mobile",
-    itemIcon: "fas fa-mobile-alt"
+    id: "phone",
+    itemIcon: "fas fa-mobile-alt",
+    link: 'tel:'
   },
   {
     id: "email",
-    itemIcon: "far fa-envelope"
+    itemIcon: "far fa-envelope",
+    link: 'mailto:'
   },
   {
     id: "linkedin",
-    itemIcon: "fab fa-linkedin-in"
+    itemIcon: "fab fa-linkedin-in",
+    link: 'https://linkedin.com/in/'
   },
   {
-    id: "gitHub",
-    itemIcon: "fab fa-github-alt"
+    id: "github",
+    itemIcon: "fab fa-github-alt",
+    link: 'https://github.com/'
   }
 ]
 
 class CardPreview extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
 
   render() {
+
+    const linkedin = this.props.linkedin
+    const github = this.props.github
+    const phone = this.props.phone
+    const email = this.props.email
+
     return (
       <section className="container__cardview">
         <div className="container__buttom">
@@ -45,9 +51,16 @@ class CardPreview extends Component {
             <p className={`profession ${this.props.typographyClass}`}>Front-end developer</p>
           </div>
 
-          <img className="photo__user" src={ImageDefault} alt="User photo" />
+          <img className="photo__user" src={ImageDefault} alt="User" />
 
-          <SocialLinkList itemsArr={items} colorClass={this.props.colorClass} />
+          <SocialLinkList 
+          itemsArr= {items}
+          linkedin= {linkedin}
+          github= {github}
+          phone= {phone}
+          email= {email}
+          colorClass={this.props.colorClass}
+          />
           
           <div className="rectangle__decoration-large"></div>
           <ul className="skill__tags" skillsClass={this.props.skillsClass}>

@@ -4,16 +4,17 @@ import SocialLink from './SocialLink';
 class SocialLinkList extends Component {
     render() {
         const colorClass = this.props.colorClass;
-
         return (
             <ul className="social__media-list">
-                {this.props.itemsArr.map(function(item, i) {
+                {this.props.itemsArr.map((item, i) => {
                     return <li key={i} className={`social__media-buttom ${colorClass.light}`}>
-                        <SocialLink
+                    <SocialLink
                         id={item.id}
+                        link={item.link}
+                        href= {this.props[item.id]}
                         itemIcon={item.itemIcon}
-                        colorClass={colorClass} 
-                        />
+                        colorClass={colorClass}
+                    />
                     </li>
                 })}
             </ul>

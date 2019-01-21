@@ -5,8 +5,8 @@ import Footer from './Components/Footer';
 import CardPreview from './Components/CardPreview';
 
 class App extends Component {
-  constructor (props){
-    super (props);
+  constructor(props) {
+    super(props);
     this.state = {
       skills: [],
       userInfo: {
@@ -26,15 +26,16 @@ class App extends Component {
     this.handleColorChange= this.handleColorChange.bind(this);
     this.handleTypographyChange= this.handleTypographyChange.bind(this);
     this.handleSkillsSelect = this.handleSkillsSelect.bind(this);
+    this.handleChangeInput = this.handleChangeInput.bind(this);
   }
 
-  backEndCall (){
-    fetch ('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
-      .then (response => response.json())
-      .then (data => this.setState({skills:data.skills}));
+  backEndCall() {
+    fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
+      .then(response => response.json())
+      .then(data => this.setState({ skills: data.skills }));
   }
 
-  handleColorChange (value) {
+  handleColorChange(value) {
     const paletteNumbers = {
       // 1: 'add__color__medium-green',
       // 2: 'add__color__light-red',
@@ -52,7 +53,7 @@ class App extends Component {
       3: {
         dark: 'add__color__dark-blue',
         medium: 'add__color__medium-blue',
-        light: 'add__border__light-blue' 
+        light: 'add__border__light-blue'
       },
     };
 
@@ -66,7 +67,7 @@ class App extends Component {
     this.forceUpdate();
   }
 
-  handleTypographyChange (value) {
+  handleTypographyChange(value) {
     const typographyTypes = {
       1: 'add__font__ubuntu',
       2: 'add__font__comicsans',
@@ -101,23 +102,49 @@ class App extends Component {
     })
   }
 
+  handleChangeInput(event) {
+    const { value, name } = event.target;
+    this.setState((prevState) => {
+      return {
+        userInfo: {
+          ...prevState.userInfo,
+          [name]: value,
+        }
+      }
+    });
+  }
+
+
+
   render() {
-    const {skills, userInfo} = this.state;
+    const { skills, userInfo } = this.state;
 
     return (
-       
+
       <div className="App">
 
-      <Header />
+        <Header />
 
-      <CardPreview colorClass={userInfo.palette} typographyClass={userInfo.typography} skillsClass={userInfo.skills}/>
+      <CardPreview 
+          skillsClass={userInfo.skills}
+          phone={userInfo.phone}
+          email={userInfo.email}
+          linkedin={userInfo.linkedin}
+          github={userInfo.github}
+          colorClass={userInfo.palette}
+          typographyClass={userInfo.typography}
+        />
 
+        <CollapsiblesThree
+          phone={userInfo.phone}
+          email={userInfo.email}
+          linkedin={userInfo.linkedin}
+          github={userInfo.github}
+          changeInput={this.handleChangeInput} changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills={skills} skillsSelect={this.handleSkillsSelect} userInfo= {userInfo}/>
 
-  <CollapsiblesThree changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skillsSelect={this.handleSkillsSelect}  skills= {skills} userInfo= {userInfo}/>
+        <Footer />
 
- <Footer />
-
-  </div>
+      </div>
 
     );
   }
