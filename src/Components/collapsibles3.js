@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import Collapsible from './collapsible';
 import DesignContent from './DesignContent';
 import InputSkill from './InputSkill';
+import ShareTwitter from './ShareTwitter';
 
 class CollapsiblesThree extends Component {
     constructor(props) {
         super(props);
         this.icon = '';
         console.log('props colap3', props);
+        this.state = {
+            showorhidden: props.showorhidden, 
+        }
+
+        this.handleButtonCreateCard = this.handleCheckedSkills.bind(this);
     }
     
 handleCheckedSkills(skill){
@@ -15,6 +21,16 @@ handleCheckedSkills(skill){
    return (this.props.userInfo.skills.includes(skill)) 
     ? true 
     : false
+}
+
+handleButtonCreateCard(){
+
+    if(this.state.showorhidden.includes("hidden")){
+        this.setState(
+            {showorhidden:""}
+        )
+    }
+
 }
 
     render() {
@@ -63,13 +79,13 @@ handleCheckedSkills(skill){
                         <div>
                             <button className="button_deco" type="submit"><i className="far fa-address-card"></i>Crear tarjeta</button>
                         </div>
-                        <div className="hidden twitter_mother">
+                        {/* <div className="hidden twitter_mother">
                             <div className="twitter_container">
                                 <h2 className="title_createcard_twitter">La tarjeta ha sido creada:</h2>
                                 <a className="twitter_link" href=""></a>
                                 <a className="button_twitter twitter-share-button" href=""><i className="fab fa-twitter"></i>Compartir en Twitter</a>
-                            </div>
-                        </div>
+                            </div> */}
+                            <ShareTwitter />
                     </div>
                 </Collapsible>
             </div>

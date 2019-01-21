@@ -6,7 +6,15 @@ class ShareTwitter extends Component {
         this.state = {  }
     }
     render() { 
-        return (  );
+        return ( 
+            <div className="hidden twitter_mother">
+                <div className="twitter_container">
+                    <h2 className="title_createcard_twitter">La tarjeta ha sido creada:</h2>
+                    <a className="twitter_link" href=""></a>
+                    <a className="button_twitter twitter-share-button" href=""><i className="fab fa-twitter"></i>Compartir en Twitter</a>
+                </div>
+            </div>
+         );
     }
 }
  
