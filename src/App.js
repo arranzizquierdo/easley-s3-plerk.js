@@ -27,7 +27,38 @@ class App extends Component {
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleTypographyChange = this.handleTypographyChange.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.fileInput = React.createRef();
+    this.addImageToState = this.addImageToState.bind(this);
+    this.handleImage = this.handleImage.bind(this);
+    this.handleFakeclick = this.handleFakeclick.bind(this);
   }
+
+  addImageToState(){
+    this.setState((prevState) => {
+      return {
+        userInfo: {
+          ...prevState.userInfo,
+          photo: this.state.fr.result,
+        }
+      }
+    });
+  }
+
+  handleImage(event) {
+    event.preventDefault();
+    const myFile = this.fileInput.current;
+    console.dir('this.fileInput.current',myFile);
+    const fileUpdatedbyuser = this.fileInput.current.files[0];
+    console.dir('this.fileInput.current',this.fileInput.current.files) 
+    this.state.fr.addEventListener('load', this.addImageToState);
+    this.state.fr.readAsDataURL(fileUpdatedbyuser); 
+    //alert(`Selected file - ${this.fileInput.current.files[0].name}`); 
+  }
+
+  handleFakeclick(){
+    this.fileInput.current.click();
+  }
+
 
   backEndCall() {
     fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
@@ -116,6 +147,7 @@ class App extends Component {
           github={userInfo.github}
           colorClass={userInfo.palette}
           typographyClass={userInfo.typography}
+          srcimage = {this.state.userInfo.photo}
         />
 
         <CollapsiblesThree
@@ -123,8 +155,12 @@ class App extends Component {
           email={userInfo.email}
           linkedin={userInfo.linkedin}
           github={userInfo.github}
+          file={this.fileInput}
+          changeImage={this.handleImage}
+          srcimage = {this.state.userInfo.photo}
+          fakeclick={this.handleFakeclick}
           changeInput={this.handleChangeInput} changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills={skills} />
-
+           
         <Footer />
 
       </div>
