@@ -19,12 +19,13 @@ class App extends Component {
         "linkedin": "",
         "github": "",
         "photo": "",
-        "skills": ["HTML", "CSS", "GULP"]
+        "skills": ["HTML", "CSS", "Gulp"]
       }
     };
     this.backEndCall();
-    this.handleColorChange = this.handleColorChange.bind(this);
-    this.handleTypographyChange = this.handleTypographyChange.bind(this);
+    this.handleColorChange= this.handleColorChange.bind(this);
+    this.handleTypographyChange= this.handleTypographyChange.bind(this);
+    this.handleSkillsSelect = this.handleSkillsSelect.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
   }
 
@@ -56,7 +57,7 @@ class App extends Component {
       },
     };
 
-    console.log('handleColorChange', paletteNumbers[value]);
+    // console.log('handleColorChange', paletteNumbers[value]);
     this.setState({
       userInfo: {
         ...this.state.userInfo,
@@ -82,6 +83,25 @@ class App extends Component {
     this.forceUpdate();
   }
 
+  handleSkillsSelect (event) {
+    const skillValue = event.target.value;
+    console.log('value=>', skillValue);
+    const skillsArrUserInfo = this.state.userInfo.skills;
+    console.log('arr skills', skillsArrUserInfo)
+    let skillArrNew;
+    if (skillsArrUserInfo.includes(skillValue)) {
+      skillArrNew= skillsArrUserInfo.filter(skill => skill !== skillValue)
+    } else {
+      skillArrNew= skillsArrUserInfo.concat(skillValue)
+    }
+    this.setState ({
+      userInfo: {
+        ...this.state.userInfo,
+        skills: skillArrNew
+      }
+    })
+  }
+
   handleChangeInput(event) {
     const { value, name } = event.target;
     this.setState((prevState) => {
@@ -98,8 +118,6 @@ class App extends Component {
 
   render() {
     const { skills, userInfo } = this.state;
-    console.log('skills', skills);
-    console.log('userInfo', userInfo);
 
     return (
 
@@ -110,6 +128,7 @@ class App extends Component {
       <CardPreview 
         nameCard={userInfo.name}
         jobCard={userInfo.job}
+          skillsClass={userInfo.skills}
           phone={userInfo.phone}
           email={userInfo.email}
           linkedin={userInfo.linkedin}
@@ -126,6 +145,7 @@ class App extends Component {
           changeInput={this.handleChangeInput} changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills={skills}
           nameCardInput={userInfo.name}
           jobCardInput={userInfo.job}
+          skillsSelect={this.handleSkillsSelect} userInfo= {userInfo}
       />
 
         <Footer />
