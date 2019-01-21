@@ -103,8 +103,6 @@ class App extends Component {
 
   render() {
     const {skills, userInfo} = this.state;
-    // console.log('skills', skills);
-    // console.log('userInfo', userInfo);
 
     return (
        
