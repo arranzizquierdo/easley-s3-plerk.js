@@ -20,7 +20,8 @@ class App extends Component {
         "github": "",
         "photo": "",
         "skills": ["HTML", "CSS", "GULP"]
-      }
+      },
+      fr: new FileReader()
     };
     this.backEndCall();
     this.handleColorChange = this.handleColorChange.bind(this);
