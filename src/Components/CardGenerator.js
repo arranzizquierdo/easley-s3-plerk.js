@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./Header";
 import CardPreview from "./CardPreview";
 import CollapsiblesThree from "./collapsibles3";
+import Footer from './Footer';
 
 class CardGenerator extends Component {
 	render() {
@@ -42,6 +43,7 @@ class CardGenerator extends Component {
 					skillsSelect={handleSkillsSelect}
 					userInfo={userInfo}
 				/>
+				<Footer />
 			</React.Fragment>
 		);
 	}

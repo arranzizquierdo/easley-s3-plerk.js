@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Footer from './Components/Footer';
 import CardGenerator from './Components/CardGenerator';
 import LandingPage from './Components/LandingPage';
 import { Route, Switch } from 'react-router-dom';
@@ -141,12 +140,9 @@ class App extends Component {
                 skillsSelect={this.handleSkillsSelect}
               />
             }
-          />
-
-          <Footer />
+          />  
         </Switch>
       </div>
-
     );
   }
 }

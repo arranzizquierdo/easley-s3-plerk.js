@@ -6,43 +6,43 @@ import { Link } from "react-router-dom";
 class LandingPage extends Component {
     render() {
         return (
-            <React.Fragment>
-                <header class="header__index">
+            <div className="body__landing-page">
+                <header className="header__index">
                     <img
-                        class="logo__index"
+                        className="logo__index"
                         src={LogoAwesome}
                         alt="Logo Awesome Profile Cards"
                     />
                 </header>
-                <main class="home__main">
-                    <h1 class="home__tittle">
+                <main className="home__main">
+                    <h1 className="home__tittle">
                         Crea tu tarjeta de visita
                     </h1>
-                    <h2 class="home__subtittle">
+                    <h2 className="home__subtittle">
                         Crea mejores contactos profesionales de forma fácil y cómoda
 					</h2>
-                    <div class="home__buttonbox">
-                        <ul class="buttonbox__icons">
-                            <li class="buttonbox__icons__design">
-                                <i class="far fa-object-ungroup icon__home" />
-                                <p class="buttonbox__text__design">Diseña</p>
+                    <div className="home__buttonbox">
+                        <ul className="buttonbox__icons">
+                            <li className="buttonbox__icons__design">
+                                <i className="far fa-object-ungroup icon__home" />
+                                <p className="buttonbox__text__design">Diseña</p>
                             </li>
-                            <li class="buttonbox__icons__fill">
-                                <i class="far fa-keyboard icon__home" />
-                                <p class="buttonbox__text__fill">Rellena</p>
+                            <li className="buttonbox__icons__fill">
+                                <i className="far fa-keyboard icon__home" />
+                                <p className="buttonbox__text__fill">Rellena</p>
                             </li>
-                            <li class="buttonbox__icons__share">
-                                <i class="fas fa-share-alt icon__home" />
-                                <p class="buttonbox__text__share">Comparte</p>
+                            <li className="buttonbox__icons__share">
+                                <i className="fas fa-share-alt icon__home" />
+                                <p className="buttonbox__text__share">Comparte</p>
                             </li>
                         </ul>
                     </div>
-                    <Link class="home__link__begin" to="/CardGenerator">
+                    <Link className="home__link__begin" to="/CardGenerator">
                         Comenzar
 					</Link>
                 </main>
                 <Footer />
-            </React.Fragment>
+            </div>
         );
     }
 }
