@@ -7,7 +7,7 @@ class ShareTwitter extends Component {
     }
     render() { 
         return ( 
-            <div className="hidden twitter_mother">
+            <div onChange={this.props.handleButtonCreateCard} className="hidden twitter_mother">
                 <div className="twitter_container">
                     <h2 className="title_createcard_twitter">La tarjeta ha sido creada:</h2>
                     <a className="twitter_link" href=""></a>

@@ -10,7 +10,7 @@ class CollapsiblesThree extends Component {
         this.icon = '';
         console.log('props colap3', props);
         this.state = {
-            showorhidden: props.showorhidden, 
+            showorhidden: "hidden", 
         }
 
         this.handleButtonCreateCard = this.handleCheckedSkills.bind(this);
@@ -23,13 +23,13 @@ handleCheckedSkills(skill){
     : false
 }
 
-handleButtonCreateCard(){
-
+handleButtonCreateCard(e){
+    e.preventDefault();
     if(this.state.showorhidden.includes("hidden")){
         this.setState(
             {showorhidden:""}
         )
-    }
+    } 
 
 }
 
@@ -77,7 +77,7 @@ handleButtonCreateCard(){
                 <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down" collapsiblehidden={true}>
                     <div>
                         <div>
-                            <button className="button_deco" type="submit"><i className="far fa-address-card"></i>Crear tarjeta</button>
+                            <button onClick={this.handleButtonCreateCard} className="button_deco" type="submit"><i className="far fa-address-card"></i>Crear tarjeta</button>
                         </div>
                         {/* <div className="hidden twitter_mother">
                             <div className="twitter_container">
@@ -85,7 +85,7 @@ handleButtonCreateCard(){
                                 <a className="twitter_link" href=""></a>
                                 <a className="button_twitter twitter-share-button" href=""><i className="fab fa-twitter"></i>Compartir en Twitter</a>
                             </div> */}
-                            <ShareTwitter />
+                            <ShareTwitter handleButtonCreateCard={this.handleButtonCreateCard} />
                     </div>
                 </Collapsible>
             </div>
