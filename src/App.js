@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-
-
 import Footer from './Components/Footer';
-
 import CardGenerator from './Components/CardGenerator';
+import LandingPage from './Components/LandingPage';
 
 class App extends Component {
   constructor(props) {
@@ -123,7 +121,8 @@ class App extends Component {
     return (
 
       <div className="App">
-
+      <LandingPage />
+      
        <CardGenerator 
        userInfo={userInfo} 
        skills={skills}
@@ -133,12 +132,7 @@ class App extends Component {
        skillsSelect={this.handleSkillsSelect}
        /> 
 
-
-
-        
-
         <Footer />
-
       </div>
 
     );
