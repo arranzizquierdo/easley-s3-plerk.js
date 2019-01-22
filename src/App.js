@@ -21,7 +21,8 @@ class App extends Component {
         "photo": "",
         "skills": ["HTML", "CSS", "Gulp"]
       },
-      fr: new FileReader() 
+      fr: new FileReader(),
+      showUrl: '', 
       }
     this.backEndCall();
     this.handleColorChange= this.handleColorChange.bind(this);
@@ -32,6 +33,43 @@ class App extends Component {
     this.addImageToState = this.addImageToState.bind(this);
     this.handleImage = this.handleImage.bind(this);
     this.handleFakeclick = this.handleFakeclick.bind(this);
+    // this.sendRequest = this.sendRequest.bind(this);
+    this.handlerSendBackend = this.handlerSendBackend.bind(this);
+  }
+
+  sendRequest() {
+    fetch("https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/", {
+      method: "POST",
+      body: JSON.stringify(this.state.userInfo),
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(response=> {
+        return response.json()
+      })
+      .then(function(data) {
+        return (
+          console.log('success', data.cardURL),
+          this.setState = {
+            showUrl: data.cardURL
+          }
+          );
+      })
+      // .then(function (result) {
+      //   showURL(result);
+      // })
+      .catch(function(error) {
+        console.log('error', error);
+      });
+  }
+  
+
+  handlerSendBackend(event) {
+    event.preventDefault();
+    this.sendRequest();
+    // twitterMotherElement.classList.remove("hidden");
+    // buttonCreateCardElement.classList.add("button_created");
   }
 
   addImageToState(){
@@ -171,6 +209,8 @@ class App extends Component {
         />
 
         <CollapsiblesThree
+          handlerSendBackend={this.handlerSendBackend}
+          userInfo={this.state.userInfo}
           phone={userInfo.phone}
           email={userInfo.email}
           linkedin={userInfo.linkedin}

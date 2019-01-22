@@ -3,12 +3,17 @@ import Collapsible from './collapsible';
 import DesignContent from './DesignContent';
 import InputSkill from './InputSkill';
 import DefaultImage from '../Images/default.jpeg';
+import Loading from './Loading';
+import ShareTwitter from './ShareTwitter';
 
 class CollapsiblesThree extends Component {
     constructor(props) {
         super(props);
         this.icon = '';
         console.log('props colap3', props);
+        this.state = {
+            loading: true,
+        }
     }
     
 handleCheckedSkills(skill){
@@ -62,15 +67,10 @@ handleCheckedSkills(skill){
                 <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down" collapsiblehidden={true}>
                     <div>
                         <div>
-                            <button className="button_deco" type="submit"><i className="far fa-address-card"></i>Crear tarjeta</button>
+                            <button className="button_deco" type="submit" onClick={this.props.handlerSendBackend}><i className="far fa-address-card"></i>Crear tarjeta</button>
+                        
                         </div>
-                        <div className="hidden twitter_mother">
-                            <div className="twitter_container">
-                                <h2 className="title_createcard_twitter">La tarjeta ha sido creada:</h2>
-                                <a className="twitter_link" href=""></a>
-                                <a className="button_twitter twitter-share-button" href=""><i className="fab fa-twitter"></i>Compartir en Twitter</a>
-                            </div>
-                        </div>
+                        <ShareTwitter />
                     </div>
                 </Collapsible>
             </div>
