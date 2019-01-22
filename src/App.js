@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Footer from './Components/Footer';
 import CardGenerator from './Components/CardGenerator';
 import LandingPage from './Components/LandingPage';
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -22,8 +23,8 @@ class App extends Component {
       }
     };
     this.backEndCall();
-    this.handleColorChange= this.handleColorChange.bind(this);
-    this.handleTypographyChange= this.handleTypographyChange.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
+    this.handleTypographyChange = this.handleTypographyChange.bind(this);
     this.handleSkillsSelect = this.handleSkillsSelect.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
   }
@@ -82,18 +83,18 @@ class App extends Component {
     this.forceUpdate();
   }
 
-  handleSkillsSelect (event) {
+  handleSkillsSelect(event) {
     const skillValue = event.target.value;
     console.log('value=>', skillValue);
     const skillsArrUserInfo = this.state.userInfo.skills;
     console.log('arr skills', skillsArrUserInfo)
     let skillArrNew;
     if (skillsArrUserInfo.includes(skillValue)) {
-      skillArrNew= skillsArrUserInfo.filter(skill => skill !== skillValue)
+      skillArrNew = skillsArrUserInfo.filter(skill => skill !== skillValue)
     } else {
-      skillArrNew= skillsArrUserInfo.concat(skillValue)
+      skillArrNew = skillsArrUserInfo.concat(skillValue)
     }
-    this.setState ({
+    this.setState({
       userInfo: {
         ...this.state.userInfo,
         skills: skillArrNew
@@ -121,18 +122,29 @@ class App extends Component {
     return (
 
       <div className="App">
-      <LandingPage />
-      
-       <CardGenerator 
-       userInfo={userInfo} 
-       skills={skills}
-       changeInput={this.handleChangeInput} 
-       changeColor={this.handleColorChange} 
-       changeTypography={this.handleTypographyChange}
-       skillsSelect={this.handleSkillsSelect}
-       /> 
+        <Switch>
+          <Route
+            exact
+            path='/'
+            component={LandingPage}
+          />
 
-        <Footer />
+          <Route
+            path='/CardGenerator'
+            render={props =>
+              <CardGenerator
+                userInfo={userInfo}
+                skills={skills}
+                changeInput={this.handleChangeInput}
+                changeColor={this.handleColorChange}
+                changeTypography={this.handleTypographyChange}
+                skillsSelect={this.handleSkillsSelect}
+              />
+            }
+          />
+
+          <Footer />
+        </Switch>
       </div>
 
     );

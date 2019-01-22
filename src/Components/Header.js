@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import LogoAwesome from '../Images/logo-awesome.svg';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
-    render () {
+    render() {
         return (
             <header className="header__card-creator">
-                <a className="@@link-to-index" href="https://adalab.es/">
-                <img className="logo__card-creator" src={LogoAwesome} alt="Logo Awesome Profile Cards" />
-                </a>
+                <Link className="@@link-to-index" to='/'>
+                    <img className="logo__card-creator" src={LogoAwesome} alt="Logo Awesome Profile Cards" />
+                </Link>
             </header>
         );
     }
