@@ -28,6 +28,14 @@ const items = [
 
 class CardPreview extends Component {
 
+  paintName(){
+    return this.props.nameCard || "Nombre y Apellidos";
+  }
+
+  paintJob(){
+    return this.props.jobCard || "Front-end developer";
+  }
+
   render() {
 
     const linkedin = this.props.linkedin
@@ -47,8 +55,10 @@ class CardPreview extends Component {
         <div className="preview__card">
           <div className={`rectangle__decoration ${this.props.colorClass.medium }`} />
           <div className="name__container">
-            <p className={`name ${this.props.typographyClass} ${this.props.colorClass.dark }`}>Nombre Apellido</p>
-            <p className={`profession ${this.props.typographyClass}`}>Front-end developer</p>
+            <p className={`name ${this.props.typographyClass} ${this.props.colorClass.dark }`}>{this.paintName()}</p>
+            <p className={`profession ${this.props.typographyClass}`}>{this.paintJob()}</p>
+            {/* <p className="name">{this.paintName()}</p>
+            <p className="profession">{this.paintJob()}</p> */}
           </div>
 
           <img className="photo__user" src={(this.props.srcimage === "")? ImageDefault : this.props.srcimage} alt="User" />
@@ -63,10 +73,13 @@ class CardPreview extends Component {
           />
           
           <div className="rectangle__decoration-large"></div>
-          <ul className="skill__tags">
-            <li className={`first_tag tag ${this.props.colorClass.medium }`}>HTML</li>
+          <ul className="skill__tags" skillsClass={this.props.skillsClass}>
+            {this.props.skillsClass.map((skill, i) => {
+              return <li className={`first_tag tag ${this.props.colorClass.medium }`} key={i}>{skill}</li>
+            })}
+            {/* <li className={`first_tag tag ${this.props.colorClass.medium }`}>HTML</li>
             <li className={`second_tag tag ${this.props.colorClass.medium }`}>CSS</li>
-            <li className={`third_tag tag ${this.props.colorClass.medium }`}>GULP</li>
+            <li className={`third_tag tag ${this.props.colorClass.medium }`}>GULP</li>   */}
           </ul>
         </div>
       </section>
