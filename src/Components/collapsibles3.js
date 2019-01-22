@@ -76,9 +76,10 @@ handleButtonCreateCard(e){
                 </Collapsible>
                 <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down" collapsiblehidden={true}>
                     <div>
-                        <div>
-                            <button onClick={this.handleButtonCreateCard} className="button_deco" type="submit"><i className="far fa-address-card"></i>Crear tarjeta</button>
-                        </div>
+                        {/* <div>
+                            <button className="button_deco" type="submit"><i className="far fa-address-card"></i>Crear tarjeta</button>
+                        </div> */}
+
                         {/* <div className="hidden twitter_mother">
                             <div className="twitter_container">
                                 <h2 className="title_createcard_twitter">La tarjeta ha sido creada:</h2>
