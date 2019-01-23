@@ -46,7 +46,7 @@ class CardPreview extends Component {
     return (
       <section className="container__cardview">
         <div className="container__buttom">
-          <button className="buttom__reset" type="button">
+          <button onClick={this.props.handleReset} className="buttom__reset" type="button">
             <i className="icon__trash far fa-trash-alt icon__trash" />
             Reset
           </button>

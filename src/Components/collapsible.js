@@ -11,7 +11,7 @@ class Collapsible extends Component {
   }
 
   toggleCollapsible(event) {
-    console.log('event target',event.target);
+    //console.log('event target',event.target);
     if (this.state.arrowIcon.includes("fa-angle-up")) {
       this.setState({
         arrowIcon: "fa-angle-down",

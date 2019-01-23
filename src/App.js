@@ -4,29 +4,32 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import CardPreview from './Components/CardPreview';
 
+const defaultInfo = {
+  palette: "",
+  typography: "",
+  "name": "",
+  "job": "",
+  "phone": "",
+  "email": "",
+  "linkedin": "",
+  "github": "",
+  "photo": "",
+  "skills": ["HTML", "CSS", "Gulp"]
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       skills: [],
-      userInfo: {
-        palette: "",
-        typography: "",
-        "name": "",
-        "job": "",
-        "phone": "",
-        "email": "",
-        "linkedin": "",
-        "github": "",
-        "photo": "",
-        "skills": ["HTML", "CSS", "Gulp"]
-      }
+      userInfo: defaultInfo
     };
     this.backEndCall();
     this.handleColorChange= this.handleColorChange.bind(this);
     this.handleTypographyChange= this.handleTypographyChange.bind(this);
     this.handleSkillsSelect = this.handleSkillsSelect.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   backEndCall() {
@@ -114,6 +117,13 @@ class App extends Component {
     });
   }
 
+  handleReset() {
+    this.setState({
+      userInfo: defaultInfo
+    })
+    
+  }
+
 
 
   render() {
@@ -126,8 +136,8 @@ class App extends Component {
         <Header />
 
       <CardPreview 
-        nameCard={userInfo.name}
-        jobCard={userInfo.job}
+          nameCard={userInfo.name}
+          jobCard={userInfo.job}
           skillsClass={userInfo.skills}
           phone={userInfo.phone}
           email={userInfo.email}
@@ -135,6 +145,7 @@ class App extends Component {
           github={userInfo.github}
           colorClass={userInfo.palette}
           typographyClass={userInfo.typography}
+          handleReset={this.handleReset}
         />
 
         <CollapsiblesThree

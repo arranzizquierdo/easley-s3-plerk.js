@@ -7,11 +7,11 @@ class CollapsiblesThree extends Component {
     constructor(props) {
         super(props);
         this.icon = '';
-        console.log('props colap3', props);
+        //console.log('props colap3', props);
     }
     
 handleCheckedSkills(skill){
-    console.log(this.props)
+    //console.log(this.props)
    return (this.props.userInfo.skills.includes(skill)) 
     ? true 
     : false
@@ -19,7 +19,7 @@ handleCheckedSkills(skill){
 
     render() {
         const { skills } = this.props;
-        console.log('skills', skills);
+        //console.log('skills', skills);
         const skillsSelect = this.props.skillsSelect;
         return (
             <div>
