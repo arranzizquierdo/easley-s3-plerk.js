@@ -9,10 +9,14 @@ class CardGenerator extends Component {
 		const {
 			userInfo,
 			skills,
-			handleChangeInput,
-			handleColorChange,
-			handleTypographyChange,
-			handleSkillsSelect
+			changeInput,
+			changeColor,
+			changeTypography,
+			skillsSelect,
+			srcimage,
+			file,
+			changeImage,
+			fakeclick
 		} = this.props;
 		return (
 			<React.Fragment>
@@ -28,19 +32,24 @@ class CardGenerator extends Component {
 					github={userInfo.github}
 					colorClass={userInfo.palette}
 					typographyClass={userInfo.typography}
+					srcimage={srcimage}
 				/>
 				<CollapsiblesThree
 					phone={userInfo.phone}
 					email={userInfo.email}
 					linkedin={userInfo.linkedin}
 					github={userInfo.github}
-					changeInput={handleChangeInput}
-					changeColor={handleColorChange}
-					changeTypography={handleTypographyChange}
+					file={file}
+					changeImage={changeImage}
+					srcimage = {srcimage}
+					fakeclick={fakeclick}
+					changeInput={changeInput}
+					changeColor={changeColor}
+					changeTypography={changeTypography}
 					skills={skills}
 					nameCardInput={userInfo.name}
 					jobCardInput={userInfo.job}
-					skillsSelect={handleSkillsSelect}
+					skillsSelect={skillsSelect}
 					userInfo={userInfo}
 				/>
 				<Footer />

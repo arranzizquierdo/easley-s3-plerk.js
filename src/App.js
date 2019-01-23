@@ -19,14 +19,46 @@ class App extends Component {
         "github": "",
         "photo": "",
         "skills": ["HTML", "CSS", "Gulp"]
+      },
+      fr: new FileReader() 
       }
-    };
     this.backEndCall();
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleTypographyChange = this.handleTypographyChange.bind(this);
     this.handleSkillsSelect = this.handleSkillsSelect.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.fileInput = React.createRef();
+    this.addImageToState = this.addImageToState.bind(this);
+    this.handleImage = this.handleImage.bind(this);
+    this.handleFakeclick = this.handleFakeclick.bind(this);
   }
+
+  addImageToState(){
+    this.setState((prevState) => {
+      return {
+        userInfo: {
+          ...prevState.userInfo,
+          photo: this.state.fr.result,
+        }
+      }
+    });
+  }
+
+  handleImage(event) {
+    event.preventDefault();
+    const myFile = this.fileInput.current;
+    console.dir('this.fileInput.current',myFile);
+    const fileUpdatedbyuser = this.fileInput.current.files[0];
+    console.dir('this.fileInput.current',this.fileInput.current.files) 
+    this.state.fr.addEventListener('load', this.addImageToState);
+    this.state.fr.readAsDataURL(fileUpdatedbyuser); 
+    //alert(`Selected file - ${this.fileInput.current.files[0].name}`); 
+  }
+
+  handleFakeclick(){
+    this.fileInput.current.click();
+  }
+
 
   backEndCall() {
     fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
@@ -138,6 +170,10 @@ class App extends Component {
                 changeColor={this.handleColorChange}
                 changeTypography={this.handleTypographyChange}
                 skillsSelect={this.handleSkillsSelect}
+                srcimage = {this.state.userInfo.photo}
+                file={this.fileInput}
+                changeImage={this.handleImage}
+                fakeclick={this.handleFakeclick}
               />
             }
           />  

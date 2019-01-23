@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Collapsible from './collapsible';
 import DesignContent from './DesignContent';
 import InputSkill from './InputSkill';
+import DefaultImage from '../Images/default.jpeg';
 
 class CollapsiblesThree extends Component {
     constructor(props) {
@@ -35,10 +36,10 @@ handleCheckedSkills(skill){
                         <input onChange={this.props.changeInput} className="input_box profession__input" id="position" placeholder="Ej: Front-end unicorn" value={this.props.jobCardInput} type="text" name="job" />
                         <label className="fill_subtitle" htmlFor="profileImage">Imagen de perfil</label>
                         <div className="container_add-image">
-                            <input className="button_add-image" type="button" value="Añadir imagen" />
-                            <input className="action__hiddenField" type="file" id="img-selector" />
+                            <input type="button"  onClick={this.props.fakeclick} className="button_add-image" value="Añadir imagen" />
+                            <input className="action__hiddenField" ref={this.props.file} type="file" onChange={this.props.changeImage} />
                             <div className="container_image-preview">
-                                <img src="" alt="" className="image-preview" />
+                                <img src={(this.props.srcimage === "")? DefaultImage : this.props.srcimage} alt="user" className="image-preview" />
                             </div>
                         </div>
                         <label className="fill_subtitle" htmlFor="mail">Email</label>
