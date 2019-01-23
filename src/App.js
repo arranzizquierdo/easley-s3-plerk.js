@@ -124,7 +124,7 @@ class App extends Component {
     
   }
 
-
+  
 
   render() {
     const { skills, userInfo } = this.state;
