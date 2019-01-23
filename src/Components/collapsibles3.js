@@ -15,13 +15,13 @@ class CollapsiblesThree extends Component {
             loading: true,
         }
     }
-    
-handleCheckedSkills(skill){
-    console.log(this.props)
-   return (this.props.userInfo.skills.includes(skill)) 
-    ? true 
-    : false
-}
+
+    handleCheckedSkills(skill) {
+        console.log(this.props)
+        return (this.props.userInfo.skills.includes(skill))
+            ? true
+            : false
+    }
 
     render() {
         const { skills } = this.props;
@@ -32,7 +32,7 @@ handleCheckedSkills(skill){
                 <Collapsible title="DISEÑA" icon="far fa-object-ungroup" arrowIcon="fa-angle-up" collapsiblehidden={false} >
                     <DesignContent {...this.props} />
                 </Collapsible>
-                <Collapsible title="RELLENA" icon="far fa-keyboard" arrowIcon="fa-angle-down" collapsiblehidden={true} skills= {skills}>
+                <Collapsible title="RELLENA" icon="far fa-keyboard" arrowIcon="fa-angle-down" collapsiblehidden={true} skills={skills}>
 
                     <div>
                         <label className="fill_subtitle" htmlFor="firstName">Nombre completo</label>
@@ -41,10 +41,10 @@ handleCheckedSkills(skill){
                         <input onChange={this.props.changeInput} className="input_box profession__input" id="position" placeholder="Ej: Front-end unicorn" value={this.props.jobCardInput} type="text" name="job" />
                         <label className="fill_subtitle" htmlFor="profileImage">Imagen de perfil</label>
                         <div className="container_add-image">
-                            <input type="button"  onClick={this.props.fakeclick} className="button_add-image" value="Añadir imagen" />
+                            <input type="button" onClick={this.props.fakeclick} className="button_add-image" value="Añadir imagen" />
                             <input className="action__hiddenField" ref={this.props.file} type="file" onChange={this.props.changeImage} />
                             <div className="container_image-preview">
-                                <img src={(this.props.srcimage === "")? DefaultImage : this.props.srcimage} alt="user" className="image-preview" />
+                                <img src={(this.props.srcimage === "") ? DefaultImage : this.props.srcimage} alt="user" className="image-preview" />
                             </div>
                         </div>
                         <label className="fill_subtitle" htmlFor="mail">Email</label>
@@ -56,11 +56,11 @@ handleCheckedSkills(skill){
                         <label className="fill_subtitle" htmlFor="github">Github</label>
                         <input value={this.props.github} onChange={this.props.changeInput} name="github" className="input_box github__input" id="github" placeholder="Ej: sally-hill" type="text" />
                         <h3 className="fill_subtitle fill_subtitle--skills">Habilidades (máximo 3)</h3>
-                        <div className="container_skills" skills= {skills}>
-                            {skills.map ((skill, i) => {
-                                return <InputSkill key={i} skill={skill} skillsSelect={skillsSelect} checked={this.handleCheckedSkills(skill)}/>
+                        <div className="container_skills" skills={skills}>
+                            {skills.map((skill, i) => {
+                                return <InputSkill key={i} skill={skill} skillsSelect={skillsSelect} checked={this.handleCheckedSkills(skill)} />
                             })}
-                            
+
                         </div>
                     </div>
                 </Collapsible>
@@ -68,9 +68,12 @@ handleCheckedSkills(skill){
                     <div>
                         <div>
                             <button className="button_deco" type="submit" onClick={this.props.handlerSendBackend}><i className="far fa-address-card"></i>Crear tarjeta</button>
-                        
+
                         </div>
-                        <ShareTwitter />
+                        {this.props.loading ? (
+                            <Loading />
+                        ) : (
+                                <ShareTwitter showUrl={this.props.showUrl} />)}
                     </div>
                 </Collapsible>
             </div>

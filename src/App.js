@@ -4,6 +4,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import CardPreview from './Components/CardPreview';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,7 @@ class App extends Component {
       },
       fr: new FileReader(),
       showUrl: '', 
+      isPushing: false
       }
     this.backEndCall();
     this.handleColorChange= this.handleColorChange.bind(this);
@@ -33,11 +35,13 @@ class App extends Component {
     this.addImageToState = this.addImageToState.bind(this);
     this.handleImage = this.handleImage.bind(this);
     this.handleFakeclick = this.handleFakeclick.bind(this);
-    // this.sendRequest = this.sendRequest.bind(this);
     this.handlerSendBackend = this.handlerSendBackend.bind(this);
   }
 
   sendRequest() {
+    this.setState({
+      isPushing: true
+    })
     fetch("https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/", {
       method: "POST",
       body: JSON.stringify(this.state.userInfo),
@@ -48,20 +52,29 @@ class App extends Component {
       .then(response=> {
         return response.json()
       })
-      .then(function(data) {
+      .then(data => {
         return (
-          console.log('success', data.cardURL),
-          this.setState = {
-            showUrl: data.cardURL
-          }
-          );
+          console.log('success',data.cardURL),
+          this.setState ({
+            showUrl: data.cardURL,
+            isPushing: false
+          })
+        )
       })
+      // .then(function(data) {
+      //   return (
+      //     console.log('success', data.cardURL),
+      //     this.setState = {
+      //       showUrl: data.cardURL
+      //     }
+      //     );
+      // })
       // .then(function (result) {
       //   showURL(result);
       // })
-      .catch(function(error) {
-        console.log('error', error);
-      });
+       .catch(function(error) {
+       console.log('error', error);
+       });
   }
   
 
@@ -219,10 +232,15 @@ class App extends Component {
           changeImage={this.handleImage}
           srcimage = {this.state.userInfo.photo}
           fakeclick={this.handleFakeclick}
-          changeInput={this.handleChangeInput} changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills={skills} 
+          changeInput={this.handleChangeInput} 
+          changeColor={this.handleColorChange} 
+          changeTypography={this.handleTypographyChange} 
+          skills={skills} 
           nameCardInput={userInfo.name}
           jobCardInput={userInfo.job}
-          skillsSelect={this.handleSkillsSelect} userInfo= {userInfo}
+          skillsSelect={this.handleSkillsSelect}
+          showUrl={this.state.showUrl}
+          loading={this.state.isPushing}
       />
 
         <Footer />
