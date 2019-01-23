@@ -11,9 +11,6 @@ class CollapsiblesThree extends Component {
         super(props);
         this.icon = '';
         console.log('props colap3', props);
-        this.state = {
-            loading: true,
-        }
     }
 
     handleCheckedSkills(skill) {
