@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 
 class ShareTwitter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    // this.sendRequest = this.sendRequest.bind(this);
-    // this.showURL = this.showURL.bind(this);
-    // this.handlerSendBackend = this.handlerSendBackend.bind(this);
-  }
+
 
   render() {
     return (

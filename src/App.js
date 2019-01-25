@@ -23,7 +23,7 @@ class App extends Component {
       },
       fr: new FileReader(),
       showUrl: '', 
-      isPushing: false
+      isLoading: true
       }
     this.backEndCall();
     this.handleColorChange = this.handleColorChange.bind(this);
@@ -38,9 +38,6 @@ class App extends Component {
   }
 
   sendRequest() {
-    this.setState({
-      isPushing: true
-    })
     fetch("https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/", {
       method: "POST",
       body: JSON.stringify(this.state.userInfo),
@@ -56,7 +53,7 @@ class App extends Component {
           console.log('success',data),
           this.setState ({
             showUrl: data.cardURL,
-            isPushing: false
+            isLoading: false
           })
         )
       })
@@ -80,8 +77,6 @@ class App extends Component {
   handlerSendBackend(event) {
     event.preventDefault();
     this.sendRequest();
-    // twitterMotherElement.classList.remove("hidden");
-    // buttonCreateCardElement.classList.add("button_created");
   }
 
   addImageToState(){
@@ -103,7 +98,6 @@ class App extends Component {
     console.dir('this.fileInput.current',this.fileInput.current.files) 
     this.state.fr.addEventListener('load', this.addImageToState);
     this.state.fr.readAsDataURL(fileUpdatedbyuser); 
-    //alert(`Selected file - ${this.fileInput.current.files[0].name}`); 
   }
 
   handleFakeclick(){
