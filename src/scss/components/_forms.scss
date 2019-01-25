@@ -1,0 +1,159 @@
+.custom-section {
+  padding: 20px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.deco_fieldset {
+  border: none;
+  border-bottom: 1px solid $color-grey-rabbit;
+  margin: 0;
+  padding: 0;
+}
+
+.fieldset_title {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: $font-weight-semibold;
+  color: $color-grey-stone;
+  margin-left: 10px;
+
+  @media all and (min-widht: 768px) {
+    margin-right: 204px;
+  }
+}
+
+.fieldset_title--design {
+  margin-right: 168px;
+}
+
+.fieldset_title--fill {
+  margin-right: 155px;
+}
+
+.fieldset_title--share {
+  margin-right: 137px;
+}
+
+.design_subtitle {
+  text-transform: uppercase;
+  font-family: $font-family-primary;
+  color: $color-grey-stone;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.list_item {
+  float: right;
+  color: $color-grey-stone;
+}
+
+.fill_subtitle {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 20px 0 6px;
+  color: $color-green-blue;
+}
+
+.container_fieldset-title {
+  margin: 10px 0 5px;
+  display: flex;
+  cursor: pointer;
+}
+
+.container_fieldset-icon {
+  font-size: 18px;
+  color: $color-orange-chicken;
+}
+
+.container_arrow-icon {
+  font-size: 18px;
+  font-weight: $font-weight-regular;
+  color: $color-grey-stone;
+}
+
+.input_box {
+  width: 280px;
+  height: 30px;
+  border: 1px solid $color-green-hospital;
+  padding: 4px 0 6px 9px;
+  color: $color-grey-stone;
+
+  &::placeholder {
+    font-family: $font-family-primary;
+    font-size: 14px;
+    color: $color-grey-mouse;
+    line-height: 1.43;
+  }
+
+  @media all and (min-widht: 768px) {
+    width: 329px;
+  }
+}
+
+.fill_subtitle--skills {
+  margin: 20px 0 4px;
+  font-weight: $font-weight-regular;
+}
+
+.container_add-image {
+  display: flex;
+}
+
+.button_add-image {
+  width: 140px;
+  height: 30px;
+  margin-right: 20px;
+  padding: 4px 22px 6px;
+  border: none;
+  border-radius: 3px;
+  background-color: $color-orange-chicken;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.32);
+  font-family: $font-family-primary;
+  font-size: 14px;
+  line-height: 1.43;
+  color: $color-white-egg;
+}
+
+.container_image-preview {
+  width: 30px;
+  height: 30px;
+  border: 1px solid $color-green-hospital;
+}
+
+.image_preview {
+  width: 100%;
+  height: 100%;
+}
+
+.container_skills {
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 17px 38px;
+  grid-gap: 13px 10px;
+  align-items: center;
+}
+
+.checkbox__label {
+  font-size: 14px;
+  line-height: 1.43;
+  color: $color-green-blue;
+  grid-column: 2;
+}
+
+.checkbox__input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+}
+
+.button_createcard {
+  color: $color-white-egg;
+  text-transform: uppercase;
+}
+
+.button_deco {
+  text-decoration: none;
+}

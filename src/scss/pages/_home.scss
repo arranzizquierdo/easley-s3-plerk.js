@@ -1,0 +1,117 @@
+.home__main {
+  font-family: $font-family-primary;
+
+}
+
+.home__tittle {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 0px;
+  margin-top: 35px;
+  font-family: $font-family-secondary;
+  font-size: 19px;
+  color: $color-orange-chicken;
+
+  @media all and (min-width: 768px) {
+    font-size: 24px;
+    padding-top: 31px;
+    margin-top: 0px;
+  }
+}
+
+.home__subtittle {
+  width: 265px;
+  margin: 0 auto;
+  padding-top: 4px;
+  padding-bottom: 14px;
+  text-align: center;
+  font-weight: 400;
+  font-family: $font-family-primary;
+  color: $color-green-blue;
+  font-size: 13px;
+
+  @media all and (min-width: 768px) {
+    font-size: 16px;
+    width: 331px;
+    padding-bottom: 21px;
+  }
+}
+
+.home__buttonbox {
+  border: 2px solid rgba(225, 115, 52, 0.21);
+  width: 268px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 4px;
+
+  @media all and (min-width: 768px) {
+    width: 325px;
+  }
+}
+
+.buttonbox__icons {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  padding-left: 32px;
+  margin: 0px;
+}
+
+.home__link__begin {
+  text-decoration: none;
+  border: 1px solid $color-grey-rino;
+  display: block;
+  height: 42px;
+  width: 129px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  margin-top: 39px;
+  margin-bottom: 30px;
+  background-color: $color-blue-sky;
+  color: $color-white-egg;
+  text-transform: uppercase;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-semibold;
+
+  @media all and (min-width: 768px) {
+    margin-top: 70px;
+    margin-bottom: 60px;
+  }
+
+  @media all and (min-width:1200px) {
+    margin-top: 39px;
+    margin-bottom: 30px;
+  }
+
+}
+
+.buttonbox__icons__design,
+.buttonbox__icons__fill,
+.buttonbox__icons__share {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $color-grey-stone;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  margin: 0px;
+}
+
+.icon__home {
+  color: $color-orange-chicken;
+  font-size: 26px;
+  margin-top: 16px;
+}
+
+.buttonbox__text__design,
+.buttonbox__text__fill,
+.buttonbox__text__share {
+  margin-bottom: 13px;
+  margin-top: 5px;
+}
