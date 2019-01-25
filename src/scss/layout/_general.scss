@@ -20,6 +20,15 @@ body {
   justify-content: flex-end;
 }
 
+.body__landing-page {
+  height: 100vh;
+  min-height: 560px;
+  background-color: $color-white-bone;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .body__card-creator {
   display: flex;
   flex-direction: column;

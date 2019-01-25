@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import CollapsiblesThree from './Components/collapsibles3';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import CardPreview from './Components/CardPreview';
+import CardGenerator from './Components/CardGenerator';
+import LandingPage from './Components/LandingPage';
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -24,8 +23,8 @@ class App extends Component {
       fr: new FileReader() 
       }
     this.backEndCall();
-    this.handleColorChange= this.handleColorChange.bind(this);
-    this.handleTypographyChange= this.handleTypographyChange.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
+    this.handleTypographyChange = this.handleTypographyChange.bind(this);
     this.handleSkillsSelect = this.handleSkillsSelect.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
     this.fileInput = React.createRef();
@@ -115,18 +114,18 @@ class App extends Component {
     this.forceUpdate();
   }
 
-  handleSkillsSelect (event) {
+  handleSkillsSelect(event) {
     const skillValue = event.target.value;
     console.log('value=>', skillValue);
     const skillsArrUserInfo = this.state.userInfo.skills;
     console.log('arr skills', skillsArrUserInfo)
     let skillArrNew;
     if (skillsArrUserInfo.includes(skillValue)) {
-      skillArrNew= skillsArrUserInfo.filter(skill => skill !== skillValue)
+      skillArrNew = skillsArrUserInfo.filter(skill => skill !== skillValue)
     } else {
-      skillArrNew= skillsArrUserInfo.concat(skillValue)
+      skillArrNew = skillsArrUserInfo.concat(skillValue)
     }
-    this.setState ({
+    this.setState({
       userInfo: {
         ...this.state.userInfo,
         skills: skillArrNew
@@ -154,41 +153,32 @@ class App extends Component {
     return (
 
       <div className="App">
+        <Switch>
+          <Route
+            exact
+            path='/'
+            component={LandingPage}
+          />
 
-        <Header />
-
-      <CardPreview 
-        nameCard={userInfo.name}
-        jobCard={userInfo.job}
-          skillsClass={userInfo.skills}
-          phone={userInfo.phone}
-          email={userInfo.email}
-          linkedin={userInfo.linkedin}
-          github={userInfo.github}
-          colorClass={userInfo.palette}
-          typographyClass={userInfo.typography}
-          srcimage = {this.state.userInfo.photo}
-        />
-
-        <CollapsiblesThree
-          phone={userInfo.phone}
-          email={userInfo.email}
-          linkedin={userInfo.linkedin}
-          github={userInfo.github}
-          file={this.fileInput}
-          changeImage={this.handleImage}
-          srcimage = {this.state.userInfo.photo}
-          fakeclick={this.handleFakeclick}
-          changeInput={this.handleChangeInput} changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills={skills} 
-          nameCardInput={userInfo.name}
-          jobCardInput={userInfo.job}
-          skillsSelect={this.handleSkillsSelect} userInfo= {userInfo}
-      />
-
-        <Footer />
-
+          <Route
+            path='/CardGenerator'
+            render={props =>
+              <CardGenerator
+                userInfo={userInfo}
+                skills={skills}
+                changeInput={this.handleChangeInput}
+                changeColor={this.handleColorChange}
+                changeTypography={this.handleTypographyChange}
+                skillsSelect={this.handleSkillsSelect}
+                srcimage = {this.state.userInfo.photo}
+                file={this.fileInput}
+                changeImage={this.handleImage}
+                fakeclick={this.handleFakeclick}
+              />
+            }
+          />  
+        </Switch>
       </div>
-
     );
   }
 }
