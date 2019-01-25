@@ -53,7 +53,7 @@ class App extends Component {
       })
       .then(data => {
         return (
-          console.log('success',data.cardURL),
+          console.log('success',data),
           this.setState ({
             showUrl: data.cardURL,
             isPushing: false
