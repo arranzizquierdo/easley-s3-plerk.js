@@ -22,10 +22,17 @@ class App extends Component {
         "skills": ["HTML", "CSS", "Gulp"]
       },
       fr: new FileReader(),
-      showUrl: '', 
+      showUrl: '',
       isLoading: true,
-      showTwitterContainer: false
-      }
+      showTwitterContainer: false,
+      openDesignCollapsible: true,
+      openFillCollapsible: false,
+      openShareCollapsible: false,
+      arrowDesignCollapsible: "fa-angle-up",
+      arrowFillCollapsible: "fa-angle-down",
+      arrowShareCollapsible: "fa-angle-down",
+
+    }
     this.backEndCall();
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleTypographyChange = this.handleTypographyChange.bind(this);
@@ -36,10 +43,11 @@ class App extends Component {
     this.handleImage = this.handleImage.bind(this);
     this.handleFakeclick = this.handleFakeclick.bind(this);
     this.handlerSendBackend = this.handlerSendBackend.bind(this);
+    this.toggleCollapsible = this.toggleCollapsible.bind(this);
   }
 
   sendRequest() {
-    this.setState ({
+    this.setState({
       showTwitterContainer: true
     })
     fetch("https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/", {
@@ -49,31 +57,31 @@ class App extends Component {
         "content-type": "application/json"
       }
     })
-      .then(response=> {
+      .then(response => {
         return response.json()
       })
       .then(data => {
         return (
-          console.log('success',data),
-          this.setState ({
+          console.log('success', data),
+          this.setState({
             showUrl: data.cardURL,
             showTwitterContainer: true,
             isLoading: false,
           })
         )
       })
-       .catch(function(error) {
-       console.log('error', error);
-       });
+      .catch(function (error) {
+        console.log('error', error);
+      });
   }
-  
+
 
   handlerSendBackend(event) {
     event.preventDefault();
     this.sendRequest();
   }
 
-  addImageToState(){
+  addImageToState() {
     this.setState((prevState) => {
       return {
         userInfo: {
@@ -84,17 +92,74 @@ class App extends Component {
     });
   }
 
+  toggleCollapsible(event) {
+    console.log('event target', event.target.className);
+    if(event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-up")){
+      this.setState({
+        openDesignCollapsible: false,
+        arrowDesignCollapsible: "fa-angle-down",
+      });
+    }
+
+    if(event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-down")){
+      this.setState({
+        openDesignCollapsible: true,
+        openFillCollapsible: false,
+        openShareCollapsible: false,
+        arrowDesignCollapsible: "fa-angle-up",
+        arrowFillCollapsible: "fa-angle-down",
+        arrowShareCollapsible: "fa-angle-down",
+      });
+    }
+    
+    if(event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-down")) {
+      this.setState({
+        openDesignCollapsible: false,
+        openFillCollapsible: true,
+        openShareCollapsible: false,
+        arrowDesignCollapsible: "fa-angle-down",
+        arrowFillCollapsible: "fa-angle-up",
+        arrowShareCollapsible: "fa-angle-down",
+      });
+    }
+
+    if(event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-up")) {
+      this.setState({
+        openFillCollapsible: false,
+        arrowFillCollapsible: "fa-angle-down",
+      });
+    }
+
+    if(event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-down")) {
+      this.setState({
+        openDesignCollapsible: false,
+        openFillCollapsible: false,
+        openShareCollapsible: true,
+        arrowDesignCollapsible: "fa-angle-down",
+        arrowFillCollapsible: "fa-angle-down",
+        arrowShareCollapsible: "fa-angle-up",
+      });
+    }
+
+    if(event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-up")) {
+      this.setState({
+        openShareCollapsible: false,
+        arrowShareCollapsible: "fa-angle-down",
+      });
+    }
+  }
+
   handleImage(event) {
     event.preventDefault();
     const myFile = this.fileInput.current;
-    console.dir('this.fileInput.current',myFile);
+    console.dir('this.fileInput.current', myFile);
     const fileUpdatedbyuser = this.fileInput.current.files[0];
-    console.dir('this.fileInput.current',this.fileInput.current.files) 
+    console.dir('this.fileInput.current', this.fileInput.current.files)
     this.state.fr.addEventListener('load', this.addImageToState);
-    this.state.fr.readAsDataURL(fileUpdatedbyuser); 
+    this.state.fr.readAsDataURL(fileUpdatedbyuser);
   }
 
-  handleFakeclick(){
+  handleFakeclick() {
     this.fileInput.current.click();
   }
 
@@ -174,7 +239,9 @@ class App extends Component {
 
   handleChangeInput(event) {
     const { value, name } = event.target;
+    
     this.setState((prevState) => {
+      console.log('prevstate',prevState)
       return {
         userInfo: {
           ...prevState.userInfo,
@@ -187,7 +254,19 @@ class App extends Component {
 
 
   render() {
-    const { skills, userInfo } = this.state;
+    const {
+      skills,
+      userInfo,
+      showUrl,
+      isLoading,
+      showTwitterContainer,
+      openDesignCollapsible,
+      openFillCollapsible,
+      openShareCollapsible,
+      arrowDesignCollapsible,
+      arrowFillCollapsible,
+      arrowShareCollapsible
+    } = this.state;
 
     return (
 
@@ -209,17 +288,24 @@ class App extends Component {
                 changeColor={this.handleColorChange}
                 changeTypography={this.handleTypographyChange}
                 skillsSelect={this.handleSkillsSelect}
-                srcimage = {this.state.userInfo.photo}
+                srcimage={this.state.userInfo.photo}
                 file={this.fileInput}
                 changeImage={this.handleImage}
                 fakeclick={this.handleFakeclick}
-                showUrl={this.state.showUrl}
-                loading={this.state.isLoading}
+                showUrl={showUrl}
+                loading={isLoading}
                 handlerSendBackend={this.handlerSendBackend}
-                showTwitterContainer={this.state.showTwitterContainer}
+                showTwitterContainer={showTwitterContainer}
+                toggleCollapsible={this.toggleCollapsible}
+                openDesignCollapsible={openDesignCollapsible}
+                openFillCollapsible={openFillCollapsible}
+                openShareCollapsible={openShareCollapsible}
+                arrowDesignCollapsible={arrowDesignCollapsible}
+                arrowFillCollapsible={arrowFillCollapsible}
+                arrowShareCollapsible={arrowShareCollapsible}
               />
             }
-          />  
+          />
         </Switch>
       </div>
     );

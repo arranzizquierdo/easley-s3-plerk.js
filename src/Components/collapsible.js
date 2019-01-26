@@ -1,29 +1,6 @@
 import React, { Component } from "react";
 
 class Collapsible extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      arrowIcon: props.arrowIcon, 
-      collapsiblehidden: props.collapsiblehidden
-    };
-    this.toggleCollapsible = this.toggleCollapsible.bind(this);
-  }
-
-  toggleCollapsible(event) {
-    console.log('event target',event.target);
-    if (this.state.arrowIcon.includes("fa-angle-up")) {
-      this.setState({
-        arrowIcon: "fa-angle-down",
-        collapsiblehidden: true
-      });
-    } else {
-      this.setState({ 
-        arrowIcon: "fa-angle-up", 
-        collapsiblehidden: false
-      });
-    }
-  }
 
   render() {
     return (
@@ -31,8 +8,8 @@ class Collapsible extends Component {
         <form className="custom-form" action="" method="GET">
           <fieldset className="deco_fieldset">
             <div
-              onClick={this.toggleCollapsible}
-              className="container_fieldset-title collapseform-design"
+              onClick={this.props.toggleCollapsible}
+              className={`container_fieldset-title collapseform-design ${this.props.title}`}
             >
               <div className="container_fieldset-icon">
                 <i className={this.props.icon} />
@@ -41,15 +18,21 @@ class Collapsible extends Component {
                 {this.props.title}
               </legend>
               <div className="container_arrow-icon">
-                <i className={`fas ${this.state.arrowIcon} icon_design`} />
+                <i className={`fas ${this.props.arrowIcon} ${this.props.title} icon_design`} />
               </div>
             </div>
-            <div className={`container ${(this.state.collapsiblehidden ===true) ? "hidden" : "" }`}>
-            {(this.props.title === "COMPARTE") ? <button className="button_deco" type="submit" onClick={this.props.handlerSendBackend}>
-                            <i className="far fa-address-card"></i>Crear tarjeta</button>:<span></span>
-                            
-          }
-            {this.props.children}
+            <div className={`container ${(this.props.collapsible === false) ? "hidden" : ""}`}>
+              {(this.props.title === "COMPARTE") ?
+                <button
+                  className="button_deco"
+                  type="submit"
+                  onClick={this.props.handlerSendBackend}>
+                  <i className="far fa-address-card"></i>
+                  Crear tarjeta
+                </button> :
+                <span></span>
+              }
+              {this.props.children}
             </div>
           </fieldset>
         </form>
