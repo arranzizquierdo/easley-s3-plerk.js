@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Collapsible from "./collapsible";
 import DesignContent from "./DesignContent";
 import InputSkill from "./InputSkill";
@@ -191,5 +192,35 @@ class CollapsiblesThree extends Component {
     );
   }
 }
+
+CollapsiblesThree.propTypes = {
+    phone: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    linkedin: PropTypes.string.isRequired,
+    github: PropTypes.string.isRequired,
+    file: PropTypes.func.isRequired,
+    changeImage: PropTypes.func.isRequired,
+    srcimage: PropTypes.string.isRequired,
+    fakeclick: PropTypes.func.isRequired,
+    changeInput: PropTypes.func.isRequired,
+    changeColor: PropTypes.func.isRequired,
+    changeTypography: PropTypes.func.isRequired,
+    skills: PropTypes.arrayOf(PropTypes.string).isRequired,
+    nameCardInput: PropTypes.string.isRequired,
+    jobCardInput: PropTypes.string.isRequired,
+    skillsSelect: PropTypes.func.isRequired,
+    userInfo: PropTypes.object.isRequired,
+    showUrl: PropTypes.string.isRequired,
+    loading: PropTypes.bool.isRequired,
+    handlerSendBackend: PropTypes.func.isRequired,
+    showTwitterContainer: PropTypes.bool.isRequired,
+    openDesignCollapsible:PropTypes.bool.isRequired,
+    openFillCollapsible:PropTypes.bool.isRequired,
+    openShareCollapsible: PropTypes.bool.isRequired,
+    toggleCollapsible: PropTypes.func.isRequired,
+    arrowDesignCollapsible:PropTypes.string.isRequired,
+    arrowFillCollapsible: PropTypes.string.isRequired,
+    arrowShareCollapsible: PropTypes.string.isRequired,
+  };
 
 export default CollapsiblesThree;
