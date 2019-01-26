@@ -42,4 +42,14 @@ class Collapsible extends Component {
   }
 }
 
+Collapsible.propTypes = {
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  arrowIcon: PropTypes.string.isRequired,
+  collapsible: PropTypes.bool.isRequired,
+  toggleCollapsible: PropTypes.func.isRequired,
+  skills: PropTypes.arrayOf(PropTypes.string),
+  handlerSendBackend: PropTypes.func,
+};
+
 export default Collapsible;

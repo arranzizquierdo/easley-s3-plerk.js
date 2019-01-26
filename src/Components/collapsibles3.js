@@ -8,23 +8,23 @@ import Loading from "./Loading";
 import ShareTwitter from "./ShareTwitter";
 
 class CollapsiblesThree extends Component {
-
   handleCheckedSkills(skill) {
     console.log(this.props);
     return this.props.userInfo.skills.includes(skill) ? true : false;
   }
 
   render() {
-    const { 
-        skills, 
-        toggleCollapsible, 
-        handlerSendBackend,
-        arrowDesignCollapsible,
-        arrowFillCollapsible,
-        arrowShareCollapsible,
-        openDesignCollapsible,
-        openFillCollapsible,
-        openShareCollapsible} = this.props;
+    const {
+      skills,
+      toggleCollapsible,
+      handlerSendBackend,
+      arrowDesignCollapsible,
+      arrowFillCollapsible,
+      arrowShareCollapsible,
+      openDesignCollapsible,
+      openFillCollapsible,
+      openShareCollapsible
+    } = this.props;
     const skillsSelect = this.props.skillsSelect;
     return (
       <div>
@@ -44,7 +44,6 @@ class CollapsiblesThree extends Component {
           collapsible={openFillCollapsible}
           skills={skills}
           toggleCollapsible={toggleCollapsible}
-
         >
           <div>
             <label className="fill_subtitle" htmlFor="firstName">
@@ -194,33 +193,33 @@ class CollapsiblesThree extends Component {
 }
 
 CollapsiblesThree.propTypes = {
-    phone: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    linkedin: PropTypes.string.isRequired,
-    github: PropTypes.string.isRequired,
-    file: PropTypes.func.isRequired,
-    changeImage: PropTypes.func.isRequired,
-    srcimage: PropTypes.string.isRequired,
-    fakeclick: PropTypes.func.isRequired,
-    changeInput: PropTypes.func.isRequired,
-    changeColor: PropTypes.func.isRequired,
-    changeTypography: PropTypes.func.isRequired,
-    skills: PropTypes.arrayOf(PropTypes.string).isRequired,
-    nameCardInput: PropTypes.string.isRequired,
-    jobCardInput: PropTypes.string.isRequired,
-    skillsSelect: PropTypes.func.isRequired,
-    userInfo: PropTypes.object.isRequired,
-    showUrl: PropTypes.string.isRequired,
-    loading: PropTypes.bool.isRequired,
-    handlerSendBackend: PropTypes.func.isRequired,
-    showTwitterContainer: PropTypes.bool.isRequired,
-    openDesignCollapsible:PropTypes.bool.isRequired,
-    openFillCollapsible:PropTypes.bool.isRequired,
-    openShareCollapsible: PropTypes.bool.isRequired,
-    toggleCollapsible: PropTypes.func.isRequired,
-    arrowDesignCollapsible:PropTypes.string.isRequired,
-    arrowFillCollapsible: PropTypes.string.isRequired,
-    arrowShareCollapsible: PropTypes.string.isRequired,
-  };
+  phone: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  linkedin: PropTypes.string.isRequired,
+  github: PropTypes.string.isRequired,
+  file: PropTypes.func.isRequired,
+  changeImage: PropTypes.func.isRequired,
+  srcimage: PropTypes.string.isRequired,
+  fakeclick: PropTypes.func.isRequired,
+  changeInput: PropTypes.func.isRequired,
+  changeColor: PropTypes.func.isRequired,
+  changeTypography: PropTypes.func.isRequired,
+  skills: PropTypes.arrayOf(PropTypes.string).isRequired,
+  nameCardInput: PropTypes.string.isRequired,
+  jobCardInput: PropTypes.string.isRequired,
+  skillsSelect: PropTypes.func.isRequired,
+  userInfo: PropTypes.object.isRequired,
+  showUrl: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  handlerSendBackend: PropTypes.func.isRequired,
+  showTwitterContainer: PropTypes.bool.isRequired,
+  openDesignCollapsible: PropTypes.bool.isRequired,
+  openFillCollapsible: PropTypes.bool.isRequired,
+  openShareCollapsible: PropTypes.bool.isRequired,
+  toggleCollapsible: PropTypes.func.isRequired,
+  arrowDesignCollapsible: PropTypes.string.isRequired,
+  arrowFillCollapsible: PropTypes.string.isRequired,
+  arrowShareCollapsible: PropTypes.string.isRequired
+};
 
 export default CollapsiblesThree;
