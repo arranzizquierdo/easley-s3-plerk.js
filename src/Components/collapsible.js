@@ -4,7 +4,7 @@ class Collapsible extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      arrowIcon: props.arrowIcon, //aqui siempre le paso el mismo no cambia el estado inicial
+      arrowIcon: props.arrowIcon, 
       collapsiblehidden: props.collapsiblehidden
     };
     this.toggleCollapsible = this.toggleCollapsible.bind(this);
@@ -45,6 +45,10 @@ class Collapsible extends Component {
               </div>
             </div>
             <div className={`container ${(this.state.collapsiblehidden ===true) ? "hidden" : "" }`}>
+            {(this.props.title === "COMPARTE") ? <button className="button_deco" type="submit" onClick={this.props.handlerSendBackend}>
+                            <i className="far fa-address-card"></i>Crear tarjeta</button>:<span></span>
+                            
+          }
             {this.props.children}
             </div>
           </fieldset>

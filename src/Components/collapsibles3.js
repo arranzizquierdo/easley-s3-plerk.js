@@ -61,19 +61,17 @@ class CollapsiblesThree extends Component {
                         </div>
                     </div>
                 </Collapsible>
-                <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down" collapsiblehidden={true}>
-                    <div>
-                        <div>
-                            <button className="button_deco" type="submit" onClick={this.props.handlerSendBackend}><i className="far fa-address-card"></i>Crear tarjeta</button>
-
-                        </div>
-                        {this.props.loading ? (
+                <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down" collapsiblehidden={true} handlerSendBackend={this.props.handlerSendBackend}>
+                <div className={(this.props.showTwitterContainer === false) ? "twitter_mother hidden" : "twitter_mother"}>
+                <div className="twitter_container">
+                        {this.props.loading === true ? (
                             <Loading />
                         ) : (
                                 <ShareTwitter showUrl={this.props.showUrl} />)}
                     </div>
+                    </div>
                 </Collapsible>
-            </div>
+                </div>
         )
     }
 

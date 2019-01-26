@@ -23,7 +23,8 @@ class App extends Component {
       },
       fr: new FileReader(),
       showUrl: '', 
-      isLoading: true
+      isLoading: true,
+      showTwitterContainer: false
       }
     this.backEndCall();
     this.handleColorChange = this.handleColorChange.bind(this);
@@ -38,6 +39,9 @@ class App extends Component {
   }
 
   sendRequest() {
+    this.setState ({
+      showTwitterContainer: true
+    })
     fetch("https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/", {
       method: "POST",
       body: JSON.stringify(this.state.userInfo),
@@ -53,21 +57,11 @@ class App extends Component {
           console.log('success',data),
           this.setState ({
             showUrl: data.cardURL,
-            isLoading: false
+            showTwitterContainer: true,
+            isLoading: false,
           })
         )
       })
-      // .then(function(data) {
-      //   return (
-      //     console.log('success', data.cardURL),
-      //     this.setState = {
-      //       showUrl: data.cardURL
-      //     }
-      //     );
-      // })
-      // .then(function (result) {
-      //   showURL(result);
-      // })
        .catch(function(error) {
        console.log('error', error);
        });
@@ -220,8 +214,9 @@ class App extends Component {
                 changeImage={this.handleImage}
                 fakeclick={this.handleFakeclick}
                 showUrl={this.state.showUrl}
-                loading={this.state.isPushing}
+                loading={this.state.isLoading}
                 handlerSendBackend={this.handlerSendBackend}
+                showTwitterContainer={this.state.showTwitterContainer}
               />
             }
           />  

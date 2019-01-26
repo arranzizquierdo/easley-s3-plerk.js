@@ -19,7 +19,8 @@ class CardGenerator extends Component {
 			fakeclick,
 			showUrl,
 			loading,
-			handlerSendBackend
+			handlerSendBackend,
+			showTwitterContainer
 		} = this.props;
 		return (
 			<React.Fragment>
@@ -57,6 +58,7 @@ class CardGenerator extends Component {
 					showUrl={showUrl}
 					loading={loading}
 					handlerSendBackend={handlerSendBackend}
+					showTwitterContainer={showTwitterContainer}
 				/>
 				<Footer />
 			</React.Fragment>
