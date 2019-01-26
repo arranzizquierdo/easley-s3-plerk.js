@@ -3,6 +3,7 @@ import CardGenerator from './Components/CardGenerator';
 import LandingPage from './Components/LandingPage';
 import { Route, Switch } from 'react-router-dom';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,10 @@ class App extends Component {
         "photo": "",
         "skills": ["HTML", "CSS", "Gulp"]
       },
-      fr: new FileReader() 
+      fr: new FileReader(),
+      showUrl: '', 
+      isLoading: true,
+      showTwitterContainer: false
       }
     this.backEndCall();
     this.handleColorChange = this.handleColorChange.bind(this);
@@ -31,6 +35,42 @@ class App extends Component {
     this.addImageToState = this.addImageToState.bind(this);
     this.handleImage = this.handleImage.bind(this);
     this.handleFakeclick = this.handleFakeclick.bind(this);
+    this.handlerSendBackend = this.handlerSendBackend.bind(this);
+  }
+
+  sendRequest() {
+    this.setState ({
+      showTwitterContainer: true
+    })
+    fetch("https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/", {
+      method: "POST",
+      body: JSON.stringify(this.state.userInfo),
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(response=> {
+        return response.json()
+      })
+      .then(data => {
+        return (
+          console.log('success',data),
+          this.setState ({
+            showUrl: data.cardURL,
+            showTwitterContainer: true,
+            isLoading: false,
+          })
+        )
+      })
+       .catch(function(error) {
+       console.log('error', error);
+       });
+  }
+  
+
+  handlerSendBackend(event) {
+    event.preventDefault();
+    this.sendRequest();
   }
 
   addImageToState(){
@@ -52,7 +92,6 @@ class App extends Component {
     console.dir('this.fileInput.current',this.fileInput.current.files) 
     this.state.fr.addEventListener('load', this.addImageToState);
     this.state.fr.readAsDataURL(fileUpdatedbyuser); 
-    //alert(`Selected file - ${this.fileInput.current.files[0].name}`); 
   }
 
   handleFakeclick(){
@@ -174,6 +213,10 @@ class App extends Component {
                 file={this.fileInput}
                 changeImage={this.handleImage}
                 fakeclick={this.handleFakeclick}
+                showUrl={this.state.showUrl}
+                loading={this.state.isLoading}
+                handlerSendBackend={this.handlerSendBackend}
+                showTwitterContainer={this.state.showTwitterContainer}
               />
             }
           />  

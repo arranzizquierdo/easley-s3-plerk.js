@@ -16,7 +16,11 @@ class CardGenerator extends Component {
 			srcimage,
 			file,
 			changeImage,
-			fakeclick
+			fakeclick,
+			showUrl,
+			loading,
+			handlerSendBackend,
+			showTwitterContainer
 		} = this.props;
 		return (
 			<React.Fragment>
@@ -51,6 +55,10 @@ class CardGenerator extends Component {
 					jobCardInput={userInfo.job}
 					skillsSelect={skillsSelect}
 					userInfo={userInfo}
+					showUrl={showUrl}
+					loading={loading}
+					handlerSendBackend={handlerSendBackend}
+					showTwitterContainer={showTwitterContainer}
 				/>
 				<Footer />
 			</React.Fragment>

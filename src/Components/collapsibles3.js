@@ -3,6 +3,8 @@ import Collapsible from './collapsible';
 import DesignContent from './DesignContent';
 import InputSkill from './InputSkill';
 import DefaultImage from '../Images/default.jpeg';
+import Loading from './Loading';
+import ShareTwitter from './ShareTwitter';
 
 class CollapsiblesThree extends Component {
     constructor(props) {
@@ -10,13 +12,13 @@ class CollapsiblesThree extends Component {
         this.icon = '';
         console.log('props colap3', props);
     }
-    
-handleCheckedSkills(skill){
-    console.log(this.props)
-   return (this.props.userInfo.skills.includes(skill)) 
-    ? true 
-    : false
-}
+
+    handleCheckedSkills(skill) {
+        console.log(this.props)
+        return (this.props.userInfo.skills.includes(skill))
+            ? true
+            : false
+    }
 
     render() {
         const { skills } = this.props;
@@ -27,7 +29,7 @@ handleCheckedSkills(skill){
                 <Collapsible title="DISEÑA" icon="far fa-object-ungroup" arrowIcon="fa-angle-up" collapsiblehidden={false} >
                     <DesignContent {...this.props} />
                 </Collapsible>
-                <Collapsible title="RELLENA" icon="far fa-keyboard" arrowIcon="fa-angle-down" collapsiblehidden={true} skills= {skills}>
+                <Collapsible title="RELLENA" icon="far fa-keyboard" arrowIcon="fa-angle-down" collapsiblehidden={true} skills={skills}>
 
                     <div>
                         <label className="fill_subtitle" htmlFor="firstName">Nombre completo</label>
@@ -36,10 +38,10 @@ handleCheckedSkills(skill){
                         <input onChange={this.props.changeInput} className="input_box profession__input" id="position" placeholder="Ej: Front-end unicorn" value={this.props.jobCardInput} type="text" name="job" />
                         <label className="fill_subtitle" htmlFor="profileImage">Imagen de perfil</label>
                         <div className="container_add-image">
-                            <input type="button"  onClick={this.props.fakeclick} className="button_add-image" value="Añadir imagen" />
+                            <input type="button" onClick={this.props.fakeclick} className="button_add-image" value="Añadir imagen" />
                             <input className="action__hiddenField" ref={this.props.file} type="file" onChange={this.props.changeImage} />
                             <div className="container_image-preview">
-                                <img src={(this.props.srcimage === "")? DefaultImage : this.props.srcimage} alt="user" className="image-preview" />
+                                <img src={(this.props.srcimage === "") ? DefaultImage : this.props.srcimage} alt="user" className="image-preview" />
                             </div>
                         </div>
                         <label className="fill_subtitle" htmlFor="mail">Email</label>
@@ -51,30 +53,25 @@ handleCheckedSkills(skill){
                         <label className="fill_subtitle" htmlFor="github">Github</label>
                         <input value={this.props.github} onChange={this.props.changeInput} name="github" className="input_box github__input" id="github" placeholder="Ej: sally-hill" type="text" />
                         <h3 className="fill_subtitle fill_subtitle--skills">Habilidades (máximo 3)</h3>
-                        <div className="container_skills" skills= {skills}>
-                            {skills.map ((skill, i) => {
-                                return <InputSkill key={i} skill={skill} skillsSelect={skillsSelect} checked={this.handleCheckedSkills(skill)}/>
+                        <div className="container_skills" skills={skills}>
+                            {skills.map((skill, i) => {
+                                return <InputSkill key={i} skill={skill} skillsSelect={skillsSelect} checked={this.handleCheckedSkills(skill)} />
                             })}
-                            
+
                         </div>
                     </div>
                 </Collapsible>
-                <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down" collapsiblehidden={true}>
-                    <div>
-                        <div>
-                            <button className="button_deco" type="submit"><i className="far fa-address-card"></i>Crear tarjeta</button>
-                        </div>
-                        {/* 
-                        <div className="hidden twitter_mother">
-                            <div className="twitter_container">
-                                <h2 className="title_createcard_twitter">La tarjeta ha sido creada:</h2>
-                                <a className="twitter_link" href=""></a>
-                                <a className="button_twitter twitter-share-button" href=""><i className="fab fa-twitter"></i>Compartir en Twitter</a>
-                            </div>
-                        </div> */}
+                <Collapsible title="COMPARTE" icon="fas fa-share-alt" arrowIcon="fa-angle-down" collapsiblehidden={true} handlerSendBackend={this.props.handlerSendBackend}>
+                <div className={(this.props.showTwitterContainer === false) ? "twitter_mother hidden" : "twitter_mother"}>
+                <div className="twitter_container">
+                        {this.props.loading === true ? (
+                            <Loading />
+                        ) : (
+                                <ShareTwitter showUrl={this.props.showUrl} />)}
+                    </div>
                     </div>
                 </Collapsible>
-            </div>
+                </div>
         )
     }
 
