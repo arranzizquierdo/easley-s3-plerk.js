@@ -31,7 +31,6 @@ class App extends Component {
       arrowDesignCollapsible: "fa-angle-up",
       arrowFillCollapsible: "fa-angle-down",
       arrowShareCollapsible: "fa-angle-down",
-
     }
     this.backEndCall();
     this.handleColorChange = this.handleColorChange.bind(this);
@@ -44,6 +43,40 @@ class App extends Component {
     this.handleFakeclick = this.handleFakeclick.bind(this);
     this.handlerSendBackend = this.handlerSendBackend.bind(this);
     this.toggleCollapsible = this.toggleCollapsible.bind(this);
+  }
+
+  componentDidMount() {
+    this.getSavedData();
+    
+  }
+
+  savedData(data){
+    localStorage.setItem('userInfo',JSON.stringify(data));
+  }
+
+  getSavedData(){
+    const userData = localStorage.getItem('userInfo');
+    if(userData !== null){
+      console.log('userdaata local',userData)
+       this.setState({
+        userInfo: {
+          //palette: userData.palette,
+          //typography: userData.typography,
+          "name": userData.name,
+          "job": userData.job,
+          "phone": userData.phone,
+          "email": userData.email,
+          "linkedin": userData.linkedin,
+          "github": userData.github,
+          "photo": userData.photo,
+          "skills": userData.skills
+        }
+       });
+      return JSON.parse(userData)
+    }else{
+      //this.fetchResults();
+      //return {};
+    }
   }
 
   sendRequest() {
@@ -68,11 +101,13 @@ class App extends Component {
             showTwitterContainer: true,
             isLoading: false,
           })
-        )
+        )       
       })
       .catch(function (error) {
         console.log('error', error);
       });
+      let showUrl = this.state.showUrl
+      this.savedData(showUrl);
   }
 
 
@@ -90,6 +125,8 @@ class App extends Component {
         }
       }
     });
+    let userInfo = this.state.userInfo
+    this.savedData(userInfo);
   }
 
   toggleCollapsible(event) {
@@ -200,6 +237,8 @@ class App extends Component {
       }
     });
     this.forceUpdate();
+    // let userInfo = this.state.userInfo
+    // this.savedData(userInfo);
   }
 
   handleTypographyChange(value) {
@@ -216,6 +255,8 @@ class App extends Component {
       }
     });
     this.forceUpdate();
+    // let userInfo = this.state.userInfo
+    // this.savedData(userInfo);
   }
 
   handleSkillsSelect(event) {
@@ -235,6 +276,8 @@ class App extends Component {
         skills: skillArrNew
       }
     })
+    let userInfo = this.state.userInfo
+    this.savedData(userInfo);
   }
 
   handleChangeInput(event) {
@@ -249,6 +292,8 @@ class App extends Component {
         }
       }
     });
+    let userInfo = this.state.userInfo
+    this.savedData(userInfo);
   }
 
 
