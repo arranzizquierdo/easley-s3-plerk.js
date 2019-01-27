@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CardGenerator from './Components/CardGenerator';
 import LandingPage from './Components/LandingPage';
 import { Route, Switch } from 'react-router-dom';
-
+//import ImageDefault from './Images/default.jpeg'
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class App extends Component {
         "email": "",
         "linkedin": "",
         "github": "",
-        "photo": "",
+        "photo": "../Images/default.jpeg",
         "skills": ["HTML", "CSS", "Gulp"]
       },
       fr: new FileReader(),
@@ -47,26 +47,56 @@ class App extends Component {
 
   componentDidMount() {
     this.getSavedData();
-    
   }
 
-  savedData(data){
-    localStorage.setItem('userInfo',JSON.stringify(data));
+  savedData(data) {
+    localStorage.setItem('userInfo', JSON.stringify(data));
   }
 
-  getSavedData(){
+  getSavedData() {
     const userData = localStorage.getItem('userInfo');
-    if(userData !== null){
-      console.log('userdaata local',userData)
-      // this.setState({
-      //   userInfo:{
-        //
-      //}
-      // });
+    if (userData !== null) {
+      console.log('userdaata local', userData)
+      this.setState({
+        userInfo: {
+        palette: "",
+        typography: "",
+        "name": userData.name,
+        "job": userData.job,
+        "phone": userData.phone,
+        "email": userData.email,
+        "linkedin": userData.linkedin,
+        "github": userData.github,
+        "photo": userData.photo,
+        "skills": ["HTML", "CSS", "Gulp"]
+        }
+      });
       return JSON.parse(userData)
-    }else{
+    } else {
       //this.fetchResults();
       //return [];
+      // return {
+      //   userInfo: {
+      //     ...prevState.userInfo,
+      //     [name]: value,
+      //   }
+      // }
+      return (
+        this.setState({
+          userInfo: {
+          palette: "",
+          typography: "",
+          "name": "hola",
+          "job": "",
+          "phone": "",
+          "email": "",
+          "linkedin": "",
+          "github": "",
+          "photo": '../Images/default.jpeg',
+          "skills": ["HTML", "CSS", "Gulp"]
+          }
+        })
+      )
     }
   }
 
@@ -97,7 +127,7 @@ class App extends Component {
       .catch(function (error) {
         console.log('error', error);
       });
-      //save showUrl
+    //save showUrl
   }
 
 
@@ -115,18 +145,20 @@ class App extends Component {
         }
       }
     });
+    let userInfo = this.state.userInfo
+    this.savedData(userInfo);
   }
 
   toggleCollapsible(event) {
     console.log('event target', event.target.className);
-    if(event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-up")){
+    if (event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-up")) {
       this.setState({
         openDesignCollapsible: false,
         arrowDesignCollapsible: "fa-angle-down",
       });
     }
 
-    if(event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-down")){
+    if (event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-down")) {
       this.setState({
         openDesignCollapsible: true,
         openFillCollapsible: false,
@@ -136,8 +168,8 @@ class App extends Component {
         arrowShareCollapsible: "fa-angle-down",
       });
     }
-    
-    if(event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-down")) {
+
+    if (event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-down")) {
       this.setState({
         openDesignCollapsible: false,
         openFillCollapsible: true,
@@ -148,14 +180,14 @@ class App extends Component {
       });
     }
 
-    if(event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-up")) {
+    if (event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-up")) {
       this.setState({
         openFillCollapsible: false,
         arrowFillCollapsible: "fa-angle-down",
       });
     }
 
-    if(event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-down")) {
+    if (event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-down")) {
       this.setState({
         openDesignCollapsible: false,
         openFillCollapsible: false,
@@ -166,7 +198,7 @@ class App extends Component {
       });
     }
 
-    if(event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-up")) {
+    if (event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-up")) {
       this.setState({
         openShareCollapsible: false,
         arrowShareCollapsible: "fa-angle-down",
@@ -264,9 +296,9 @@ class App extends Component {
 
   handleChangeInput(event) {
     const { value, name } = event.target;
-    
+
     this.setState((prevState) => {
-      console.log('prevstate',prevState)
+      console.log('prevstate', prevState)
       return {
         userInfo: {
           ...prevState.userInfo,

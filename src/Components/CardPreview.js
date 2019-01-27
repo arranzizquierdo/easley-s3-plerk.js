@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ImageDefault from '../Images/default.jpeg';
+//import ImageDefault from '../Images/default.jpeg';
 import SocialLinkList from './SocialLinkList';
 
 
@@ -61,7 +61,8 @@ class CardPreview extends Component {
             <p className="profession">{this.paintJob()}</p> */}
           </div>
 
-          <img className="photo__user" src={(this.props.srcimage === "")? ImageDefault : this.props.srcimage} alt="User" />
+          {/* <img className="photo__user" src={(this.props.srcimage === "")? ImageDefault : this.props.srcimage} alt="User" /> */}
+          <img className="photo__user" src={this.props.srcimage} alt="User" />
 
           <SocialLinkList 
           itemsArr= {items}
