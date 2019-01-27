@@ -58,24 +58,15 @@ class App extends Component {
     const userData = localStorage.getItem('userInfo');
     if(userData !== null){
       console.log('userdaata local',userData)
-       this.setState({
-        userInfo: {
-          //palette: userData.palette,
-          //typography: userData.typography,
-          "name": userData.name,
-          "job": userData.job,
-          "phone": userData.phone,
-          "email": userData.email,
-          "linkedin": userData.linkedin,
-          "github": userData.github,
-          "photo": userData.photo,
-          "skills": userData.skills
-        }
-       });
+      // this.setState({
+      //   userInfo:{
+        //
+      //}
+      // });
       return JSON.parse(userData)
     }else{
       //this.fetchResults();
-      //return {};
+      //return [];
     }
   }
 
@@ -101,13 +92,12 @@ class App extends Component {
             showTwitterContainer: true,
             isLoading: false,
           })
-        )       
+        )
       })
       .catch(function (error) {
         console.log('error', error);
       });
-      let showUrl = this.state.showUrl
-      this.savedData(showUrl);
+      //save showUrl
   }
 
 
@@ -125,8 +115,6 @@ class App extends Component {
         }
       }
     });
-    let userInfo = this.state.userInfo
-    this.savedData(userInfo);
   }
 
   toggleCollapsible(event) {
@@ -237,8 +225,6 @@ class App extends Component {
       }
     });
     this.forceUpdate();
-    // let userInfo = this.state.userInfo
-    // this.savedData(userInfo);
   }
 
   handleTypographyChange(value) {
@@ -255,8 +241,6 @@ class App extends Component {
       }
     });
     this.forceUpdate();
-    // let userInfo = this.state.userInfo
-    // this.savedData(userInfo);
   }
 
   handleSkillsSelect(event) {
@@ -276,8 +260,6 @@ class App extends Component {
         skills: skillArrNew
       }
     })
-    let userInfo = this.state.userInfo
-    this.savedData(userInfo);
   }
 
   handleChangeInput(event) {
