@@ -301,7 +301,7 @@ class App extends Component {
     const { value, name } = event.target;
 
     this.setState((prevState) => {
-      console.log('prevstate', prevState)
+      console.log('prevstate', prevState.userInfo)
       return {
         userInfo: {
           ...prevState.userInfo,
@@ -309,11 +309,16 @@ class App extends Component {
         }
       }
     });
-    let userInfo = this.state.userInfo
-    this.savedData(userInfo);
+  
+    console.log('state user info name ',this.state.userInfo)
+    this.savedData(this.state.userInfo);
   }
 
 
+  componentDidUpdate() {
+    console.log('this state userinfo component did update',this.state.userInfo)
+    this.savedData(this.state.userInfo);
+  }
 
   render() {
     const {
