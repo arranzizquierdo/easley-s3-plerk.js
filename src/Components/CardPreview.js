@@ -38,15 +38,16 @@ class CardPreview extends Component {
 
   render() {
 
-    const linkedin = this.props.linkedin
-    const github = this.props.github
-    const phone = this.props.phone
-    const email = this.props.email
+    const linkedin=this.props.linkedin
+    const github=this.props.github
+    const phone=this.props.phone
+    const email=this.props.email
+    const handleReset=this.props.handleReset
 
     return (
       <section className="container__cardview">
         <div className="container__buttom">
-          <button className="buttom__reset" type="button">
+          <button onClick={handleReset} className="buttom__reset" type="button">
             <i className="icon__trash far fa-trash-alt icon__trash" />
             Reset
           </button>

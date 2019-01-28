@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
 class DesignContent extends Component {
-
+  constructor(props){
+    super(props);
+    //console.log(props);
+  }
     render() {
       return (
      <div className="form_design_content">
