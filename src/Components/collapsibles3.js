@@ -41,7 +41,7 @@ handleDisabledSkills (skill) {
     } = this.props;
     const skillsSelect = this.props.skillsSelect;
     return (
-      <div>
+      <div className="custom-section">
         <Collapsible
           title="DISEÑA"
           icon="far fa-object-ungroup"
@@ -186,6 +186,7 @@ handleDisabledSkills (skill) {
           handlerSendBackend={handlerSendBackend}
           toggleCollapsible={toggleCollapsible}
         >
+        
           <div
             className={
               this.props.showTwitterContainer === false
