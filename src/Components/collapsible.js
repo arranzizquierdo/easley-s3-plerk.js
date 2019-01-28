@@ -2,6 +2,29 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class Collapsible extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      arrowIcon: props.arrowIcon, //aqui siempre le paso el mismo no cambia el estado inicial
+      collapsiblehidden: props.collapsiblehidden
+    };
+    this.toggleCollapsible = this.toggleCollapsible.bind(this);
+  }
+
+  toggleCollapsible(event) {
+    //console.log('event target',event.target);
+    if (this.state.arrowIcon.includes("fa-angle-up")) {
+      this.setState({
+        arrowIcon: "fa-angle-down",
+        collapsiblehidden: true
+      });
+    } else {
+      this.setState({ 
+        arrowIcon: "fa-angle-up", 
+        collapsiblehidden: false
+      });
+    }
+  }
 
   render() {
     return (

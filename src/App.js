@@ -4,6 +4,19 @@ import LandingPage from './Components/LandingPage';
 import { Route, Switch } from 'react-router-dom';
 
 
+const defaultInfo = {
+  palette: "",
+  typography: "",
+  "name": "",
+  "job": "",
+  "phone": "",
+  "email": "",
+  "linkedin": "",
+  "github": "",
+  "photo": "",
+  "skills": ["HTML", "CSS", "Gulp"]
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +51,7 @@ class App extends Component {
     this.handleTypographyChange = this.handleTypographyChange.bind(this);
     this.handleSkillsSelect = this.handleSkillsSelect.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.handleReset = this.handleReset.bind(this);
     this.fileInput = React.createRef();
     this.addImageToState = this.addImageToState.bind(this);
     this.handleImage = this.handleImage.bind(this);
@@ -251,7 +265,14 @@ class App extends Component {
     });
   }
 
+  handleReset() {
+    this.setState({
+      userInfo: defaultInfo
+    })
+    
+  }
 
+  
 
   render() {
     const {
@@ -303,6 +324,7 @@ class App extends Component {
                 arrowDesignCollapsible={arrowDesignCollapsible}
                 arrowFillCollapsible={arrowFillCollapsible}
                 arrowShareCollapsible={arrowShareCollapsible}
+                handleReset={this.handleReset}
               />
             }
           />

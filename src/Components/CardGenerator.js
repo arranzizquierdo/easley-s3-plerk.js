@@ -27,7 +27,8 @@ class CardGenerator extends Component {
       toggleCollapsible,
       arrowDesignCollapsible,
       arrowFillCollapsible,
-      arrowShareCollapsible
+      arrowShareCollapsible,
+      handleReset
     } = this.props;
     return (
       <React.Fragment>
@@ -44,6 +45,7 @@ class CardGenerator extends Component {
           colorClass={userInfo.palette}
           typographyClass={userInfo.typography}
           srcimage={srcimage}
+          handleReset={handleReset}
         />
         <CollapsiblesThree
           phone={userInfo.phone}

@@ -8,11 +8,19 @@ import Loading from "./Loading";
 import ShareTwitter from "./ShareTwitter";
 
 class CollapsiblesThree extends Component {
-  handleCheckedSkills(skill) {
-    console.log(this.props);
-    return this.props.userInfo.skills.includes(skill) ? true : false;
-  }
+ 
+ constructor(props) {
+  super(props);
+  this.icon = '';
+  //console.log('props colap3', props);
+}
 
+handleCheckedSkills(skill){
+//console.log(this.props)
+return (this.props.userInfo.skills.includes(skill)) 
+? true 
+: false
+}
   render() {
     const {
       skills,
