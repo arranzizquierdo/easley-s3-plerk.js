@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CardGenerator from './Components/CardGenerator';
 import LandingPage from './Components/LandingPage';
 import { Route, Switch } from 'react-router-dom';
-{prueba linea }
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -69,7 +69,7 @@ class App extends Component {
         "linkedin": userData.linkedin,
         "github": userData.github,
         "photo": userData.photo,
-        "skills": userData.skills
+        "skills": ["HTML", "CSS", "Gulp"]
         }
       })
       )
