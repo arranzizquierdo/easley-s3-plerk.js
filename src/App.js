@@ -75,8 +75,8 @@ class App extends Component {
       return(
       this.setState({
         userInfo: {
-        palette: "",
-        typography: "",
+        palette: userData.palette,
+        typography: userData.typography,
         "name": userData.name,
         "job": userData.job,
         "phone": userData.phone,
@@ -273,6 +273,7 @@ class App extends Component {
         palette: paletteNumbers[value]
       }
     });
+    this.savedData(this.state.userInfo);
     this.forceUpdate();
   }
 
