@@ -70,7 +70,6 @@ class App extends Component {
         "github": userData.github,
         "photo": userData.photo,
         "skills": userData.skills
-        //["HTML", "CSS", "Gulp"]
         }
       })
       )
