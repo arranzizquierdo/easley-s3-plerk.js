@@ -179,6 +179,7 @@ return (this.props.userInfo.skills.includes(skill))
           handlerSendBackend={handlerSendBackend}
           toggleCollapsible={toggleCollapsible}
         >
+        
           <div
             className={
               this.props.showTwitterContainer === false
