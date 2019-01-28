@@ -69,7 +69,8 @@ class App extends Component {
         "linkedin": userData.linkedin,
         "github": userData.github,
         "photo": userData.photo,
-        "skills": ["HTML", "CSS", "Gulp"]
+        "skills": userData.skills
+        //"skills": ["HTML", "CSS", "Gulp"]
         }
       })
       )
@@ -129,7 +130,7 @@ class App extends Component {
       .catch(function (error) {
         console.log('error', error);
       });
-    //save showUrl
+    //save showUrl in local
   }
 
 
@@ -293,8 +294,8 @@ class App extends Component {
         skills: skillArrNew
       }
     })
-    // let userInfo = this.state.userInfo
-    // this.savedData(userInfo);
+    let userInfo = this.state.userInfo
+    this.savedData(userInfo);
   }
 
   handleChangeInput(event) {
