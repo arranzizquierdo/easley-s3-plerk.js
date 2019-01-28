@@ -43,7 +43,7 @@ class CardGenerator extends Component {
           linkedin={userInfo.linkedin}
           github={userInfo.github}
           colorClass={userInfo.palette}
-          typographyClass={userInfo.typography}
+          typographyClass={userInfo.typography.fontClass}
           srcimage={srcimage}
           handleReset={handleReset}
         />

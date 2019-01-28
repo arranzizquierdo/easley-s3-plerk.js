@@ -253,17 +253,20 @@ class App extends Component {
       1: {
         dark: 'add__color__dark-green',
         medium: 'add__color__medium-green',
-        light: 'add__border__light-green'
+        light: 'add__border__light-green',
+        id: 1
       },
       2: {
         dark: 'add__color__dark-red',
         medium: 'add__color__medium-red',
-        light: 'add__border__light-red'
+        light: 'add__border__light-red',
+        id: 2
       },
       3: {
         dark: 'add__color__dark-blue',
         medium: 'add__color__medium-blue',
-        light: 'add__border__light-blue'
+        light: 'add__border__light-blue',
+        id: 3
       },
     };
     // console.log('handleColorChange', paletteNumbers[value]);
@@ -279,9 +282,9 @@ class App extends Component {
 
   handleTypographyChange(value) {
     const typographyTypes = {
-      1: 'add__font__ubuntu',
-      2: 'add__font__comicsans',
-      3: 'add__font__monserrat'
+      1: { fontClass: 'add__font__ubuntu', id: 1},
+      2: { fontClass: 'add__font__comicsans', id: 2},
+      3: { fontClass: 'add__font__monserrat', id: 3}
     };
 
     this.setState({
