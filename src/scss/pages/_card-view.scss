@@ -1,13 +1,6 @@
 .card-creator__main {
   flex-shrink: 0;
   flex-grow: 1;
-
-  @media all and (min-width: 768px) {
-    padding: 20px 40px;
-    background-image: linear-gradient(rgb(245, 245, 245), rgb(255, 255, 255));
-    display: flex;
-    flex-direction: row-reverse;
-  }
 }
 
 .container__cardview {
@@ -18,10 +11,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  @media all and (min-width: 768px) {
-    border-radius: 6px;
-  }
 }
 
 .container__buttom {
@@ -202,4 +191,18 @@
 
 .add__font__monserrat {
   font-family: $font-family-secondary;
+}
+
+@media all and (min-width: 768px) {
+  .card-creator__main{
+    padding: 20px 40px;
+    background-image: linear-gradient(rgb(245, 245, 245), rgb(255, 255, 255));
+    display: flex;
+    flex-direction: row-reverse;
+    min-height: 100vh;
+  }
+
+  .container__cardview{
+    border-radius: 6px;
+  }
 }

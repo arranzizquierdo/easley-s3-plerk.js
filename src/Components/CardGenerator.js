@@ -34,6 +34,8 @@ class CardGenerator extends Component {
       <React.Fragment>
         <Header />
 
+        <main className="card-creator__main">
+
         <CardPreview
           nameCard={userInfo.name}
           jobCard={userInfo.job}
@@ -76,6 +78,7 @@ class CardGenerator extends Component {
           arrowFillCollapsible={arrowFillCollapsible}
           arrowShareCollapsible={arrowShareCollapsible}
         />
+        </main>
         <Footer />
       </React.Fragment>
     );

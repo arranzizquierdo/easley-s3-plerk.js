@@ -38,16 +38,15 @@ class CardPreview extends Component {
 
   render() {
 
-    const linkedin=this.props.linkedin
-    const github=this.props.github
-    const phone=this.props.phone
-    const email=this.props.email
-    const handleReset=this.props.handleReset
+    const linkedin = this.props.linkedin
+    const github = this.props.github
+    const phone = this.props.phone
+    const email = this.props.email
 
     return (
       <section className="container__cardview">
         <div className="container__buttom">
-          <button onClick={handleReset} className="buttom__reset" type="button">
+          <button onChange={this.props.handleReset} className="buttom__reset" type="button">
             <i className="icon__trash far fa-trash-alt icon__trash" />
             Reset
           </button>
@@ -63,6 +62,7 @@ class CardPreview extends Component {
           </div>
 
           <img className="photo__user" src={(this.props.srcimage === "")? ImageDefault : this.props.srcimage} alt="User" />
+          {/* <img className="photo__user" src={this.props.srcimage} alt="User" /> */}
 
           <SocialLinkList 
           itemsArr= {items}
