@@ -233,23 +233,48 @@ class App extends Component {
   }
 
   handleSkillsSelect(event) {
+    // const skillValue = event.target.value;
+    // const skillChecked = event.target.checked;
+    // const skillsArrUserInfo = this.state.userInfo.skills;
+    // let skillArrNew;
+    // if (skillsArrUserInfo.includes(skillValue)) {
+    //   skillArrNew = skillsArrUserInfo.filter(skill => skill !== skillValue)
+    // } else {
+    //   skillArrNew = skillsArrUserInfo.concat(skillValue)
+    // }
+    //   this.setState({
+  //     userInfo: {
+  //       ...this.state.userInfo,
+  //       skills: skillArrNew
+  //     }
+  //   })
     const skillValue = event.target.value;
-    console.log('value=>', skillValue);
     const skillsArrUserInfo = this.state.userInfo.skills;
-    console.log('arr skills', skillsArrUserInfo)
     let skillArrNew;
+
     if (skillsArrUserInfo.includes(skillValue)) {
       skillArrNew = skillsArrUserInfo.filter(skill => skill !== skillValue)
-    } else {
+      this.setState((prevState) => {
+        return {
+          userInfo: {
+            ...this.state.userInfo,
+            skills: skillArrNew
+          }
+        }
+      }) 
+    } else if (skillsArrUserInfo.length < 3) {
       skillArrNew = skillsArrUserInfo.concat(skillValue)
+      this.setState((prevState) => {
+        return {
+          userInfo: {
+            ...this.state.userInfo,
+            skills: skillsArrUserInfo.concat(skillValue)
+          }
+        }
+      }) 
     }
-    this.setState({
-      userInfo: {
-        ...this.state.userInfo,
-        skills: skillArrNew
-      }
-    })
   }
+
 
   handleChangeInput(event) {
     const { value, name } = event.target;

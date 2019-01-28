@@ -21,6 +21,18 @@ return (this.props.userInfo.skills.includes(skill))
 ? true 
 : false
 }
+
+handleDisabledSkills (skill) {
+  const skillsArrUserInfo= this.props.userInfo.skills;
+  if (skillsArrUserInfo.length >= 3) {
+      if (skillsArrUserInfo.includes(skill)){
+          return false
+      } else {
+          return true
+      }
+  }
+}
+
   render() {
     const {
       skills,
@@ -165,6 +177,7 @@ return (this.props.userInfo.skills.includes(skill))
                     skill={skill}
                     skillsSelect={skillsSelect}
                     checked={this.handleCheckedSkills(skill)}
+                    disabled={this.handleDisabledSkills(skill)}
                   />
                 );
               })}
