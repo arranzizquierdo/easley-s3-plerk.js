@@ -199,7 +199,7 @@ CollapsiblesThree.propTypes = {
   github: PropTypes.string,
   file: PropTypes.object,
   changeImage: PropTypes.func,
-  //srcimage: PropTypes.string,
+  srcimage: PropTypes.string,
   fakeclick: PropTypes.func,
   changeInput: PropTypes.func,
   changeColor: PropTypes.func,

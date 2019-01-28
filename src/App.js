@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import CardGenerator from './Components/CardGenerator';
 import LandingPage from './Components/LandingPage';
 import { Route, Switch } from 'react-router-dom';
-//import ImageDefault from './Images/default.jpeg'
 
 class App extends Component {
   constructor(props) {
@@ -56,11 +55,8 @@ class App extends Component {
   
   getSavedData() {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
-    //let photoLocal = "";
     if (userData !== null) {
       console.log('user data in local', userData)
-      const {email} = userData
-      console.log('email',{email})
       return(
       this.setState({
         userInfo: {
@@ -69,11 +65,12 @@ class App extends Component {
         "name": userData.name,
         "job": userData.job,
         "phone": userData.phone,
-        "email": email,
+        "email": userData.email,
         "linkedin": userData.linkedin,
         "github": userData.github,
         "photo": userData.photo,
-        "skills": ["HTML", "CSS", "Gulp"]
+        "skills": userData.skills
+        //["HTML", "CSS", "Gulp"]
         }
       })
       )
@@ -254,7 +251,6 @@ class App extends Component {
         light: 'add__border__light-blue'
       },
     };
-
     // console.log('handleColorChange', paletteNumbers[value]);
     this.setState({
       userInfo: {
@@ -298,6 +294,8 @@ class App extends Component {
         skills: skillArrNew
       }
     })
+    // let userInfo = this.state.userInfo
+    // this.savedData(userInfo);
   }
 
   handleChangeInput(event) {
