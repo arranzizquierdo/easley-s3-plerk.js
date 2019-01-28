@@ -9,7 +9,7 @@ import ShareTwitter from "./ShareTwitter";
 
 class CollapsiblesThree extends Component {
   handleCheckedSkills(skill) {
-    console.log(this.props);
+    //console.log(this.props);
     return this.props.userInfo.skills.includes(skill) ? true : false;
   }
 

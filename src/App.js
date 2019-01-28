@@ -18,7 +18,7 @@ class App extends Component {
         "email": "",
         "linkedin": "",
         "github": "",
-        "photo": "../Images/default.jpeg",
+        "photo": "",
         "skills": ["HTML", "CSS", "Gulp"]
       },
       fr: new FileReader(),
@@ -53,10 +53,15 @@ class App extends Component {
     localStorage.setItem('userInfo', JSON.stringify(data));
   }
 
+  
   getSavedData() {
-    const userData = localStorage.getItem('userInfo');
+    const userData = JSON.parse(localStorage.getItem('userInfo'));
+    //let photoLocal = "";
     if (userData !== null) {
-      console.log('userdaata local', userData)
+      console.log('user data in local', userData)
+      const {email} = userData
+      console.log('email',{email})
+      return(
       this.setState({
         userInfo: {
         palette: "",
@@ -64,14 +69,14 @@ class App extends Component {
         "name": userData.name,
         "job": userData.job,
         "phone": userData.phone,
-        "email": userData.email,
+        "email": email,
         "linkedin": userData.linkedin,
         "github": userData.github,
         "photo": userData.photo,
         "skills": ["HTML", "CSS", "Gulp"]
         }
-      });
-      return JSON.parse(userData)
+      })
+      )
     } else {
       //this.fetchResults();
       //return [];
@@ -82,20 +87,21 @@ class App extends Component {
       //   }
       // }
       return (
-        this.setState({
-          userInfo: {
-          palette: "",
-          typography: "",
-          "name": "hola",
-          "job": "",
-          "phone": "",
-          "email": "",
-          "linkedin": "",
-          "github": "",
-          "photo": '../Images/default.jpeg',
-          "skills": ["HTML", "CSS", "Gulp"]
-          }
-        })
+        // this.setState({
+        //   userInfo: {
+        //   palette: "",
+        //   typography: "",
+        //   "name": "hola",
+        //   "job": "",
+        //   "phone": "",
+        //   "email": "",
+        //   "linkedin": "",
+        //   "github": "",
+        //   "photo": '../Images/default.jpeg',
+        //   "skills": ["HTML", "CSS", "Gulp"]
+        //   }
+        // })
+        {}
       )
     }
   }
