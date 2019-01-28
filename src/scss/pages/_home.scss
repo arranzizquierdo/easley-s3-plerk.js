@@ -12,12 +12,6 @@
   font-family: $font-family-secondary;
   font-size: 19px;
   color: $color-orange-chicken;
-
-  @media all and (min-width: 768px) {
-    font-size: 24px;
-    padding-top: 31px;
-    margin-top: 0px;
-  }
 }
 
 .home__subtittle {
@@ -30,12 +24,6 @@
   font-family: $font-family-primary;
   color: $color-green-blue;
   font-size: 13px;
-
-  @media all and (min-width: 768px) {
-    font-size: 16px;
-    width: 331px;
-    padding-bottom: 21px;
-  }
 }
 
 .home__buttonbox {
@@ -44,10 +32,6 @@
   margin-right: auto;
   margin-left: auto;
   border-radius: 4px;
-
-  @media all and (min-width: 768px) {
-    width: 325px;
-  }
 }
 
 .buttonbox__icons {
@@ -78,17 +62,6 @@
   text-transform: uppercase;
   font-family: $font-family-primary;
   font-weight: $font-weight-semibold;
-
-  @media all and (min-width: 768px) {
-    margin-top: 70px;
-    margin-bottom: 60px;
-  }
-
-  @media all and (min-width:1200px) {
-    margin-top: 39px;
-    margin-bottom: 30px;
-  }
-
 }
 
 .buttonbox__icons__design,
@@ -114,4 +87,35 @@
 .buttonbox__text__share {
   margin-bottom: 13px;
   margin-top: 5px;
+}
+
+@media all and (min-width: 768px) {
+  .home__tittle{
+    font-size: 24px;
+    padding-top: 31px;
+    margin-top: 0px;
+  }
+
+  .home__subtittle{
+    font-size: 16px;
+    width: 331px;
+    padding-bottom: 21px;
+  }
+
+  .home__buttonbox{
+    width: 325px;
+  }
+
+  .home__link__begin{
+    margin-top: 70px;
+    margin-bottom: 60px;
+  }
+
+}
+
+@media all and (min-width: 1200px){
+  .home__link__begin{
+    margin-top: 39px;
+    margin-bottom: 30px;
+  }
 }

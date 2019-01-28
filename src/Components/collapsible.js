@@ -28,7 +28,7 @@ class Collapsible extends Component {
 
   render() {
     return (
-      <section className="custom-section">
+      <section>
         <form className="custom-form" action="" method="GET">
           <fieldset className="deco_fieldset">
             <div

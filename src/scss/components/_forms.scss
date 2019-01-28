@@ -18,10 +18,6 @@
   font-weight: $font-weight-semibold;
   color: $color-grey-stone;
   margin-left: 10px;
-
-  @media all and (min-widht: 768px) {
-    margin-right: 204px;
-  }
 }
 
 .fieldset_title--design {
@@ -86,10 +82,6 @@
     font-size: 14px;
     color: $color-grey-mouse;
     line-height: 1.43;
-  }
-
-  @media all and (min-widht: 768px) {
-    width: 329px;
   }
 }
 
@@ -156,4 +148,14 @@
 
 .button_deco {
   text-decoration: none;
+}
+
+@media all and (min-widht: 768px) {
+  .fieldset_title{
+    margin-right: 204px;
+  }
+ 
+  .input_box{
+    width: 329px;
+  }
 }
