@@ -12,16 +12,25 @@ class CollapsiblesThree extends Component {
     }
     
 handleCheckedSkills(skill){
-    console.log(this.props)
-   return (this.props.userInfo.skills.includes(skill)) 
+   return (this.props.userInfo.skills.includes(skill))
     ? true 
     : false
 }
 
+handleDisabledSkills (skill) {
+    const skillsArrUserInfo= this.props.userInfo.skills;
+    if (skillsArrUserInfo.length >= 3) {
+        if (skillsArrUserInfo.includes(skill)){
+            return false
+        } else {
+            return true
+        }
+    }
+}
+
     render() {
-        const { skills } = this.props;
-        console.log('skills', skills);
-        const skillsSelect = this.props.skillsSelect;
+        const { skills, skillsSelect } = this.props;
+       
         return (
             <div>
                 <Collapsible title="DISEÑA" icon="far fa-object-ungroup" arrowIcon="fa-angle-up" collapsiblehidden={false} >
@@ -53,7 +62,7 @@ handleCheckedSkills(skill){
                         <h3 className="fill_subtitle fill_subtitle--skills">Habilidades (máximo 3)</h3>
                         <div className="container_skills" skills= {skills}>
                             {skills.map ((skill, i) => {
-                                return <InputSkill key={i} skill={skill} skillsSelect={skillsSelect} checked={this.handleCheckedSkills(skill)}/>
+                                return <InputSkill key={i} skill={skill} skillsSelect={skillsSelect} checked={this.handleCheckedSkills(skill)} disabled={this.handleDisabledSkills(skill)}/>
                             })}
                             
                         </div>

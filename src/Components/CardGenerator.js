@@ -16,7 +16,7 @@ class CardGenerator extends Component {
 			srcimage,
 			file,
 			changeImage,
-			fakeclick
+			fakeclick,
 		} = this.props;
 		return (
 			<React.Fragment>

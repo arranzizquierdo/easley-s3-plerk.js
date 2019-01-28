@@ -20,8 +20,8 @@ class App extends Component {
         "photo": "",
         "skills": ["HTML", "CSS", "Gulp"]
       },
-      fr: new FileReader() 
-      }
+      fr: new FileReader()
+    }
     this.backEndCall();
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleTypographyChange = this.handleTypographyChange.bind(this);
@@ -33,7 +33,7 @@ class App extends Component {
     this.handleFakeclick = this.handleFakeclick.bind(this);
   }
 
-  addImageToState(){
+  addImageToState() {
     this.setState((prevState) => {
       return {
         userInfo: {
@@ -47,15 +47,15 @@ class App extends Component {
   handleImage(event) {
     event.preventDefault();
     const myFile = this.fileInput.current;
-    console.dir('this.fileInput.current',myFile);
+    console.dir('this.fileInput.current', myFile);
     const fileUpdatedbyuser = this.fileInput.current.files[0];
-    console.dir('this.fileInput.current',this.fileInput.current.files) 
+    console.dir('this.fileInput.current', this.fileInput.current.files)
     this.state.fr.addEventListener('load', this.addImageToState);
-    this.state.fr.readAsDataURL(fileUpdatedbyuser); 
+    this.state.fr.readAsDataURL(fileUpdatedbyuser);
     //alert(`Selected file - ${this.fileInput.current.files[0].name}`); 
   }
 
-  handleFakeclick(){
+  handleFakeclick() {
     this.fileInput.current.click();
   }
 
@@ -115,23 +115,48 @@ class App extends Component {
   }
 
   handleSkillsSelect(event) {
+    // const skillValue = event.target.value;
+    // const skillChecked = event.target.checked;
+    // const skillsArrUserInfo = this.state.userInfo.skills;
+    // let skillArrNew;
+    // if (skillsArrUserInfo.includes(skillValue)) {
+    //   skillArrNew = skillsArrUserInfo.filter(skill => skill !== skillValue)
+    // } else {
+    //   skillArrNew = skillsArrUserInfo.concat(skillValue)
+    // }
+    //   this.setState({
+  //     userInfo: {
+  //       ...this.state.userInfo,
+  //       skills: skillArrNew
+  //     }
+  //   })
     const skillValue = event.target.value;
-    console.log('value=>', skillValue);
     const skillsArrUserInfo = this.state.userInfo.skills;
-    console.log('arr skills', skillsArrUserInfo)
     let skillArrNew;
+
     if (skillsArrUserInfo.includes(skillValue)) {
       skillArrNew = skillsArrUserInfo.filter(skill => skill !== skillValue)
-    } else {
+      this.setState((prevState) => {
+        return {
+          userInfo: {
+            ...this.state.userInfo,
+            skills: skillArrNew
+          }
+        }
+      }) 
+    } else if (skillsArrUserInfo.length < 3) {
       skillArrNew = skillsArrUserInfo.concat(skillValue)
+      this.setState((prevState) => {
+        return {
+          userInfo: {
+            ...this.state.userInfo,
+            skills: skillsArrUserInfo.concat(skillValue)
+          }
+        }
+      }) 
     }
-    this.setState({
-      userInfo: {
-        ...this.state.userInfo,
-        skills: skillArrNew
-      }
-    })
   }
+
 
   handleChangeInput(event) {
     const { value, name } = event.target;
@@ -144,8 +169,6 @@ class App extends Component {
       }
     });
   }
-
-
 
   render() {
     const { skills, userInfo } = this.state;
@@ -170,13 +193,13 @@ class App extends Component {
                 changeColor={this.handleColorChange}
                 changeTypography={this.handleTypographyChange}
                 skillsSelect={this.handleSkillsSelect}
-                srcimage = {this.state.userInfo.photo}
+                srcimage={this.state.userInfo.photo}
                 file={this.fileInput}
                 changeImage={this.handleImage}
                 fakeclick={this.handleFakeclick}
               />
             }
-          />  
+          />
         </Switch>
       </div>
     );

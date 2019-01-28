@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class InputSkill extends Component {
 
     render() { 
-        const { skill, checked } = this.props;
+        const { skill, checked, disabled } = this.props;
         return ( 
             <React.Fragment>
             <input 
@@ -14,6 +14,7 @@ class InputSkill extends Component {
                 name="skill_option" 
                 value={skill}
                 onClick={this.props.skillsSelect}
+                disabled={disabled}
                 />
             <label 
                 className={`checkbox__label checkbox__label--${skill}`} 
