@@ -44,7 +44,6 @@ class App extends Component {
       arrowDesignCollapsible: "fa-angle-up",
       arrowFillCollapsible: "fa-angle-down",
       arrowShareCollapsible: "fa-angle-down",
-
     }
     this.backEndCall();
     this.handleColorChange = this.handleColorChange.bind(this);
@@ -58,6 +57,65 @@ class App extends Component {
     this.handleFakeclick = this.handleFakeclick.bind(this);
     this.handlerSendBackend = this.handlerSendBackend.bind(this);
     this.toggleCollapsible = this.toggleCollapsible.bind(this);
+  }
+
+  componentDidMount() {
+    this.getSavedData();
+  }
+
+  savedData(data) {
+    localStorage.setItem('userInfo', JSON.stringify(data));
+  }
+
+  
+  getSavedData() {
+    const userData = JSON.parse(localStorage.getItem('userInfo'));
+    if (userData !== null) {
+      console.log('user data in local', userData)
+      return(
+      this.setState({
+        userInfo: {
+        palette: "",
+        typography: "",
+        "name": userData.name,
+        "job": userData.job,
+        "phone": userData.phone,
+        "email": userData.email,
+        "linkedin": userData.linkedin,
+        "github": userData.github,
+        "photo": userData.photo,
+        "skills": userData.skills
+        //"skills": ["HTML", "CSS", "Gulp"]
+        }
+      })
+      )
+    } else {
+      //this.fetchResults();
+      //return [];
+      // return {
+      //   userInfo: {
+      //     ...prevState.userInfo,
+      //     [name]: value,
+      //   }
+      // }
+      return (
+        // this.setState({
+        //   userInfo: {
+        //   palette: "",
+        //   typography: "",
+        //   "name": "hola",
+        //   "job": "",
+        //   "phone": "",
+        //   "email": "",
+        //   "linkedin": "",
+        //   "github": "",
+        //   "photo": '../Images/default.jpeg',
+        //   "skills": ["HTML", "CSS", "Gulp"]
+        //   }
+        // })
+        {}
+      )
+    }
   }
 
   sendRequest() {
@@ -87,6 +145,7 @@ class App extends Component {
       .catch(function (error) {
         console.log('error', error);
       });
+    //save showUrl in local
   }
 
 
@@ -104,18 +163,20 @@ class App extends Component {
         }
       }
     });
+    let userInfo = this.state.userInfo
+    this.savedData(userInfo);
   }
 
   toggleCollapsible(event) {
     console.log('event target', event.target.className);
-    if(event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-up")){
+    if (event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-up")) {
       this.setState({
         openDesignCollapsible: false,
         arrowDesignCollapsible: "fa-angle-down",
       });
     }
 
-    if(event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-down")){
+    if (event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-down")) {
       this.setState({
         openDesignCollapsible: true,
         openFillCollapsible: false,
@@ -125,8 +186,8 @@ class App extends Component {
         arrowShareCollapsible: "fa-angle-down",
       });
     }
-    
-    if(event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-down")) {
+
+    if (event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-down")) {
       this.setState({
         openDesignCollapsible: false,
         openFillCollapsible: true,
@@ -137,14 +198,14 @@ class App extends Component {
       });
     }
 
-    if(event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-up")) {
+    if (event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-up")) {
       this.setState({
         openFillCollapsible: false,
         arrowFillCollapsible: "fa-angle-down",
       });
     }
 
-    if(event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-down")) {
+    if (event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-down")) {
       this.setState({
         openDesignCollapsible: false,
         openFillCollapsible: false,
@@ -155,7 +216,7 @@ class App extends Component {
       });
     }
 
-    if(event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-up")) {
+    if (event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-up")) {
       this.setState({
         openShareCollapsible: false,
         arrowShareCollapsible: "fa-angle-down",
@@ -205,7 +266,6 @@ class App extends Component {
         light: 'add__border__light-blue'
       },
     };
-
     // console.log('handleColorChange', paletteNumbers[value]);
     this.setState({
       userInfo: {
@@ -273,14 +333,16 @@ class App extends Component {
         }
       }) 
     }
+    let userInfo = this.state.userInfo
+    this.savedData(userInfo);
   }
 
 
   handleChangeInput(event) {
     const { value, name } = event.target;
-    
+
     this.setState((prevState) => {
-      console.log('prevstate',prevState)
+      console.log('prevstate', prevState.userInfo)
       return {
         userInfo: {
           ...prevState.userInfo,
@@ -288,6 +350,9 @@ class App extends Component {
         }
       }
     });
+  
+    console.log('state user info name ',this.state.userInfo)
+    this.savedData(this.state.userInfo);
   }
 
   handleReset() {
@@ -297,7 +362,10 @@ class App extends Component {
     
   }
 
-  
+  componentDidUpdate() {
+    console.log('this state userinfo component did update',this.state.userInfo)
+    this.savedData(this.state.userInfo);
+  }
 
   render() {
     const {
