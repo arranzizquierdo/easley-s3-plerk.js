@@ -7,7 +7,7 @@ class InputSkill extends Component {
         return ( 
             <React.Fragment>
             <input 
-                checked={checked}
+               defaultChecked={checked}
                 className={`checkbox__input checkbox__input--${skill}`} 
                 id={skill} 
                 type="checkbox" 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import CollapsiblesThree from './Components/collapsibles3';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import CardPreview from './Components/CardPreview';
+import CardGenerator from './Components/CardGenerator';
+import LandingPage from './Components/LandingPage';
+import { Route, Switch } from 'react-router-dom';
+
 
 const defaultInfo = {
   palette: "",
@@ -22,15 +22,161 @@ class App extends Component {
     super(props);
     this.state = {
       skills: [],
-      userInfo: defaultInfo
-    };
+      userInfo: {
+        palette: "",
+        typography: "",
+        "name": "",
+        "job": "",
+        "phone": "",
+        "email": "",
+        "linkedin": "",
+        "github": "",
+        "photo": "",
+        "skills": ["HTML", "CSS", "Gulp"]
+      },
+      fr: new FileReader(),
+      showUrl: '',
+      isLoading: true,
+      showTwitterContainer: false,
+      openDesignCollapsible: true,
+      openFillCollapsible: false,
+      openShareCollapsible: false,
+      arrowDesignCollapsible: "fa-angle-up",
+      arrowFillCollapsible: "fa-angle-down",
+      arrowShareCollapsible: "fa-angle-down",
+
+    }
     this.backEndCall();
-    this.handleColorChange= this.handleColorChange.bind(this);
-    this.handleTypographyChange= this.handleTypographyChange.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
+    this.handleTypographyChange = this.handleTypographyChange.bind(this);
     this.handleSkillsSelect = this.handleSkillsSelect.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.fileInput = React.createRef();
+    this.addImageToState = this.addImageToState.bind(this);
+    this.handleImage = this.handleImage.bind(this);
+    this.handleFakeclick = this.handleFakeclick.bind(this);
+    this.handlerSendBackend = this.handlerSendBackend.bind(this);
+    this.toggleCollapsible = this.toggleCollapsible.bind(this);
   }
+
+  sendRequest() {
+    this.setState({
+      showTwitterContainer: true
+    })
+    fetch("https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/", {
+      method: "POST",
+      body: JSON.stringify(this.state.userInfo),
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        return (
+          console.log('success', data),
+          this.setState({
+            showUrl: data.cardURL,
+            showTwitterContainer: true,
+            isLoading: false,
+          })
+        )
+      })
+      .catch(function (error) {
+        console.log('error', error);
+      });
+  }
+
+
+  handlerSendBackend(event) {
+    event.preventDefault();
+    this.sendRequest();
+  }
+
+  addImageToState() {
+    this.setState((prevState) => {
+      return {
+        userInfo: {
+          ...prevState.userInfo,
+          photo: this.state.fr.result,
+        }
+      }
+    });
+  }
+
+  toggleCollapsible(event) {
+    console.log('event target', event.target.className);
+    if(event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-up")){
+      this.setState({
+        openDesignCollapsible: false,
+        arrowDesignCollapsible: "fa-angle-down",
+      });
+    }
+
+    if(event.target.className.includes("DISEÑA") && this.state.arrowDesignCollapsible.includes("fa-angle-down")){
+      this.setState({
+        openDesignCollapsible: true,
+        openFillCollapsible: false,
+        openShareCollapsible: false,
+        arrowDesignCollapsible: "fa-angle-up",
+        arrowFillCollapsible: "fa-angle-down",
+        arrowShareCollapsible: "fa-angle-down",
+      });
+    }
+    
+    if(event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-down")) {
+      this.setState({
+        openDesignCollapsible: false,
+        openFillCollapsible: true,
+        openShareCollapsible: false,
+        arrowDesignCollapsible: "fa-angle-down",
+        arrowFillCollapsible: "fa-angle-up",
+        arrowShareCollapsible: "fa-angle-down",
+      });
+    }
+
+    if(event.target.className.includes("RELLENA") && this.state.arrowFillCollapsible.includes("fa-angle-up")) {
+      this.setState({
+        openFillCollapsible: false,
+        arrowFillCollapsible: "fa-angle-down",
+      });
+    }
+
+    if(event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-down")) {
+      this.setState({
+        openDesignCollapsible: false,
+        openFillCollapsible: false,
+        openShareCollapsible: true,
+        arrowDesignCollapsible: "fa-angle-down",
+        arrowFillCollapsible: "fa-angle-down",
+        arrowShareCollapsible: "fa-angle-up",
+      });
+    }
+
+    if(event.target.className.includes("COMPARTE") && this.state.arrowShareCollapsible.includes("fa-angle-up")) {
+      this.setState({
+        openShareCollapsible: false,
+        arrowShareCollapsible: "fa-angle-down",
+      });
+    }
+  }
+
+  handleImage(event) {
+    event.preventDefault();
+    const myFile = this.fileInput.current;
+    console.dir('this.fileInput.current', myFile);
+    const fileUpdatedbyuser = this.fileInput.current.files[0];
+    console.dir('this.fileInput.current', this.fileInput.current.files)
+    this.state.fr.addEventListener('load', this.addImageToState);
+    this.state.fr.readAsDataURL(fileUpdatedbyuser);
+  }
+
+  handleFakeclick() {
+    this.fileInput.current.click();
+  }
+
 
   backEndCall() {
     fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
@@ -86,18 +232,18 @@ class App extends Component {
     this.forceUpdate();
   }
 
-  handleSkillsSelect (event) {
+  handleSkillsSelect(event) {
     const skillValue = event.target.value;
     console.log('value=>', skillValue);
     const skillsArrUserInfo = this.state.userInfo.skills;
     console.log('arr skills', skillsArrUserInfo)
     let skillArrNew;
     if (skillsArrUserInfo.includes(skillValue)) {
-      skillArrNew= skillsArrUserInfo.filter(skill => skill !== skillValue)
+      skillArrNew = skillsArrUserInfo.filter(skill => skill !== skillValue)
     } else {
-      skillArrNew= skillsArrUserInfo.concat(skillValue)
+      skillArrNew = skillsArrUserInfo.concat(skillValue)
     }
-    this.setState ({
+    this.setState({
       userInfo: {
         ...this.state.userInfo,
         skills: skillArrNew
@@ -107,7 +253,9 @@ class App extends Component {
 
   handleChangeInput(event) {
     const { value, name } = event.target;
+    
     this.setState((prevState) => {
+      console.log('prevstate',prevState)
       return {
         userInfo: {
           ...prevState.userInfo,
@@ -127,42 +275,61 @@ class App extends Component {
   
 
   render() {
-    const { skills, userInfo } = this.state;
+    const {
+      skills,
+      userInfo,
+      showUrl,
+      isLoading,
+      showTwitterContainer,
+      openDesignCollapsible,
+      openFillCollapsible,
+      openShareCollapsible,
+      arrowDesignCollapsible,
+      arrowFillCollapsible,
+      arrowShareCollapsible
+    } = this.state;
 
     return (
 
       <div className="App">
+        <Switch>
+          <Route
+            exact
+            path='/'
+            component={LandingPage}
+          />
 
-        <Header />
-
-      <CardPreview 
-          nameCard={userInfo.name}
-          jobCard={userInfo.job}
-          skillsClass={userInfo.skills}
-          phone={userInfo.phone}
-          email={userInfo.email}
-          linkedin={userInfo.linkedin}
-          github={userInfo.github}
-          colorClass={userInfo.palette}
-          typographyClass={userInfo.typography}
-          handleReset={this.handleReset}
-        />
-
-        <CollapsiblesThree
-          phone={userInfo.phone}
-          email={userInfo.email}
-          linkedin={userInfo.linkedin}
-          github={userInfo.github}
-          changeInput={this.handleChangeInput} changeColor={this.handleColorChange} changeTypography={this.handleTypographyChange} skills={skills}
-          nameCardInput={userInfo.name}
-          jobCardInput={userInfo.job}
-          skillsSelect={this.handleSkillsSelect} userInfo= {userInfo}
-      />
-
-        <Footer />
-
+          <Route
+            path='/CardGenerator'
+            render={props =>
+              <CardGenerator
+                userInfo={userInfo}
+                skills={skills}
+                changeInput={this.handleChangeInput}
+                changeColor={this.handleColorChange}
+                changeTypography={this.handleTypographyChange}
+                skillsSelect={this.handleSkillsSelect}
+                srcimage={this.state.userInfo.photo}
+                file={this.fileInput}
+                changeImage={this.handleImage}
+                fakeclick={this.handleFakeclick}
+                showUrl={showUrl}
+                loading={isLoading}
+                handlerSendBackend={this.handlerSendBackend}
+                showTwitterContainer={showTwitterContainer}
+                toggleCollapsible={this.toggleCollapsible}
+                openDesignCollapsible={openDesignCollapsible}
+                openFillCollapsible={openFillCollapsible}
+                openShareCollapsible={openShareCollapsible}
+                arrowDesignCollapsible={arrowDesignCollapsible}
+                arrowFillCollapsible={arrowFillCollapsible}
+                arrowShareCollapsible={arrowShareCollapsible}
+                handleReset={this.handleReset}
+              />
+            }
+          />
+        </Switch>
       </div>
-
     );
   }
 }
