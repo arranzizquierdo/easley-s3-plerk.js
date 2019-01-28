@@ -29,7 +29,7 @@ class DesignContent extends Component {
              <div className="box_greenhospital"></div>
            </div>
          </label>
-         <input id="setcolors_green" onClick={() => this.props.changeColor(1)} type="radio" name="setcolors_option" defaultChecked={this.isColorSelected(1)} />
+         <input id="setcolors_green" onChange={() => this.props.changeColor(1)} type="radio" name="setcolors_option" checked={this.isColorSelected(1)} />
        </li>
        <li className="color_container">
          <label className="list_item" htmlFor="setcolors_red">
@@ -39,7 +39,7 @@ class DesignContent extends Component {
              <div className="box_orangetomato"></div>
            </div>
          </label>
-         <input id="setcolors_red" onClick={() => this.props.changeColor(2)} type="radio" name="setcolors_option" defaultChecked={this.isColorSelected(2)} />
+         <input id="setcolors_red" onChange={() => this.props.changeColor(2)} type="radio" name="setcolors_option" checked={this.isColorSelected(2)} />
        </li>
        <li className="color_container">
          <label className="list_item" htmlFor="setcolors_blue">
@@ -49,7 +49,7 @@ class DesignContent extends Component {
              <div className="box_bluesummer"></div>
            </div>
          </label>
-         <input id="setcolors_blue" onClick={() => this.props.changeColor(3)} type="radio" name="setcolors_option" defaultChecked={this.isColorSelected(3)} />
+         <input id="setcolors_blue" onChange={() => this.props.changeColor(3)} type="radio" name="setcolors_option" checked={this.isColorSelected(3)} />
        </li>
      </ul>
      <ul className="set_container">
@@ -59,15 +59,15 @@ class DesignContent extends Component {
        <div className="type_fonts_container">
          <li className="fonts_position">
            <label className="list_item" htmlFor="Ubuntu">Ubuntu</label>
-           <input onClick={() => this.props.changeTypography(1)} className="selector_position" id="Ubuntu" type="radio" name="fonts_option" defaultChecked={this.isFontSelected(1)} />
+           <input onChange={() => this.props.changeTypography(1)} className="selector_position" id="Ubuntu" type="radio" name="fonts_option" checked={this.isFontSelected(1)} />
          </li>
          <li className="fonts_position">
            <label className="list_item" htmlFor="ComicSans">Comic Sans</label>
-           <input onClick={() => this.props.changeTypography(2)} className="selector_position" id="ComicSans" type="radio" name="fonts_option" defaultChecked={this.isFontSelected(2)} />
+           <input onChange={() => this.props.changeTypography(2)} className="selector_position" id="ComicSans" type="radio" name="fonts_option" checked={this.isFontSelected(2)} />
          </li>
          <li className="fonts_position">
            <label className="list_item" htmlFor="Montserrat">Montserrat</label>
-           <input onClick={() => this.props.changeTypography(3)} className="selector_position" id="Montserrat" type="radio" value="Montserrat" name="fonts_option" defaultChecked={this.isFontSelected(3)} />
+           <input onChange={() => this.props.changeTypography(3)} className="selector_position" id="Montserrat" type="radio" value="Montserrat" name="fonts_option" checked={this.isFontSelected(3)} />
          </li>
        </div>
      </ul>
