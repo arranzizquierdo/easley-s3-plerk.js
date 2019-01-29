@@ -44,26 +44,16 @@
 .plerk-link {
   height: 80px;
 }
-// .plerk-logo__image {
-//   transform: scale(0.5)
-// }
 
 .adalab-logo__image {
   width: 100%;
   height: 100%;
 }
 
-// .plerk-logo {
-//   height: 45px;
-//   width: 80px;
-// }
-
 @media all and (min-width: 768px) {
   .footer{
-    height: 60px;
+    height: 90px;
     padding: 0 40px;
-  }
-  .footer-container{
     flex-direction: row;
     justify-content: space-between;
   }
@@ -76,6 +66,9 @@
   }
   .logo__image{
     margin-left: 10px;
+  }
+  .plerk-link{
+    margin-right: 10px;
   }
   }
   
