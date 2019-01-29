@@ -3,23 +3,19 @@
   height: 110px;
   border-top: 1px solid $color-grey-rabbit;
   background-color: $color-white-egg;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer-container {
-  width: 100%;
+  // flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 .copyright__container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .copyright {
@@ -39,6 +35,10 @@
   width: 103px;
   height: 40px;
 }
+
+// .plerk-logo__image {
+//   transform: scale(0.5)
+// }
 
 .adalab-logo__image {
   width: 100%;
