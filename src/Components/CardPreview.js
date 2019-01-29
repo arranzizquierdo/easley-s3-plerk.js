@@ -38,28 +38,35 @@ class CardPreview extends Component {
 
   render() {
 
-    const linkedin = this.props.linkedin
-    const github = this.props.github
-    const phone = this.props.phone
-    const email = this.props.email
+    const { 
+      linkedin, 
+      github, 
+      phone, 
+      email, 
+      colorClass,
+      typographyClass, 
+      srcimage,
+      skillsClass,
+      handleReset 
+    } = this.props;
 
     return (
       <section className="container__cardview">
         <div className="container__buttom">
-          <button onChange={this.props.handleReset} className="buttom__reset" type="button">
+          <button onClick={handleReset} className="buttom__reset" type="button">
             <i className="icon__trash far fa-trash-alt icon__trash" />
             Reset
           </button>
         </div>
 
         <div className="preview__card">
-          <div className={`rectangle__decoration ${this.props.colorClass.medium }`} />
+          <div className={`rectangle__decoration ${colorClass.medium }`} />
           <div className="name__container">
-            <p className={`name ${this.props.typographyClass} ${this.props.colorClass.dark }`}>{this.paintName()}</p>
-            <p className={`profession ${this.props.typographyClass}`}>{this.paintJob()}</p>
+            <p className={`name ${typographyClass} ${colorClass.dark }`}>{this.paintName()}</p>
+            <p className={`profession ${typographyClass}`}>{this.paintJob()}</p>
           </div>
 
-          <img className="photo__user" src={(this.props.srcimage === "")? ImageDefault : this.props.srcimage} alt="User" />
+          <img className="photo__user" src={(srcimage === "")? ImageDefault : srcimage} alt="User" />
     
           <SocialLinkList 
           itemsArr= {items}
@@ -67,13 +74,13 @@ class CardPreview extends Component {
           github= {github}
           phone= {phone}
           email= {email}
-          colorClass={this.props.colorClass}
+          colorClass={colorClass}
           />
           
           <div className="rectangle__decoration-large"></div>
-          <ul className="skill__tags" skillsClass={this.props.skillsClass}>
-            {this.props.skillsClass.map((skill, i) => {
-              return <li className={`first_tag tag ${this.props.colorClass.medium }`} key={i}>{skill}</li>
+          <ul className="skill__tags" skillsClass={skillsClass}>
+            {skillsClass.map((skill, i) => {
+              return <li className={`first_tag tag ${colorClass.medium }`} key={i}>{skill}</li>
             })}
           </ul>
         </div>

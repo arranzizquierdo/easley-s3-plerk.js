@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SocialLink from "./SocialLink";
+import PropTypes from 'prop-types';
 
 class SocialLinkList extends Component {
   render() {
@@ -22,6 +23,15 @@ class SocialLinkList extends Component {
       </ul>
     );
   }
+}
+
+SocialLinkList.propTypes = {
+  itmesArr: PropTypes.arrayOf(PropTypes.array),
+  linkedin: PropTypes.string,
+  github: PropTypes.string,
+  phone: PropTypes.string,
+  email: PropTypes.string,
+  // colorClass: PropTypes.objectOf(PropTypes.object)
 }
 
 export default SocialLinkList;
