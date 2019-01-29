@@ -10,22 +10,22 @@ import ShareTwitter from "./ShareTwitter";
 class CollapsiblesThree extends Component {
 
 
-handleCheckedSkills(skill){
-return (this.props.userInfo.skills.includes(skill)) 
-? true 
-: false
-}
-
-handleDisabledSkills (skill) {
-  const skillsArrUserInfo= this.props.userInfo.skills;
-  if (skillsArrUserInfo.length >= 3) {
-      if (skillsArrUserInfo.includes(skill)){
-          return false
-      } else {
-          return true
-      }
+  handleCheckedSkills(skill) {
+    return (this.props.userInfo.skills.includes(skill))
+      ? true
+      : false
   }
-}
+
+  handleDisabledSkills(skill) {
+    const skillsArrUserInfo = this.props.userInfo.skills;
+    if (skillsArrUserInfo.length >= 3) {
+      if (skillsArrUserInfo.includes(skill)) {
+        return false
+      } else {
+        return true
+      }
+    }
+  }
 
   render() {
     const {
@@ -37,9 +37,24 @@ handleDisabledSkills (skill) {
       arrowShareCollapsible,
       openDesignCollapsible,
       openFillCollapsible,
-      openShareCollapsible
+      openShareCollapsible,
+      changeInput,
+      nameCardInput,
+      jobCardInput,
+      fakeclick,
+      file,
+      changeImage,
+      srcimage,
+      email,
+      phone,
+      linkedin,
+      github,
+      showTwitterContainer,
+      showUrl,
+      loading,
+      skillsSelect
     } = this.props;
-    const skillsSelect = this.props.skillsSelect;
+
     return (
       <div className="custom-section">
         <Collapsible
@@ -64,9 +79,9 @@ handleDisabledSkills (skill) {
               Nombre completo
             </label>
             <input
-              onChange={this.props.changeInput}
+              onChange={changeInput}
               className="input_box full__name"
-              value={this.props.nameCardInput}
+              value={nameCardInput}
               id="firstName"
               placeholder="Ej: Sally Jill"
               type="text"
@@ -76,11 +91,11 @@ handleDisabledSkills (skill) {
               Puesto
             </label>
             <input
-              onChange={this.props.changeInput}
+              onChange={changeInput}
               className="input_box profession__input"
               id="position"
               placeholder="Ej: Front-end unicorn"
-              value={this.props.jobCardInput}
+              value={jobCardInput}
               type="text"
               name="job"
             />
@@ -90,22 +105,22 @@ handleDisabledSkills (skill) {
             <div className="container_add-image">
               <input
                 type="button"
-                onClick={this.props.fakeclick}
+                onClick={fakeclick}
                 className="button_add-image"
                 value="Añadir imagen"
               />
               <input
                 className="action__hiddenField"
-                ref={this.props.file}
+                ref={file}
                 type="file"
-                onChange={this.props.changeImage}
+                onChange={changeImage}
               />
               <div className="container_image-preview">
                 <img
                   src={
-                    this.props.srcimage === ""
+                    srcimage === ""
                       ? DefaultImage
-                      : this.props.srcimage
+                      : srcimage
                   }
                   alt="user"
                   className="image-preview"
@@ -116,8 +131,8 @@ handleDisabledSkills (skill) {
               Email
             </label>
             <input
-              value={this.props.email}
-              onChange={this.props.changeInput}
+              value={email}
+              onChange={changeInput}
               name="email"
               className="input_box email__input"
               id="mail"
@@ -128,8 +143,8 @@ handleDisabledSkills (skill) {
               Teléfono
             </label>
             <input
-              value={this.props.phone}
-              onChange={this.props.changeInput}
+              value={phone}
+              onChange={changeInput}
               name="phone"
               className="input_box phone__input"
               id="phone"
@@ -140,8 +155,8 @@ handleDisabledSkills (skill) {
               Linkedin
             </label>
             <input
-              value={this.props.linkedin}
-              onChange={this.props.changeInput}
+              value={linkedin}
+              onChange={changeInput}
               name="linkedin"
               className="input_box linkedin__input"
               id="linkedin"
@@ -152,8 +167,8 @@ handleDisabledSkills (skill) {
               Github
             </label>
             <input
-              value={this.props.github}
-              onChange={this.props.changeInput}
+              value={github}
+              onChange={changeInput}
               name="github"
               className="input_box github__input"
               id="github"
@@ -186,20 +201,20 @@ handleDisabledSkills (skill) {
           handlerSendBackend={handlerSendBackend}
           toggleCollapsible={toggleCollapsible}
         >
-        
+
           <div
             className={
-              this.props.showTwitterContainer === false
+              showTwitterContainer === false
                 ? "twitter_mother hidden"
                 : "twitter_mother"
             }
           >
             <div className="twitter_container">
-              {this.props.loading === true ? (
+              {loading === true ? (
                 <Loading />
               ) : (
-                <ShareTwitter showUrl={this.props.showUrl} />
-              )}
+                  <ShareTwitter showUrl={showUrl} />
+                )}
             </div>
           </div>
         </Collapsible>

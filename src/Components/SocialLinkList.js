@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 class SocialLinkList extends Component {
   render() {
-    const { 
-      colorClass, 
-      itemsArr 
+    const {
+      colorClass,
+      itemsArr
     } = this.props;
     return (
       <ul className="social__media-list">

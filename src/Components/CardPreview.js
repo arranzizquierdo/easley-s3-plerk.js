@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ImageDefault from '../Images/default.jpeg';
 import SocialLinkList from './SocialLinkList';
+import PropTypes from 'prop-types';
 
 
 const items = [
@@ -87,6 +88,16 @@ class CardPreview extends Component {
       </section>
     );
   }
+}
+
+CardPreview.propTypes = {
+  nameCard: PropTypes.string,
+  jobCard: PropTypes.string,
+  phone: PropTypes.string,
+  email: PropTypes.string,
+  linkedin: PropTypes.string,
+  github: PropTypes.string,
+  skills: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default CardPreview;

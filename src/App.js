@@ -75,25 +75,25 @@ class App extends Component {
     localStorage.setItem('userInfo', JSON.stringify(data));
   }
 
-  
+
   getSavedData() {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
     if (userData !== null) {
-      return(
-      this.setState({
-        userInfo: {
-        palette: userData.palette,
-        typography: userData.typography,
-        "name": userData.name,
-        "job": userData.job,
-        "phone": userData.phone,
-        "email": userData.email,
-        "linkedin": userData.linkedin,
-        "github": userData.github,
-        "photo": userData.photo,
-        "skills": userData.skills
-        }
-      })
+      return (
+        this.setState({
+          userInfo: {
+            palette: userData.palette,
+            typography: userData.typography,
+            "name": userData.name,
+            "job": userData.job,
+            "phone": userData.phone,
+            "email": userData.email,
+            "linkedin": userData.linkedin,
+            "github": userData.github,
+            "photo": userData.photo,
+            "skills": userData.skills
+          }
+        })
       )
     } else {
       return (
@@ -261,9 +261,9 @@ class App extends Component {
 
   handleTypographyChange(value) {
     const typographyTypes = {
-      1: { fontClass: 'add__font__ubuntu', id: 1},
-      2: { fontClass: 'add__font__comicsans', id: 2},
-      3: { fontClass: 'add__font__monserrat', id: 3}
+      1: { fontClass: 'add__font__ubuntu', id: 1 },
+      2: { fontClass: 'add__font__comicsans', id: 2 },
+      3: { fontClass: 'add__font__monserrat', id: 3 }
     };
 
     this.setState({
@@ -289,7 +289,7 @@ class App extends Component {
             skills: skillArrNew
           }
         }
-      }) 
+      })
     } else if (skillsArrUserInfo.length < 3) {
       skillArrNew = skillsArrUserInfo.concat(skillValue)
       this.setState((prevState) => {
@@ -299,7 +299,7 @@ class App extends Component {
             skills: skillsArrUserInfo.concat(skillValue)
           }
         }
-      }) 
+      })
     }
     let userInfo = this.state.userInfo
     this.savedData(userInfo);
@@ -318,8 +318,8 @@ class App extends Component {
         }
       }
     });
-  
-    console.log('state user info name ',this.state.userInfo)
+
+    console.log('state user info name ', this.state.userInfo)
     this.savedData(this.state.userInfo);
   }
 
@@ -327,11 +327,11 @@ class App extends Component {
     this.setState({
       userInfo: defaultInfo
     })
-    
+
   }
 
   componentDidUpdate() {
-    console.log('this state userinfo component did update',this.state.userInfo)
+    console.log('this state userinfo component did update', this.state.userInfo)
     this.savedData(this.state.userInfo);
   }
 
@@ -370,7 +370,7 @@ class App extends Component {
                 changeColor={this.handleColorChange}
                 changeTypography={this.handleTypographyChange}
                 skillsSelect={this.handleSkillsSelect}
-                srcimage={this.state.userInfo.photo}
+                srcimage={userInfo.photo}
                 file={this.fileInput}
                 changeImage={this.handleImage}
                 fakeclick={this.handleFakeclick}

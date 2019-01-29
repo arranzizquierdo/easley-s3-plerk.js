@@ -3,30 +3,30 @@ import PropTypes from 'prop-types';
 
 class InputSkill extends Component {
 
-    render() { 
+    render() {
         const { skill, checked, disabled } = this.props;
-        return ( 
+        return (
             <React.Fragment>
-            <input 
-               defaultChecked={checked}
-                className={`checkbox__input checkbox__input--${skill}`} 
-                id={skill} 
-                type="checkbox" 
-                name="skill_option" 
-                value={skill}
-                onClick={this.props.skillsSelect}
-                disabled={disabled}
+                <input
+                    defaultChecked={checked}
+                    className={`checkbox__input checkbox__input--${skill}`}
+                    id={skill}
+                    type="checkbox"
+                    name="skill_option"
+                    value={skill}
+                    onClick={this.props.skillsSelect}
+                    disabled={disabled}
                 />
-            <label 
-                className={`checkbox__label checkbox__label--${skill}`} 
-                htmlFor={skill}>
+                <label
+                    className={`checkbox__label checkbox__label--${skill}`}
+                    htmlFor={skill}>
                     {skill}
-            </label>
+                </label>
             </React.Fragment>
-         );
+        );
     }
 }
- 
+
 InputSkill.propTypes = {
     skill: PropTypes.string,
     checked: PropTypes.bool,

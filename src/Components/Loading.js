@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 class Loading extends Component {
-    render() { 
+    render() {
         return (
             <p>Creando tarjeta...</p>
         );
     }
 }
- 
+
 export default Loading;
