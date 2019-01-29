@@ -67,7 +67,7 @@ class DesignContent extends Component {
          </li>
          <li className="fonts_position">
            <label className="list_item" htmlFor="Montserrat">Montserrat</label>
-           <input onChange={() => this.props.changeTypography(3)} className="selector_position" id="Montserrat" type="radio" value="Montserrat" name="fonts_option" checked={this.isFontSelected(3)} />
+           <input onChange={() => this.props.changeTypography(3)} className="selector_position" id="Montserrat" type="radio" name="fonts_option" checked={this.isFontSelected(3)} />
          </li>
        </div>
      </ul>
