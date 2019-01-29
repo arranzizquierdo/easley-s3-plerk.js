@@ -3,6 +3,7 @@ import Header from "./Header";
 import CardPreview from "./CardPreview";
 import CollapsiblesThree from "./collapsibles3";
 import Footer from "./Footer";
+import PropTypes from 'prop-types';
 
 class CardGenerator extends Component {
   render() {
@@ -83,6 +84,29 @@ class CardGenerator extends Component {
       </React.Fragment>
     );
   }
+}
+
+CardGenerator.propTypes = {
+  userInfo: PropTypes.object,
+  skills: PropTypes.arrayOf(PropTypes.string),
+  changeInput: PropTypes.func,
+  changeColor: PropTypes.func,
+  changeTypography: PropTypes.func,
+  skillsSelect: PropTypes.func,
+  srcimage: PropTypes.string,
+  file: PropTypes.object,
+  changeImage: PropTypes.func,
+  fakeclick: PropTypes.func,
+  showUrl: PropTypes.string,
+  loading: PropTypes.bool,
+  handlerSendBackend: PropTypes.func,
+  handleReset: PropTypes.func,
+  arrowDesignCollapsible: PropTypes.string,
+  arrowFillCollapsible: PropTypes.string,
+  arrowShareCollapsible: PropTypes.string,
+  openDesignCollapsible: PropTypes.bool,
+  openFillCollapsible: PropTypes.bool,
+  openShareCollapsible: PropTypes.bool,
 }
 
 export default CardGenerator;
