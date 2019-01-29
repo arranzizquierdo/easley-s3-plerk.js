@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class InputSkill extends Component {
 
@@ -26,4 +27,10 @@ class InputSkill extends Component {
     }
 }
  
+InputSkill.propTypes = {
+    skill: PropTypes.string,
+    checked: PropTypes.bool,
+    disabled: PropTypes.bool
+}
+
 export default InputSkill;
