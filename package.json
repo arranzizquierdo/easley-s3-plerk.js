@@ -2,7 +2,7 @@
   "name": "easley-s3-plerk.js",
   "version": "0.1.0",
   "private": true,
-  "homepage":"http://beta.adalab.es/easley-s3-plerk.js/",
+  "homepage": "http://beta.adalab.es/easley-s3-plerk.js/",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "node-sass": "^4.11.0",
