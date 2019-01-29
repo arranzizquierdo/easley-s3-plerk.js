@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 
 class SocialLinkList extends Component {
   render() {
-    const colorClass = this.props.colorClass;
+    const { 
+      colorClass, 
+      itemsArr 
+    } = this.props;
     return (
       <ul className="social__media-list">
-        {this.props.itemsArr.map((item, i) => {
+        {itemsArr.map((item, i) => {
           return (
             <li key={i} className={`social__media-buttom ${colorClass.light}`}>
               <SocialLink
@@ -31,7 +34,6 @@ SocialLinkList.propTypes = {
   github: PropTypes.string,
   phone: PropTypes.string,
   email: PropTypes.string,
-  // colorClass: PropTypes.objectOf(PropTypes.object)
 }
 
 export default SocialLinkList;
