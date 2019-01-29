@@ -23,8 +23,16 @@ class App extends Component {
     this.state = {
       skills: [],
       userInfo: {
-        palette: "",
-        typography: "",
+        palette: {
+          dark: "add__color__dark-green",
+          id: 1,
+          light: "add__border__light-green",
+          medium: "add__color__medium-green"
+        },
+        typography: {
+          fontClass: "add__font__comicsans",
+          id: 2
+        },
         "name": "",
         "job": "",
         "phone": "",
