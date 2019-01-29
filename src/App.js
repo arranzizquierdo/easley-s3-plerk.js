@@ -136,7 +136,6 @@ class App extends Component {
       .catch(function (error) {
         console.log('error', error);
       });
-    //save showUrl in local
   }
 
 
@@ -339,7 +338,6 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    console.log('this state userinfo component did update', this.state.userInfo)
     this.savedData(this.state.userInfo);
   }
 
