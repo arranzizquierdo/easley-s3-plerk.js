@@ -27,6 +27,11 @@
   
 }
 
+.container__logos{
+  display: flex;
+  align-items: center;
+}
+
 .logo__image {
   height: 30px;
 }
@@ -36,6 +41,9 @@
   height: 40px;
 }
 
+.plerk-link {
+  height: 80px;
+}
 // .plerk-logo__image {
 //   transform: scale(0.5)
 // }
@@ -44,6 +52,11 @@
   width: 100%;
   height: 100%;
 }
+
+// .plerk-logo {
+//   height: 45px;
+//   width: 80px;
+// }
 
 @media all and (min-width: 768px) {
   .footer{
