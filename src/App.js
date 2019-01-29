@@ -79,7 +79,6 @@ class App extends Component {
   getSavedData() {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
     if (userData !== null) {
-      console.log('user data in local', userData)
       return(
       this.setState({
         userInfo: {
@@ -93,34 +92,11 @@ class App extends Component {
         "github": userData.github,
         "photo": userData.photo,
         "skills": userData.skills
-        //"skills": ["HTML", "CSS", "Gulp"]
         }
       })
       )
     } else {
-      //this.fetchResults();
-      //return [];
-      // return {
-      //   userInfo: {
-      //     ...prevState.userInfo,
-      //     [name]: value,
-      //   }
-      // }
       return (
-        // this.setState({
-        //   userInfo: {
-        //   palette: "",
-        //   typography: "",
-        //   "name": "hola",
-        //   "job": "",
-        //   "phone": "",
-        //   "email": "",
-        //   "linkedin": "",
-        //   "github": "",
-        //   "photo": '../Images/default.jpeg',
-        //   "skills": ["HTML", "CSS", "Gulp"]
-        //   }
-        // })
         {}
       )
     }
@@ -142,7 +118,6 @@ class App extends Component {
       })
       .then(data => {
         return (
-          console.log('success', data),
           this.setState({
             showUrl: data.cardURL,
             showTwitterContainer: true,
@@ -255,9 +230,6 @@ class App extends Component {
 
   handleColorChange(value) {
     const paletteNumbers = {
-      // 1: 'add__color__medium-green',
-      // 2: 'add__color__light-red',
-      // 3: 'add__color__medium-blue'
       1: {
         dark: 'add__color__dark-green',
         medium: 'add__color__medium-green',
@@ -277,7 +249,6 @@ class App extends Component {
         id: 3
       },
     };
-    // console.log('handleColorChange', paletteNumbers[value]);
     this.setState({
       userInfo: {
         ...this.state.userInfo,
@@ -305,21 +276,6 @@ class App extends Component {
   }
 
   handleSkillsSelect(event) {
-    // const skillValue = event.target.value;
-    // const skillChecked = event.target.checked;
-    // const skillsArrUserInfo = this.state.userInfo.skills;
-    // let skillArrNew;
-    // if (skillsArrUserInfo.includes(skillValue)) {
-    //   skillArrNew = skillsArrUserInfo.filter(skill => skill !== skillValue)
-    // } else {
-    //   skillArrNew = skillsArrUserInfo.concat(skillValue)
-    // }
-    //   this.setState({
-  //     userInfo: {
-  //       ...this.state.userInfo,
-  //       skills: skillArrNew
-  //     }
-  //   })
     const skillValue = event.target.value;
     const skillsArrUserInfo = this.state.userInfo.skills;
     let skillArrNew;

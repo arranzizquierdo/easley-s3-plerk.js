@@ -5,14 +5,13 @@ class Collapsible extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      arrowIcon: props.arrowIcon, //aqui siempre le paso el mismo no cambia el estado inicial
+      arrowIcon: props.arrowIcon,
       collapsiblehidden: props.collapsiblehidden
     };
     this.toggleCollapsible = this.toggleCollapsible.bind(this);
   }
 
   toggleCollapsible(event) {
-    //console.log('event target',event.target);
     if (this.state.arrowIcon.includes("fa-angle-up")) {
       this.setState({
         arrowIcon: "fa-angle-down",

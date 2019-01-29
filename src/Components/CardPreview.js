@@ -57,13 +57,10 @@ class CardPreview extends Component {
           <div className="name__container">
             <p className={`name ${this.props.typographyClass} ${this.props.colorClass.dark }`}>{this.paintName()}</p>
             <p className={`profession ${this.props.typographyClass}`}>{this.paintJob()}</p>
-            {/* <p className="name">{this.paintName()}</p>
-            <p className="profession">{this.paintJob()}</p> */}
           </div>
 
           <img className="photo__user" src={(this.props.srcimage === "")? ImageDefault : this.props.srcimage} alt="User" />
-          {/* <img className="photo__user" src={this.props.srcimage} alt="User" /> */}
-
+    
           <SocialLinkList 
           itemsArr= {items}
           linkedin= {linkedin}
@@ -78,9 +75,6 @@ class CardPreview extends Component {
             {this.props.skillsClass.map((skill, i) => {
               return <li className={`first_tag tag ${this.props.colorClass.medium }`} key={i}>{skill}</li>
             })}
-            {/* <li className={`first_tag tag ${this.props.colorClass.medium }`}>HTML</li>
-            <li className={`second_tag tag ${this.props.colorClass.medium }`}>CSS</li>
-            <li className={`third_tag tag ${this.props.colorClass.medium }`}>GULP</li>   */}
           </ul>
         </div>
       </section>
